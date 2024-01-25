@@ -151,28 +151,73 @@
 
 // ======================================================
 
-let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+let arr = [
+    "nap",
+    "teachers",
+    "cheaters",
+    "PAN",
+    "ear",
+    "ear",
+    "era",
+    "era",
+    "era",
+    "hectares",
+    "hectraes",
+    "ehctraes",
+];
 
-function aclean(arr) {
-    // arr.map((item) => item.toLowerCase());
-    // let sorted = arr.map((item) =>
-    //     item.toLowerCase().split("").sort().join("")
-    // );
-    return Array.from(
-        new Set(arr.map((item) => item.toLowerCase().split("").sort().join("")))
-    );
+// function aclean(arr) {
+//     let newArr = arr.map((item) =>
+//         item.toLowerCase().split("").sort().join("")
+//     );
+//     return Array.from(new Set(newArr));
+// }
 
-    // let sorted;
-    // for (const key of arr) {
-    //     sorted = key.split("").sort().join("");
-    // }
-}
+// function aclean(arr) {
+//     let map = new Map();
+//     for (const word of arr) {
+//         let sorted = word.toLowerCase().split("").sort().join("");
+//         map.set(sorted, word);
+//     }
+//     return Array.from(map.values());
+//     // return Array.from(map.keys());
+//     // return Array.from(map.entries());
+// }
 
-// console.log(
-//     arr
-//         .map((item) => item.toLocaleLowerCase())
-//         .split("")
-//         .sort()
-//         .join("")
-// );
-console.log(aclean(arr)); // "nap,teachers,ear" или "PAN,cheaters,era"
+// function aclean(arr) {
+//     let obj = {};
+//     for (let i = 0; i < arr.length; i++) {
+//         let sorted = arr[i].toLowerCase().split("").sort().join("");
+//         obj[sorted] = arr[i];
+//     }
+//     // return obj;
+//     return Object.keys(obj);
+//     return Object.values(obj);
+// }
+// console.log(aclean(arr)); // "nap,teachers,ear" или "PAN,cheaters,era"
+
+// =====================================================
+let map = new Map();
+
+map.set("name", "John");
+
+console.log(map);
+console.log(map.keys());
+console.log(map.values());
+console.log(map.entries());
+
+console.log("keys");
+let keys = Array.from(map.keys());
+// let keys = map.entries();
+
+console.log(keys);
+// console.log(keys.get("name"));
+// console.log(keys.keys());
+// console.log(keys.values());
+// console.log(keys.entries());
+
+// Error: keys.push is not a function
+// Ошибка: keys.push -- это не функция
+keys.push("more");
+
+console.log(keys);
