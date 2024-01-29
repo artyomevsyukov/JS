@@ -183,10 +183,17 @@ function topSalary(salaries) {
     // )[0];
     // return console.log(top[0]);
 
-    let top = Object.entries(salaries)
-        .sort(([key, value], [key2, value2]) => value - value2)
-        .at(-1)[0];
-    return console.log(top);
+    // let top = Object.entries(salaries)
+    //     .sort(([key, value], [key2, value2]) => value - value2)
+    //     .at(-1)[0];
+    // return console.log(top);
+
+    let top = Object.entries(salaries).sort(
+        ([key, value], [key2, value2]) => value2 - value
+    );
+    // .at(0)[0];
+    // return console.log(`${top.at(0)[0]}: ${top.at(0)[1]}`);
+    return console.log(`${top}: ${top.at(0)[1]}`);
 }
 topSalary(salaries);
 // function topSalary(salaries) {
