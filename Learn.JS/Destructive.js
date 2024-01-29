@@ -170,27 +170,50 @@
 // =====================================================
 
 let salaries = {
-    // John: 100,
-    // Pete: 300,
-    // Pete2: 1300,
-    // Mary1: 350,
-    // Mary: 1350,
+    John: 100,
+    Pete: 300,
+    Pete2: 1300,
+    Mary1: 350,
+    Mary: 1350,
 };
 
 function topSalary(salaries) {
-    // if (Object.keys(salaries).length == 0) {
-    //     return console.log("Пусто");
-    // }
-    let max = 0;
-    let maxName = null;
+    // let top = Object.entries(salaries).sort(
+    //     ([key, value], [key2, value2]) => value2 - value
+    // )[0];
+    // return console.log(top[0]);
 
-    for (const [name, salary] of Object.entries(salaries)) {
-        if (salary > max) {
-            max = salary;
-            maxName = name;
-        }
-    }
-    return console.log(`${maxName}: ${max}`);
+    let top = Object.entries(salaries)
+        .sort(([key, value], [key2, value2]) => value - value2)
+        .at(-1)[0];
+    return console.log(top);
 }
-
 topSalary(salaries);
+// function topSalary(salaries) {
+//     // if (Object.keys(salaries).length == 0) {
+//     //     return console.log("Пусто");
+//     // }
+//     let max = 0;
+//     let maxName = null;
+
+//     for (const [name, salary] of Object.entries(salaries)) {
+//         if (salary > max) {
+//             max = salary;
+//             maxName = name;
+//         }
+//     }
+//     return console.log(`${maxName}: ${max}`);
+// }
+
+// topSalary(salaries);
+
+// function topSalary(salaries) {
+//     let maxSalary = Math.max(...Object.values(salaries));
+//     return console.log(maxSalary);
+//     // for (let [name, salary] of Object.entries(salaries)) {
+//     //     if (salary === maxSalary) {
+//     //         return console.log(`${name}: ${salary}`);
+//     //     }
+//     // }
+// }
+// topSalary(salaries);
