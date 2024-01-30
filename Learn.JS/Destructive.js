@@ -178,28 +178,38 @@ let salaries = {
 };
 
 function topSalary(salaries) {
-    // let top = Object.entries(salaries).sort(
-    //     ([key, value], [key2, value2]) => value2 - value
-    // )[0];
-    // return console.log(top[0]);
+    let top = Object.entries(salaries).sort(
+        ([key, value], [key2, value2]) => value2 - value
+    )[0][1];
+    // console.log(Array.isArray(top));
+    return console.log(top);
 
     // let top = Object.entries(salaries)
     //     .sort(([key, value], [key2, value2]) => value - value2)
     //     .at(-1)[0];
     // return console.log(top);
 
-    let top = Object.entries(salaries).sort(
-        ([key, value], [key2, value2]) => value2 - value
-    );
-    // .at(0)[0];
-    // return console.log(`${top.at(0)[0]}: ${top.at(0)[1]}`);
-    return console.log(`${top}: ${top.at(0)[1]}`);
+    // let top = Object.entries(salaries)
+    //     .sort(([key, value], [key2, value2]) => value2 - value)
+    //     .at(0)[0];
+    // // return console.log(`${top.at(0)[0]}: ${top.at(0)[1]}`);
+    // return console.log(`${top}: ${top.at(0)[1]}`);
 }
 topSalary(salaries);
+
+// let salaries = {
+//     John: 100,
+//     Pete: 300,
+//     Pete2: 1300,
+//     Mary1: 350,
+//     Mary: 1350,
+//     Anna: 1350,
+//     Mary3: 1350,
+// };
 // function topSalary(salaries) {
-//     // if (Object.keys(salaries).length == 0) {
-//     //     return console.log("Пусто");
-//     // }
+//     if (Object.keys(salaries).length == 0) {
+//         return console.log("Пусто");
+//     }
 //     let max = 0;
 //     let maxName = null;
 
@@ -209,9 +219,18 @@ topSalary(salaries);
 //             maxName = name;
 //         }
 //     }
-//     return console.log(`${maxName}: ${max}`);
-// }
+//     let arr = Object.entries(salaries);
+//     let user = Object.fromEntries(arr.filter((item) => item[1] == max).sort());
+//     // let arr = Object.entries(salaries.filter((item) => item[1] == max));
+//     // let user = Object.fromEntries(arr);
+//     // let arrObj = [salaries];
+//     // let newArrObj = arrObj.filter((item) => item[Object.keys(salaries)] == max);
 
+//     // return console.log(newArrObj);
+//     // return console.log(arrObj);
+//     return console.log(user);
+//     return console.log(arr);
+// }
 // topSalary(salaries);
 
 // function topSalary(salaries) {
@@ -223,4 +242,16 @@ topSalary(salaries);
 //     //     }
 //     // }
 // }
+// topSalary(salaries);
+
+// let salaries = {
+//     John: 100,
+//     Pete: 300,
+//     Pete2: 1300,
+//     Mary1: 350,
+//     Mary: 1350,
+//     Mary3: 1350,
+// };
+
+// function topSalary(salaries) {}
 // topSalary(salaries);
