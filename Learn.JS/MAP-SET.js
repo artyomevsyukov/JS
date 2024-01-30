@@ -151,20 +151,20 @@
 
 // ======================================================
 
-let arr = [
-    "nap",
-    "teachers",
-    "cheaters",
-    "PAN",
-    "ear",
-    "ear",
-    "era",
-    "era",
-    "era",
-    "hectares",
-    "hectraes",
-    "ehctraes",
-];
+// let arr = [
+//     "nap",
+//     "teachers",
+//     "cheaters",
+//     "PAN",
+//     "ear",
+//     "ear",
+//     "era",
+//     "era",
+//     "era",
+//     "hectares",
+//     "hectraes",
+//     "ehctraes",
+// ];
 
 // function aclean(arr) {
 //     let newArr = arr.map((item) =>
@@ -190,34 +190,78 @@ let arr = [
 //         let sorted = arr[i].toLowerCase().split("").sort().join("");
 //         obj[sorted] = arr[i];
 //     }
-//     // return obj;
+//     return obj;
 //     return Object.keys(obj);
 //     return Object.values(obj);
 // }
 // console.log(aclean(arr)); // "nap,teachers,ear" или "PAN,cheaters,era"
 
 // =====================================================
-let map = new Map();
+// let map = new Map();
 
-map.set("name", "John");
+// map.set("name", "John");
 
-console.log(map);
-console.log(map.keys());
-console.log(map.values());
-console.log(map.entries());
+// console.log(map);
+// console.log(map.keys());
+// console.log(map.values());
+// console.log(map.entries());
 
-console.log("keys");
-let keys = Array.from(map.keys());
-// let keys = map.entries();
+// console.log("keys");
+// let keys = Array.from(map.keys());
+// // let keys = map.entries();
 
-console.log(keys);
-// console.log(keys.get("name"));
-// console.log(keys.keys());
-// console.log(keys.values());
-// console.log(keys.entries());
+// console.log(keys);
+// // console.log(keys.get("name"));
+// // console.log(keys.keys());
+// // console.log(keys.values());
+// // console.log(keys.entries());
 
-// Error: keys.push is not a function
-// Ошибка: keys.push -- это не функция
-keys.push("more");
+// // Error: keys.push is not a function
+// // Ошибка: keys.push -- это не функция
+// keys.push("more");
 
-console.log(keys);
+// console.log(keys);
+
+// function unique(arr) {
+//     return Array.from(new Set(arr));
+// }
+
+// let arr = [
+//     "Hare",
+//     "Krishna",
+//     "Hare",
+//     "Krishna",
+//     "Krishna",
+//     "Krishna",
+//     "Hare",
+//     "Hare",
+//     ":-O",
+// ];
+
+// // console.log(unique(values)); // Hare,Krishna,:-O
+
+// // let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+// function aclean(arr) {
+//     let map = new Map();
+//     for (const word of arr) {
+//         let sorted = word.toLowerCase().split("").sort().join("");
+//         map.set(sorted, word);
+//     }
+//     // return Array.from(map.keys());
+//     // return Array.from(map.values());
+//     return Array.from(map.entries());
+// }
+
+// console.log(aclean(arr)); // "nap,teachers,ear" или "PAN,cheaters,era"
+
+// let map = new Map();
+
+// map.set("name", "John");
+
+// let keys = Array.from(map.keys());
+
+// keys.push("more");
+// console.log(keys);
+// // Error: keys.push is not a function
+// // Ошибка: keys.push -- это не функция
