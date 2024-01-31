@@ -92,10 +92,21 @@
 // // [2, 4, 6]
 
 // Генерирования последовательности чисел
-let obj = {
-    123: 0,
-    132: 0,
-    213: 0,
-};
-console.log(Array.from({ length: 5 }, (v, k) => ({ Object.values(obj): Object.keys(obj) })));
-// [0, 1, 2, 3, 4]
+// let obj = {
+//     123: 0,
+//     132: 0,
+//     213: 0,
+// };
+// console.log(Array.from({ length: 5 }, (v, k) => ({ Object.values(obj): Object.keys(obj) })));
+// // [0, 1, 2, 3, 4]
+
+const cart = [
+    { name: "dfgd", price: 200 },
+    { name: "gdfg", price: 100 },
+    { name: "dfgaaag", price: 300 },
+    { name: "hjgjk", price: 400 },
+];
+
+let sumCart = cart.reduce((totalPrice, { price }) => totalPrice + price, 0);
+
+console.log(sumCart);
