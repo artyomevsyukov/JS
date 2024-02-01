@@ -169,33 +169,33 @@
 
 // =====================================================
 
-let salaries = {
-    John: 100,
-    Pete: 300,
-    Pete2: 1300,
-    Mary1: 350,
-    Mary: 1350,
-};
+// let salaries = {
+//     John: 100,
+//     Pete: 300,
+//     Pete2: 1300,
+//     Mary1: 350,
+//     Mary: 1350,
+// };
 
-function topSalary(salaries) {
-    let top = Object.entries(salaries).sort(
-        ([key, value], [key2, value2]) => value2 - value
-    )[0][1];
-    // console.log(Array.isArray(top));
-    return console.log(top);
+// function topSalary(salaries) {
+//     let top = Object.entries(salaries).sort(
+//         ([key, value], [key2, value2]) => value2 - value
+//     )[0][1];
+//     // console.log(Array.isArray(top));
+//     return console.log(top);
 
-    // let top = Object.entries(salaries)
-    //     .sort(([key, value], [key2, value2]) => value - value2)
-    //     .at(-1)[0];
-    // return console.log(top);
+//     // let top = Object.entries(salaries)
+//     //     .sort(([key, value], [key2, value2]) => value - value2)
+//     //     .at(-1)[0];
+//     // return console.log(top);
 
-    // let top = Object.entries(salaries)
-    //     .sort(([key, value], [key2, value2]) => value2 - value)
-    //     .at(0)[0];
-    // // return console.log(`${top.at(0)[0]}: ${top.at(0)[1]}`);
-    // return console.log(`${top}: ${top.at(0)[1]}`);
-}
-topSalary(salaries);
+//     // let top = Object.entries(salaries)
+//     //     .sort(([key, value], [key2, value2]) => value2 - value)
+//     //     .at(0)[0];
+//     // // return console.log(`${top.at(0)[0]}: ${top.at(0)[1]}`);
+//     // return console.log(`${top}: ${top.at(0)[1]}`);
+// }
+// topSalary(salaries);
 
 // let salaries = {
 //     John: 100,
@@ -255,3 +255,32 @@ topSalary(salaries);
 
 // function topSalary(salaries) {}
 // topSalary(salaries);
+
+// =========================================================
+
+const cart = [
+    { name: "dfgd", price: 200 },
+    { name: "gdfg", price: 100 },
+    { name: "dfgaaag", price: 300 },
+    { name: "hjgjk", price: 400 },
+];
+
+// let sumCartReduce = cart.reduce(
+//     (totalPrice, { price }) => totalPrice + price,
+//     0
+// );
+// console.log(sumCartReduce);
+
+let sumCart = 0;
+for (const [key, value] of Object.entries(cart)) {
+    // for (const value of Object.values(cart)) {
+    console.log(`${key}: ${value.name}, ${value.price}`);
+    // console.log(key);
+    // console.log(value);
+    sumCart += value.price;
+}
+// console.log(sumCart);
+
+// console.log(Object.entries(cart));
+// console.log(Object.keys(cart));
+console.log(Object.values(cart));

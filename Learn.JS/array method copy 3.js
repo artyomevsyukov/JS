@@ -107,6 +107,25 @@ const cart = [
     { name: "hjgjk", price: 400 },
 ];
 
-let sumCart = cart.reduce((totalPrice, { price }) => totalPrice + price, 0);
+// let sumCart = cart.reduce((totalPrice, { price }) => totalPrice + price, 0);
 
-console.log(sumCart);
+let sumCart = 0;
+for (const [key, value] of Object.entries(cart)) {
+    // for (const value of Object.values(cart)) {
+    // console.log(`${value.name}: ${value.price}`);
+
+    sumCart += value.price;
+}
+// console.log(sumCart);
+
+const object1 = {
+    a: "somestring",
+    b: 42,
+};
+
+for (const [key, value] of Object.entries(object1)) {
+    // console.log(`${key}: ${value}`);
+}
+// console.log(Object.entries(object1));
+console.log(Object.keys(object1));
+console.log(Object.values(object1));
