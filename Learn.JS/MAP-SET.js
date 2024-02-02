@@ -265,3 +265,59 @@
 // console.log(keys);
 // // Error: keys.push is not a function
 // // Ошибка: keys.push -- это не функция
+
+// let objKey = { name: "John" };
+// let obj = {};
+// obj[objKey] = "value";
+// console.log(obj);
+
+// let map = new Map();
+// map.set(objKey, "value");
+// console.log(map);
+
+// let obj = {};
+// obj["65"] = 1;
+// obj["12"] = 2;
+// obj["1"] = 3;
+// console.log(obj);
+
+// // Использование Map
+// let map = new Map();
+// map.set("one", 1);
+// map.set("two", 2);
+// map.set("three", 3);
+
+// Использование объекта
+// let obj = {};
+// obj["key1"] = "value1";
+// obj["key2"] = "value2";
+
+// // Перебор свойств объекта
+// for (let key in obj) {
+//     console.log(key, obj[key]);
+// }
+
+// for (const [key, value] of Object.entries(obj)) {
+//     console.log(key, value);
+// }
+
+let obj = {
+    key1: "value1",
+    key2: "value2",
+    key3: "value3",
+};
+
+// let mapFromObj = new Map(Object.entries(obj));
+// let mapFromObj = new Map();
+// for (let key in obj) {
+//     mapFromObj.set = (key, obj[key]);
+// }
+// console.log(mapFromObj);
+
+let mapFromObj = new Map();
+
+for (let key in obj) {
+    mapFromObj.set(key, obj[key]);
+}
+
+console.log(mapFromObj);

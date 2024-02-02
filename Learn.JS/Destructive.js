@@ -221,7 +221,8 @@
 //     }
 //     let arr = Object.entries(salaries);
 //     let user = Object.fromEntries(arr.filter((item) => item[1] == max).sort());
-//     // let arr = Object.entries(salaries.filter((item) => item[1] == max));
+// let arr = Object.entries(salaries.filter((item) => item[1] == max));
+// TODO
 //     // let user = Object.fromEntries(arr);
 //     // let arrObj = [salaries];
 //     // let newArrObj = arrObj.filter((item) => item[Object.keys(salaries)] == max);
@@ -258,29 +259,125 @@
 
 // =========================================================
 
-const cart = [
-    { name: "dfgd", price: 200 },
-    { name: "gdfg", price: 100 },
-    { name: "dfgaaag", price: 300 },
-    { name: "hjgjk", price: 400 },
-];
+// const cart = [
+//     { name: "dfgd", price: 200 },
+//     { name: "gdfg", price: 100 },
+//     { name: "dfgaaag", price: 300 },
+//     { name: "hjgjk", price: 400 },
+// ];
 
-// let sumCartReduce = cart.reduce(
-//     (totalPrice, { price }) => totalPrice + price,
-//     0
-// );
-// console.log(sumCartReduce);
+// // let sumCartReduce = cart.reduce(
+// //     (totalPrice, { price }) => totalPrice + price,
+// //     0
+// // );
+// // console.log(sumCartReduce);
 
-let sumCart = 0;
-for (const [key, value] of Object.entries(cart)) {
-    // for (const value of Object.values(cart)) {
-    console.log(`${key}: ${value.name}, ${value.price}`);
-    // console.log(key);
-    // console.log(value);
-    sumCart += value.price;
-}
+// let sumCart = 0;
+// for (const [key, value] of Object.entries(cart)) {
+//     // for (const value of Object.values(cart)) {
+//     console.log(`${key}: ${value.name}, ${value.price}`);
+//     // console.log(key);
+//     // console.log(value);
+//     sumCart += value.price;
+// }
 // console.log(sumCart);
 
 // console.log(Object.entries(cart));
 // console.log(Object.keys(cart));
-console.log(Object.values(cart));
+// console.log(Object.values(cart));
+
+// ===================================================================================
+
+// let [a, b, c] = "abc";
+// let [one, two, three] = new Set([1, 2, 3]);
+// let set = new Set([1, 2, 3]);
+// console.log(set);
+
+// let user = {
+//     name: "John",
+//     age: 30,
+// };
+
+// // цикл по ключам и значениям
+// for (let [key, value] of Object.entries(user)) {
+//     console.log(`${key}:${value}`); // name:John, затем age:30
+// }
+
+// let options = {
+//     size: {
+//         width: 100,
+//         height: 200,
+//     },
+//     items: ["Cake", "Donut"],
+//     extra: true,
+// };
+
+// // деструктуризация разбита на несколько строк для ясности
+// let {
+//     size: {
+//         // положим size сюда
+//         width,
+//         height,
+//     },
+//     items: [item1, item2], // добавим элементы к items
+//     title = "Menu",
+//     admin,
+// } = options;
+
+// console.log(title); // Menu
+// console.log(width); // 100
+// console.log(height); // 200
+// console.log(item1); // Cake
+// console.log(item2); // Donut
+// console.log(admin); // Donut
+
+// function showMenu(title = "Menu", width = 100, height = 200) {
+//     console.log(`${title} ${width} ${height}`);
+// }
+
+// showMenu(); // Menu 100 200
+
+// let user = {
+//     name: "John",
+//     years: 30,
+//     // isAdmin: true,
+// };
+
+// let { name, years: age, isAdmin = false } = user;
+// console.log(name, age, isAdmin);
+
+let salaries = {
+    John: 100,
+    Pete: 300,
+    Mary: 250,
+    Mary2: 250,
+    Pete2: 300,
+};
+
+// function topSalary(salaries) {
+//     let max = 0;
+//     let maxName = null;
+//     for (const [name, salary] of Object.entries(salaries)) {
+//         if (max < salary) {
+//             max = salary;
+//             maxName = name;
+//         }
+//     }
+
+//     return console.log(maxName);
+// }
+// function topSalary(salaries) {
+//     if (!salaries) {
+//         return null;
+//     }
+//     let top = Object.entries(salaries).sort(
+//         ([key, value], [key1, value1]) => value1 - value
+//     );
+//     let max = top[0][1];
+//     let userMax = top.filter((value) => value[1] == max);
+//     userMax = Object.fromEntries(userMax);
+//     return console.log(userMax);
+//     return console.log(top);
+//     return console.log(top[0][1]);
+// }
+// topSalary(salaries);
