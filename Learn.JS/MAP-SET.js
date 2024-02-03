@@ -301,11 +301,11 @@
 //     console.log(key, value);
 // }
 
-let obj = {
-    key1: "value1",
-    key2: "value2",
-    key3: "value3",
-};
+// let obj = {
+//     key1: "value1",
+//     key2: "value2",
+//     key3: "value3",
+// };
 
 // let mapFromObj = new Map(Object.entries(obj));
 // let mapFromObj = new Map();
@@ -314,10 +314,114 @@ let obj = {
 // }
 // console.log(mapFromObj);
 
-let mapFromObj = new Map();
+// let mapFromObj = new Map();
 
-for (let key in obj) {
-    mapFromObj.set(key, obj[key]);
-}
+// for (let key in obj) {
+//     mapFromObj.set(key, obj[key]);
+// }
 
-console.log(mapFromObj);
+// console.log(mapFromObj);
+// let map = new Map();
+
+// map.set("1", "str1"); // строка в качестве ключа
+// map.set(1, "num1"); // цифра как ключ
+// map.set(true, "bool1"); // булево значение как ключ
+
+// // помните, обычный объект Object приводит ключи к строкам?
+// // Map сохраняет тип ключей, так что в этом случае сохранится 2 разных значения:
+// console.log(map.get(1)); // "num1"
+// console.log(map.get("1")); // "str1"
+
+// console.log(map.size); // 3
+// console.log(map);
+
+// ========   ПЕРЕБОР Array    ============== //TODO
+// let arr = [1, 2, 3, 4];
+// // console.log(arr.entries());
+// let array = [
+//     ["key1", "value1"],
+//     ["key2", "value2"],
+//     ["key3", "value3"],
+// ];
+// let object = Object.fromEntries(array);
+
+// console.log(object);
+
+// ========   ПЕРЕБОР Object    ============== //TODO
+
+// let obj = {
+//     1: 111,
+//     2: 222,
+//     3: 333,
+// };
+
+// console.log(Object.keys(obj));
+// // возвращает массив ключей.
+// console.log(Object.values(obj));
+// // возвращает массив значений.
+// console.log(Object.entries(obj));
+// Получаю массив пар [ключ, значение]
+
+// ========   ПЕРЕБОР Map    ============== //TODO
+
+// map.keys() – возвращает итерируемый объект по ключам,
+// recipeMap.keys()
+// map.values() – возвращает итерируемый объект по значениям,
+// recipeMap.values()
+// map.entries() – возвращает итерируемый объект по парам вида [ключ, значение], этот вариант используется по умолчанию в for..of.
+// recipeMap.entries()
+// let recipeMap = new Map([
+//     ["огурец", 500],
+//     ["помидор", 350],
+//     ["лук", 50],
+// ]);
+
+// // перебор по ключам (овощи)
+// for (let vegetable of recipeMap.keys()) {
+//     console.log(vegetable); // огурец, помидор, лук
+// }
+
+// // перебор по значениям (числа)
+// for (let amount of recipeMap.values()) {
+//     console.log(amount); // 500, 350, 50
+// }
+
+// // перебор по элементам в формате [ключ, значение]
+// for (let entry of recipeMap) {
+//     // то же самое, что и recipeMap.entries()
+//     console.log(entry); // огурец,500 (и так далее)
+// }
+
+// console.log(recipeMap.keys());
+// // Перебираемый объект
+// console.log(recipeMap.values());
+// // Перебираемый объект
+// console.log(recipeMap.entries());
+// // Перебираемый объект
+// console.log(recipeMap);
+// console.log();
+// console.log();
+// console.log(Object.fromEntries(recipeMap));
+
+// let arr = [1, 2, 3, 4];
+// let obj = arr.reduce((acc, currentValue, index) => {
+//     acc[index.toString()] = currentValue;
+//     return acc;
+// }, {});
+
+// console.log(obj);
+
+// let obj = {
+//     name: "John",
+//     age: 30,
+// };
+
+// let map = new Map(Object.entries(obj));
+// let newObj = Object.fromEntries(map.entries());
+// let newObj1 = Object.fromEntries(map);
+
+// console.log(map);
+// console.log(newObj);
+// console.log(newObj1);
+
+// ===================
