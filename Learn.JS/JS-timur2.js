@@ -23,26 +23,55 @@
 
 // console.log(pricesArray);
 
-let result = [];
-let array = [
-    { name: "1" },
-    { name: "2" },
-    { name: "4" },
-    { name: "2" },
-    { name: "3" },
-    { name: "1" },
-];
+// let result = [];
+// let array2 = [4, 1, 3, 3, 9, 3, 2, 4];
+// array2.forEach(function (a) {
+//     a in this || result.push((this[a] = []));
+//     this[a].push(a);
+// }, Object.create(null)); // [[4, 4], [1], [3, 3], [2]]
 
-let array2 = [4, 1, 3, 3, 2, 4];
-array2.forEach(function (a) {
+// console.log(result);
+
+// let array = [
+//     { name: "1" },
+//     { name: "2" },
+//     { name: "4" },
+//     { name: "2" },
+//     { name: "3" },
+//     { name: "1" },
+// ];
+// array.forEach(function (obj) {
+//     const name = obj.name;
+//     name in this || result.push((this[name] = []));
+//     this[name].push(obj);
+// }, Object.create(null));
+
+// console.log(result);
+
+let result = [];
+let array2 = [4, 1, 3, 3, 9, 3, 2, 4];
+let array = [4, 1, 3, 3, 9, 3, 2, 4];
+
+// let context = {};
+
+// array2.forEach((a) => {
+//     a in context || result.push((context[a] = []));
+//     context[a].push(a);
+// },);
+// array2.forEach((a) => {
+//     a in this || result.push((this[a] = []));
+//     this[a].push(a);
+// }, {});
+
+// array.forEach((a) => {
+//     a in this || result.push((this[a] = []));
+//     this[a].push(a);
+// }, {});
+
+array.forEach((a) => {
     a in this || result.push((this[a] = []));
     this[a].push(a);
-}, Object.create(null)); // [[4, 4], [1], [3, 3], [2]]
+    result.sort();
+}, {});
 
-array.forEach(function (obj) {
-    const name = obj.name;
-    name in this || result.push((this[name] = []));
-    this[name].push(obj);
-}, Object.create(null));
-
-console.log(result);
+console.table(result);

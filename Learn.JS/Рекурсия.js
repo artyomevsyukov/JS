@@ -3,6 +3,7 @@ function sum(arr) {
     if (arr.length === 0) {
         return 0;
     } else {
+        console.log(arr);
         return arr[0] + sum(arr.slice(1));
     }
 }
