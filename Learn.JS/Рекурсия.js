@@ -48,35 +48,109 @@
 //     }
 // }
 
-console.log(123 * 123 * 123 * 123);
+// console.log(123 * 123 * 123 * 123);
 
-console.time("timer_3");
-function sumTo3(n) {
-    return (n * (n + 1)) / 2;
-}
-console.log(sumTo3(10000));
-console.timeEnd("timer_3");
+// console.time("timer_3");
+// function sumTo3(n) {
+//     return (n * (n + 1)) / 2;
+// }
+// console.log(sumTo3(10000));
+// console.timeEnd("timer_3");
 
-console.time("timer_2");
-function sumTo2(n) {
-    if (n == 1) {
-        return 1;
-    } else {
-        return n + sumTo2(n - 1);
-    }
-}
-console.log(sumTo2(10000));
-console.timeEnd("timer_2");
+// console.time("timer_2");
+// function sumTo2(n) {
+//     if (n == 1) {
+//         return 1;
+//     } else {
+//         return n + sumTo2(n - 1);
+//     }
+// }
+// console.log(sumTo2(10000));
+// console.timeEnd("timer_2");
 
-console.time("timer_1");
-function sumTo1(n) {
-    let sum = 0;
-    for (let i = n; i >= 1; i--) {
-        sum += i;
-    }
-    return sum;
-}
-console.log(sumTo1(10000));
-console.timeEnd("timer_1");
+// console.time("timer_1");
+// function sumTo1(n) {
+//     let sum = 0;
+//     for (let i = n; i >= 1; i--) {
+//         sum += i;
+//     }
+//     return sum;
+// }
+// console.log(sumTo1(10000));
+// console.timeEnd("timer_1");
 
 // sumTo(n) = n*(n+1)/2:
+
+// let company = {
+//     // тот же самый объект, сжатый для краткости
+//     sales: [
+//         { name: "John", salary: 1000 },
+//         { name: "Alice", salary: 600 },
+//     ],
+//     development: {
+//         sites: [
+//             { name: "Peter", salary: 2000 },
+//             { name: "Alex", salary: 1800 },
+//         ],
+//         internals: [{ name: "Jack", salary: 1300 }],
+//         internalsSite: {
+//             sales: [
+//                 { name: "John", salary: 2000 },
+//                 { name: "Alice", salary: 2000 },
+//             ],
+//             sales33: [
+//                 { name: "John", salary: 2000 },
+//                 { name: "Alice", salary: 2000 },
+//             ],
+//         },
+//     },
+// };
+
+// function sumSalaries(department) {
+//     if (Array.isArray(department)) {
+//         return department.reduce((sum, curr) => sum + curr.salary, 0);
+//     } else {
+//         let sum = 0;
+//         for (const podOtdel of Object.values(department)) {
+//             sum += sumSalaries(podOtdel);
+//         }
+//         return sum;
+//     }
+// }
+
+// console.log(sumSalaries(company));
+
+// function sumTo(n) {
+//     if (n == 1) {
+//         return 1;
+//     }
+//     return n + sumTo(n - 1);
+// }
+// console.log(sumTo(100));
+// function sumTo(n) {
+//     let sum = 0;
+//     for (let i = 0; i <= n; i++) {
+//         sum += i;
+//     }
+//     return sum;
+// }
+// console.log(sumTo(100));
+// function sumTo(n) {
+//     return (n * (n + 1)) / 2;
+// }
+// console.log(sumTo(100));
+
+// function factorial(n) {
+//     if (n == 1) {
+//         return 1;
+//     } else {
+//         return n * factorial(n - 1);
+//     }
+// }
+
+// console.log(factorial(5)); // 120
+
+// =====================================================================
+// =====================================================================
+// Числа Фибоначчи
+// важность: 5

@@ -55,3 +55,26 @@
 // console.log(arr.filter(inArray([1, 2, 10]))); // 1,2
 
 // ==============================================================
+
+// function f() {
+//     let value = Math.random();
+
+//     return function () {
+//         console.log(value);
+//     };
+// }
+// f();
+// // Вызываем функцию f, которая возвращает другую функцию
+// let returnedFunction = f();
+
+// // // // Теперь вызываем возвращенную функцию, чтобы увидеть вывод значения в консоль
+// returnedFunction();
+
+// function add(x) {
+//     return function (y, z) {
+//         return x + y + z;
+//     };
+// }
+// let addFive = add(5);
+// console.log(addFive(1, 10)); // 8
+// console.log(add(null)(null, 10)); // 8
