@@ -346,13 +346,13 @@
 // let { name, years: age, isAdmin = false } = user;
 // console.log(name, age, isAdmin);
 
-let salaries = {
-    John: 100,
-    Pete: 300,
-    Mary: 250,
-    Mary2: 250,
-    Pete2: 300,
-};
+// let salaries = {
+//     John: 100,
+//     Pete: 300,
+//     Mary: 250,
+//     Mary2: 250,
+//     Pete2: 300,
+// };
 
 // function topSalary(salaries) {
 //     let max = 0;
