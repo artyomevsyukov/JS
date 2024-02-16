@@ -183,14 +183,135 @@
 // // использование:
 // printNumbers(5, 10);
 
-function secondItem() {
-    setTimeout(() => console.log("5-hello"), 50);
+// function secondItem() {
+//     setTimeout(() => console.log("5-hello"), 50);
 
-    console.log("1-Max");
-    console.log("2-Den");
-    setTimeout(() => console.log("4-hello"), 20);
-}
-secondItem();
+//     console.log("1-Max");
+//     console.log("2-Den");
+//     setTimeout(() => console.log("4-hello"), 20);
+// }
+// secondItem();
 
-setTimeout(() => console.log("444444"), 45);
-console.log("3-Ken");
+// setTimeout(() => console.log("444444"), 45);
+// console.log("3-Ken");
+
+// function printNumbers(from, to) {
+//     let current = from;
+//     function go() {
+//         console.log(current);
+//         if (current == to) {
+//             clearInterval(timer);
+//         }
+//         current++;
+//     }
+//     go();
+//     let timer = setInterval(go, 1000);
+// }
+// printNumbers(3, 9);
+
+// function printNumbers(from, to) {
+//     let current = from;
+//     let timerId = setInterval(function go() {
+//         console.log(current);
+//         if (current == to) {
+//             clearInterval(timerId);
+//         }
+//         current++;
+//     }, 1000);
+// }
+// printNumbers(3, 9);
+
+// function printNumbers(from, to) {
+//     let current = from;
+//     function go() {
+//         if (current < to) {
+//             setTimeout(go, 300);
+//         }
+//         console.log(current);
+//         current++;
+//     }
+//     go();
+// }
+// printNumbers(3, 9);
+
+// for (let i = 1; i <= 10; i++) {
+//     setTimeout(function () {
+//         console.log(i);
+//     }, 300);
+// }
+// for (var i = 0; i < 5; i++) {
+//     setTimeout(function () {
+//         console.log(i);
+//     }, 1000);
+// }
+
+// function printNumbers(from, to) {
+//     let current = from;
+//     function go() {
+//         if (current < to) {
+//             setTimeout(go, 300);
+//         }
+//         console.log(current);
+//         current++;
+//     }
+//     go();
+// }
+// printNumbers(3, 9);
+
+// function printNumbers(from, to) {
+//     for (let current = from; current <= to; current++) {
+//         setTimeout(() => {
+//             console.log(current);
+//         }, 500 * (current - from + 1));
+//     }
+// }
+
+// printNumbers(-3, 9);
+
+// function counter() {
+//     let count = 0;
+
+//     return {
+//         increment: function () {
+//             count++;
+//         },
+//         getCount: function () {
+//             return count;
+//         },
+//     };
+// }
+
+// const counterInstance = counter();
+// counterInstance.increment();
+// console.log(counterInstance.getCount()); // Выведет 1
+// console.log(typeof counterInstance);
+// console.log(typeof counter);
+// console.log(typeof counter());
+
+// function printNumbers(from, to) {
+//     let current = from;
+//     function go() {
+//         console.log(current);
+//         if (current == to) {
+//             clearInterval(timer);
+//         }
+//         current++;
+//     }
+//     go();
+//     let timer = setInterval(go, 300);
+// }
+// printNumbers(-3, 7);
+
+// function printNumbers(from, to) {
+//     let current = from;
+//     function go() {
+//         console.log(current);
+//         if (current < to) {
+//             setTimeout(go, 300);
+//         }
+//         current++;
+//     }
+//     // go();
+//     // setTimeout(go, 300);
+// }
+// printNumbers(-3, 7);
