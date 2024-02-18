@@ -36,3 +36,49 @@
 //     return text;
 // }
 // console.log(showMessage());
+
+// function showPrimes(n) {
+//     nextPrime: for (let i = 2; i < n; i++) {
+//         for (let j = 2; j < i; j++) {
+//             if (i % j == 0) {
+//                 continue nextPrime;
+//             }
+//         }
+//         console.log(i);
+//     }
+// }
+// showPrimes(99);
+// function isPrimes(n) {
+//     for (let i = 2; i < n; i++) {
+//         console.log(i);
+//         for (let j = 2; j < i; j++) {
+//             console.log(j);
+//             if (i % j == 0) {
+//                 return false;
+//             }
+//         }
+//         return true;
+//     }
+// }
+
+function isPrimes(n) {
+    for (let i = 2; i < n; i++) {
+        console.log(`Делим ${n} на ${i}`);
+        if (n % i == 0) {
+            console.log(n, "Не простое");
+            return false;
+        } else {
+            console.log(n, "Простое");
+            return true;
+        }
+    }
+}
+// isPrimes(7);
+
+function showPrimes(n) {
+    for (let i = 2; i < n; i++) {
+        if (!isPrimes(i)) continue;
+        console.log(i);
+    }
+}
+showPrimes(10);
