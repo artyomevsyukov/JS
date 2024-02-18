@@ -1,38 +1,132 @@
-function slow(x) {
-    console.log(`Called with ${x}`);
-    return x * 2352525 ** 2;
-}
+"use strict";
+// function slow(x) {
+//     console.log(`Called with ${x}`);
+//     return x * 2352525 ** 2;
+// }
 
-function fib(n) {
-    return n <= 1 ? n : fib(n - 1) + fib(n - 2);
-}
+// function fib(n) {
+//     return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+// }
+
+// function cachingDecorator(func) {
+//     let cache = new Map();
+
+//     return function (x) {
+//         if (cache.has(x)) {
+//             // если кеш содержит такой x,
+//             return cache.get(x); // читаем из него результат
+//         }
+
+//         let result = func(x); // иначе, вызываем функцию
+
+//         cache.set(x, result); // и кешируем (запоминаем) результат
+//         return result;
+//     };
+// }
+
+// sl = cachingDecorator(slow);
+// f = cachingDecorator(fib);
+
+// // console.log(sl(34)); // slow(1) кешируем
+// // console.log("Again: " + sl(34)); // возвращаем из кеша
+
+// // console.log(sl(57)); // slow(2) кешируем
+// // console.log("Again: " + sl(57)); // возвращаем из кеша
+
+// console.log(f(41));
+// console.log(f(42));
+// console.log("Again: " + f(41)); // возвращаем из кеша
+// console.log("Again: " + f(42)); // возвращаем из кеша
+// ===============================================================================
+// function fib(n) {
+//     return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+// }
+
+// function cachingDecorator(func) {
+//     let cache = new Map();
+
+//     return function (x) {
+//         if (cache.has(x)) {
+//             return cache.get(x);
+//         }
+//         let result = func(x);
+//         cache.set(x, result);
+//         return result;
+//     };
+// }
+// let f = cachingDecorator(fib);
+// console.log(f(43));
+// console.log("Again: " + f(43)); // возвращаем из кеша
+// console.log(f(44));
+// console.log("Again: " + f(44)); // возвращаем из кеша
+// ===============================================================================
+
+// let worker = {
+//     somMethod() {
+//         return 1;
+//     },
+//     fib(n) {
+//         // console.log("Called with " + n);
+//         return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+//     },
+// };
+
+// function cachingDecorator(func) {
+//     let cache = new Map();
+
+//     return function (x) {
+//         if (cache.has(x)) {
+//             return cache.get(x);
+//         }
+//         let result = func.call(this, x);
+//         cache.set(x, result);
+//         return result;
+//     };
+// }
+// let f = cachingDecorator(worker.fib);
+// worker.fib = cachingDecorator(worker.fib);
+// console.log(worker.fib(41));
+
+// console.log(f(42));
+// console.log("Again: " + f(42)); // возвращаем из кеша
+// console.log(f(44));
+// console.log("Again: " + f(44)); // возвращаем из кеша
+
+let worker = {
+    someMethod() {
+        return 1;
+    },
+
+    slow(x) {
+        console.log("Called with " + x);
+        return x * this.someMethod(); // (*)
+    },
+    fib(n) {
+        return n <= 1 ? n : this.fib(n - 1) + this.fib(n - 2);
+    },
+};
 
 function cachingDecorator(func) {
     let cache = new Map();
-
     return function (x) {
         if (cache.has(x)) {
-            // если кеш содержит такой x,
-            return cache.get(x); // читаем из него результат
+            return cache.get(x);
         }
-
-        let result = func(x); // иначе, вызываем функцию
-
-        cache.set(x, result); // и кешируем (запоминаем) результат
+        let result = func.call(this, x); // теперь 'this' передаётся правильно
+        cache.set(x, result);
         return result;
     };
 }
 
-sl = cachingDecorator(slow);
-f = cachingDecorator(fib);
+worker.slow = cachingDecorator(worker.slow); // теперь сделаем её кеширующей
 
-// console.log(sl(34)); // slow(1) кешируем
-// console.log("Again: " + sl(34)); // возвращаем из кеша
+console.log(worker.slow(2)); // работает
+console.log(worker.slow(2));
 
-// console.log(sl(57)); // slow(2) кешируем
-// console.log("Again: " + sl(57)); // возвращаем из кеша
+worker.fib = cachingDecorator(worker.fib);
+console.log(worker.fib(94));
 
-console.log(f(41));
-console.log(f(42));
-console.log("Again: " + f(41)); // возвращаем из кеша
-console.log("Again: " + f(42)); // возвращаем из кеша
+console.log(worker.fib(42));
+console.log("Again: " + worker.fib(42)); // возвращаем из кеша
+console.log(worker.fib(44));
+console.log("Again: " + worker.fib(44)); // возвращаем из кеша
