@@ -47,9 +47,31 @@
 
 // ==================================
 
-function f() {
-    return Array.from(arguments);
-}
+// function f() {
+//     return Array.from(arguments);
+// }
 
-f(1, 2, 3);
-// [1, 2, 3]
+// f(1, 2, 3);
+// // [1, 2, 3]
+// ==================================================
+// function hash(...args) {
+//     let sum = 0;
+//     for (const arg of args) {
+//         sum += arg;
+//     }
+//     return sum;
+// }
+// console.log(hash(3, 7, 5, 10, 5));
+
+function hash(...args) {
+    let arr = [];
+    let str = "";
+    for (const arg of args) {
+        arr.push(arg);
+        str = arr.join(",");
+    }
+    return str;
+}
+console.log(hash(3, 2, 45, 654, 7, 568, 78, 67, 68));
+let key = hash();
+console.log(key);
