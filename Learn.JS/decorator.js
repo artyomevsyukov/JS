@@ -92,41 +92,90 @@
 // console.log(f(44));
 // console.log("Again: " + f(44)); // возвращаем из кеша
 
-let worker = {
-    someMethod() {
-        return 1;
-    },
+// let worker = {
+//     someMethod() {
+//         return 1;
+//     },
 
-    slow(x) {
-        console.log("Called with " + x);
-        return x * this.someMethod(); // (*)
-    },
-    fib(n) {
-        return n <= 1 ? n : this.fib(n - 1) + this.fib(n - 2);
-    },
-};
+//     slow(x) {
+//         console.log("Called with " + x);
+//         return x * this.someMethod(); // (*)
+//     },
+//     fib(n) {
+//         return n <= 1 ? n : this.fib(n - 1) + this.fib(n - 2);
+//     },
+// };
 
-function cachingDecorator(func) {
-    let cache = new Map();
-    return function (x) {
-        if (cache.has(x)) {
-            return cache.get(x);
-        }
-        let result = func.call(this, x); // теперь 'this' передаётся правильно
-        cache.set(x, result);
-        return result;
-    };
+// function cachingDecorator(func) {
+//     let cache = new Map();
+//     return function (x) {
+//         if (cache.has(x)) {
+//             return cache.get(x);
+//         }
+//         let result = func.call(this, x); // теперь 'this' передаётся правильно
+//         cache.set(x, result);
+//         return result;
+//     };
+// }
+
+// worker.slow = cachingDecorator(worker.slow); // теперь сделаем её кеширующей
+
+// console.log(worker.slow(2)); // работает
+// console.log(worker.slow(2));
+
+// worker.fib = cachingDecorator(worker.fib);
+// console.log(worker.fib(94));
+
+// console.log(worker.fib(42));
+// console.log("Again: " + worker.fib(42)); // возвращаем из кеша
+// console.log(worker.fib(44));
+// console.log("Again: " + worker.fib(44)); // возвращаем из кеша
+
+// ......................................................Задачи..........................................
+// function work(a, b) {
+//     console.log(a + b); // произвольная функция или метод?
+// }
+// function spy(func) {
+//     return function wrapper(a, b) {
+//         work.calls = work.calls || [];
+//         work.calls.push([a, b]);
+//         console.log(a + b);
+//     };
+// }
+
+// work = spy(work);
+
+// work(1, 2); // 3
+// work(4, 5); // 9
+
+// for (let args of work.calls) {
+//     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+// }
+
+// ......................................................Задачи..........................................
+function work(a, b) {
+    console.log(a + b); // произвольная функция или метод?
+}
+function spy(func) {
+    function wrapper(...args) {
+        work.calls = work.calls || [];
+        wrapper.calls.push(args);
+        console.log("kontekst: ", this);
+        return func.apply(this, args);
+        // return func.apply(this, args);
+    }
+    // wrapper.calls = [];
+    return wrapper;
 }
 
-worker.slow = cachingDecorator(worker.slow); // теперь сделаем её кеширующей
+work = spy(work);
 
-console.log(worker.slow(2)); // работает
-console.log(worker.slow(2));
+work(1, 2); // 3
+work(4, 5); // 9
 
-worker.fib = cachingDecorator(worker.fib);
-console.log(worker.fib(94));
-
-console.log(worker.fib(42));
-console.log("Again: " + worker.fib(42)); // возвращаем из кеша
-console.log(worker.fib(44));
-console.log("Again: " + worker.fib(44)); // возвращаем из кеша
+for (let args of work.calls) {
+    console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+}
+// ......................................................Задачи..........................................
+// ......................................................Задачи..........................................
+// ......................................................Задачи..........................................

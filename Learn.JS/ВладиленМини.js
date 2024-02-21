@@ -176,14 +176,24 @@
 // const [a, b, ...other] = arr;
 // console.log(a, b, other);
 
-const obj = {
-    name: "max",
-    age: 24,
-    city: "Piter",
-    country: "Russia",
-};
+// const obj = {
+//     name: "max",
+//     age: 24,
+//     city: "Piter",
+//     country: "Russia",
+// };
 
-const { name: FirstName, age, car = "Нет машины", ...other } = obj;
-console.log(FirstName, age, car);
-console.log(other);
+// const { name: FirstName, age, car = "Нет машины", ...other } = obj;
+// console.log(FirstName, age, car);
 // console.log(other);
+// // console.log(other);
+// console.log("3423\n342343");
+
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+
+// Array.prototype.multBy = function (n) {
+//     return this.map((el) => el * n);
+// };
+// console.log(arr.multBy(10));
+
+console.log(this);
