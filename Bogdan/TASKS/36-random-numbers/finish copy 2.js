@@ -22,23 +22,34 @@ const MAX = 20;
 // const myNumbers = [2355, 7235, 8135, 1762, 2361, 8351];
 const myNumbers = [10, 11, 12];
 
-function createRandomNumber(MIN, MAX) {
-    let min = Math.ceil(MIN);
-    let max = Math.floor(MAX);
+const randomNumber = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+// function addRandomNumberToArray(arr, min, max) {
+//     let newRandomNumber;
+
+//     const newArr = [...arr];
+//     do {
+//         newRandomNumber = randomNumber(min, max);
+//         console.log(newRandomNumber);
+//     } while (newArr.includes(newRandomNumber));
+
+//     newArr.push(newRandomNumber);
+
+//     console.log("Original arr: ", arr);
+//     return newArr;
+// }
+
+function addRandomNumberToArray(arr, min, max) {
+    let newRandomNumber;
+    const newArr = [...arr];
+    do {
+        newRandomNumber = randomNumber(min, max);
+        console.log(newRandomNumber);
+    } while (newArr.includes(newRandomNumber));
+    newArr.push(newRandomNumber);
+    return newArr;
 }
 
-function checkAndPushRandomNumberToArr() {
-    let result = createRandomNumber(MIN, MAX);
-    console.log(result);
-    if (!myNumbers.includes(result)) {
-        console.log("Уникальный");
-        myNumbers.push(result);
-        console.log(myNumbers);
-        console.log(myNumbers.length);
-    } else {
-        console.log("Повтор");
-        checkAndPushRandomNumberToArr();
-    }
-}
-checkAndPushRandomNumberToArr();
+console.log(addRandomNumberToArray(myNumbers, MIN, MAX));

@@ -153,18 +153,152 @@
 // }
 
 // ......................................................Задачи..........................................
+// function work(a, b) {
+//     console.log(a + b); // произвольная функция или метод?
+// }
+// function spy(func) {
+//     function wrapper(...args) {
+//         work.calls = work.calls || [];
+//         wrapper.calls.push(args);
+//         console.log("kontekst: ", this);
+//         return func.apply(this, args);
+//         // return func.apply(this, args);
+//     }
+//     // wrapper.calls = [];
+//     return wrapper;
+// }
+
+// work = spy(work);
+
+// work(1, 2); // 3
+// work(4, 5); // 9
+
+// for (let args of work.calls) {
+//     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+// }
+// ......................................................Задачи..........................................
+// ......................................................Задачи..........................................
+// ......................................................Задачи..........................................
+
+// let worker = {
+//     someMethod() {
+//         return 1;
+//     },
+
+//     slow(x) {
+//         console.log("Called with " + x);
+//         return x * this.someMethod(); // (*)
+//     },
+// };
+
+// function cachingDecorator(func) {
+//     let cache = new Map();
+//     return function (x) {
+//         if (cache.has(x)) {
+//             return cache.get(x);
+//         }
+//         let result = func.call(this, x); // теперь 'this' передаётся правильно
+//         cache.set(x, result);
+//         return result;
+//     };
+// }
+
+// worker.slow = cachingDecorator(worker.slow); // теперь сделаем её кеширующей
+
+// console.log(worker.slow(2)); // работает
+// console.log(worker.slow(2)); // работает, не вызывая первоначальную функцию (кешируется)
+
+// ==========================
+// let arr = [1, 2, 3, 4, 5, 6];
+// function spred(arr) {
+//     console.log("spred");
+//     console.log(arr);
+//     console.log(...arr);
+//     console.log("/n");
+// }
+// spred(arr);
+
+// function rest(...arr) {
+//     console.log("rest");
+//     console.log(arr);
+//     console.log(...arr);
+// }
+// rest(arr);
+// ======================================================================
+
+// let worker = {
+//     // slow(min, max) {
+//     //     console.log(`Called with ${min},${max}`);
+//     //     return min + max;
+//     // },
+//     slow(...args) {
+//         console.log(args);
+//         console.log(`Called with ${args}`);
+//         return args.reduce((acc, el) => acc + el, 0);
+//     },
+// };
+// // function hash(...args) {
+// //     return args.join();
+// //     // return args[0] + "," + args[1];
+// // }
+// function hash() {
+//     return [].join.call(arguments);
+//     // return args[0] + "," + args[1];
+// }
+
+// function cachingDecorator(func, hash) {
+//     let cache = new Map();
+//     return function (...args) {
+//         // return function () {
+//         // let key = hash(arguments); // (*)
+//         let key = hash(...args); // (*)
+//         if (cache.has(key)) {
+//             return cache.get(key);
+//         }
+
+//         let result = func.apply(this, args); // (**)
+//         // let result = func.call(this, ...args); // (**)
+//         // let result = func.call(this, ...arguments); // (**)
+
+//         cache.set(key, result);
+//         return result;
+//     };
+// }
+
+// worker.slow = cachingDecorator(worker.slow, hash);
+
+// console.log(worker.slow(3, 5, 6)); // работает
+// console.log("Again " + worker.slow(3, 5, 6)); // аналогично (из кеша)
+
+// ======================================================================
+
+// function originalFunction(message) {
+//     console.log(`Original function: ${message}`);
+// }
+
+// function decoratorFunction(message) {
+//     console.log(`Decorator function: ${message}`);
+//     // Передача вызова оригинальной функции
+//     originalFunction.call(this, message);
+//     worker.slow.call(this, message);
+//     // originalFunction.call(this, message);
+// }
+
+// // Использование декоратора
+// decoratorFunction("Hello, world!");
+
 function work(a, b) {
-    console.log(a + b); // произвольная функция или метод?
+    console.log(a + b); // произвольная функция или метод
 }
+
 function spy(func) {
+    wrapper.calls = [];
+
     function wrapper(...args) {
-        work.calls = work.calls || [];
         wrapper.calls.push(args);
-        console.log("kontekst: ", this);
         return func.apply(this, args);
-        // return func.apply(this, args);
     }
-    // wrapper.calls = [];
+
     return wrapper;
 }
 
@@ -172,10 +306,7 @@ work = spy(work);
 
 work(1, 2); // 3
 work(4, 5); // 9
-
+work(7, 12); // 3
 for (let args of work.calls) {
     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
 }
-// ......................................................Задачи..........................................
-// ......................................................Задачи..........................................
-// ......................................................Задачи..........................................

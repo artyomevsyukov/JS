@@ -11,3 +11,25 @@
  *
  * 4. Выведите результирующий массив в консоль
  */
+
+let arr = [];
+const car1 = {
+    carBrand: "BMW",
+    price: 10000,
+    isAvailableForSale: false,
+};
+const car2 = {
+    carBrand: "Audi",
+    price: 20000,
+    isAvailableForSale: false,
+};
+const car3 = {
+    carBrand: "Mersedec",
+    price: 30000,
+    isAvailableForSale: true,
+};
+arr.push(car1);
+arr.push(car2);
+arr.push(car3);
+// arr = [car1, car2, car3];
+console.log(arr);
