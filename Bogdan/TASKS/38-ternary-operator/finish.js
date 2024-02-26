@@ -7,13 +7,12 @@
  * 3. Замените обычную функцию на стрелочную функцию
  */
 
-function isArrayEmpty(inputArray) {
-  if (inputArray.length > 0) {
-    return 'Массив не пустой'
-  } else {
-    return 'Массив пустой'
-  }
-}
+const isArrayEmpty = (arr) =>
+    arr.length > 0 ? "Массив не пустой" : "Массив пустой";
+// if (inputArray.length > 0) {
+//     return "Массив не пустой";
+// }
+// return "Массив пустой";
 
-console.log(isArrayEmpty([1, 3]))
-console.log(isArrayEmpty([]))
+console.log(isArrayEmpty([1, 3]));
+console.log(isArrayEmpty([]));
