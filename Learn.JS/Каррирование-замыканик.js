@@ -196,20 +196,21 @@
 
 //=============
 
-const multiply = function (a, b, c) {
-    return a * b + c;
-};
+// const multiply = function (a, b, c) {
+//     return a * b + c;
+// };
 
-// Каррированная функция с фиксированными значениями a и c
-let cor = function (a, c) {
-    return function (b) {
-        return multiply(a, b, c);
-    };
-};
+// // Каррированная функция с фиксированными значениями a и c
+// let cor = function (a, c) {
+//     return function (b) {
+//         return multiply(a, b, c);
+//     };
+// };
 
-let part = cor(5, 5);
-// console.log(part(100));
+// let part = cor(5, 5);
+// // console.log(part(100));
 
-for (let i = 1; i <= 10; i++) {
-    console.log(`i: ${i}`, part(i));
-}
+// for (let i = 1; i <= 10; i++) {
+//     console.log(`i: ${i}`, part(i));
+// }
+// ==========================================
