@@ -108,15 +108,15 @@
 // let c = createCalcFunction(4);
 // c(2);
 // ==============================================================================
-// function urGenerator(domain) {
+// function urlGenerator(domain) {
 //     return function (url) {
 //         console.log(`https://www.${url}.${domain}`);
 //     };
 // }
 
-// let urlCom = urGenerator("com");
+// let urlCom = urlGenerator("com");
 // urlCom("google");
-// let urlru = urGenerator("ru");
+// let urlru = urlGenerator("ru");
 // urlru("yandex");
 
 // ==================================Деструктуризация=================================
@@ -165,6 +165,7 @@
 // ................................REST....................................
 // let arr = [1, 23, 4, 5, 6, 7, 8, 679];
 // function sum(a, b, ...rest) {
+//     console.log(a, b); // arr []
 //     console.log(rest); // arr []
 //     console.log(...rest); // ell 1,2,3
 
@@ -196,4 +197,4 @@
 // };
 // console.log(arr.multBy(10));
 
-console.log(this);
+// console.log(this);
