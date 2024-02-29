@@ -286,27 +286,143 @@
 
 // // Использование декоратора
 // decoratorFunction("Hello, world!");
+// ==========================================
 
-function work(a, b) {
-    console.log(a + b); // произвольная функция или метод
+// function work(a, b) {
+//     console.log(a + b); // произвольная функция или метод
+// }
+
+// function spy(func) {
+//     wrapper.calls = [];
+
+//     function wrapper(...args) {
+//         wrapper.calls.push(args);
+//         return func.apply(this, args);
+//     }
+
+//     return wrapper;
+// }
+
+// work = spy(work);
+
+// work(1, 2); // 3
+// work(4, 5); // 9
+// work(7, 12); // 3
+// for (let args of work.calls) {
+//     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+// }
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+// function work(a, b) {
+//     console.log(a + b); // произвольная функция или метод
+// }
+// function spy(func) {
+//     wrapper.calls = [];
+//     function wrapper(...args) {
+//         wrapper.calls.push(args);
+//         return func.apply(this, args);
+//     }
+//     return wrapper;
+// }
+// work = spy(work);
+
+// work(1, 2); // 3
+// work(4, 5); // 9
+
+// for (let args of work.calls) {
+//     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+// }
+
+// сделаем worker.slow кеширующим
+// let worker = {
+//     someMethod() {
+//         return 1;
+//     },
+
+//     slow(x) {
+//         // здесь может быть страшно тяжёлая задача для процессора
+//         console.log("Called with " + x);
+//         return x * this.someMethod(); // (*)
+//     },
+// };
+
+// function slow(x) {
+//     // здесь могут быть ресурсоёмкие вычисления
+//     console.log(`Called with ${x}`);
+//     return x;
+// }
+
+// function cachingDecorator(func) {
+//     let cache = new Map();
+
+//     return function (x) {
+//         if (cache.has(x)) {
+//             return cache.get(x);
+//         }
+//         let result = func.call(this, x);
+//         cache.set(x, result);
+//         return result;
+//     };
+// }
+
+// worker.slow = cachingDecorator(worker.slow);
+
+// console.log(worker.slow(1)); // slow(1) кешируем
+// console.log("Again: " + worker.slow(1)); // возвращаем из кеша
+
+// console.log(worker.slow(2)); // slow(2) кешируем
+// console.log("Again: " + worker.slow(2)); // возвращаем из кеша
+
+// ===============================================================
+// function f(x) {
+//     console.log(x);
+// }
+// function delay(f, ms) {
+//     return function (...args) {
+//         let saveThis = this;
+//         setTimeout(function () {
+//             f.apply(saveThis, args);
+//         }, ms);
+//     };
+// }
+
+// // создаём обёртки
+// let f1000 = delay(f, 500);
+// let f1500 = delay(f, 2500);
+
+// f1000("test"); // показывает "test" после 1000 мс
+// f1500("test"); // показывает "test" после 1500 мс
+// ===============================================================
+function f(x) {
+    console.log(x);
 }
 
-function spy(func) {
-    wrapper.calls = [];
-
-    function wrapper(...args) {
-        wrapper.calls.push(args);
-        return func.apply(this, args);
-    }
-
-    return wrapper;
+function debounce(f, ms) {
+    let zadershka = "?";
+    return function () {
+        setTimeout(() => f.apply(this, arguments), ms);
+    };
 }
 
-work = spy(work);
+let f = debounce(f, 1000);
 
-work(1, 2); // 3
-work(4, 5); // 9
-work(7, 12); // 3
-for (let args of work.calls) {
-    console.log("call:" + args.join()); // "call:1,2", "call:4,5"
-}
+f("a");
+setTimeout(() => f("b"), 200);
+setTimeout(() => f("c"), 500);
+
+// ===============================================================
