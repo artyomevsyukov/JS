@@ -408,21 +408,130 @@
 // f1000("test"); // показывает "test" после 1000 мс
 // f1500("test"); // показывает "test" после 1500 мс
 // ===============================================================
-function f(x) {
-    console.log(x);
-}
 
-function debounce(f, ms) {
-    let zadershka = "?";
-    return function () {
-        setTimeout(() => f.apply(this, arguments), ms);
-    };
-}
+// function delay(f, ms) {
+//     let timeOut;
+//     return function () {
+//         clearTimeout(timeOut);
+//         timeOut = setTimeout(() => f.apply(this, arguments), ms);
+//     };
+// }
+// function f(x) {
+//     console.log(x);
+// }
+// function debounce(func, ms) {
+//     let timeout;
+//     return function () {
+//         clearTimeout(timeout);
+//         timeout = setTimeout(() => func.apply(this, arguments), ms);
+//     };
+// }
 
-let f = debounce(f, 1000);
+// let f2000 = debounce(f, 2000);
 
-f("a");
-setTimeout(() => f("b"), 200);
-setTimeout(() => f("c"), 500);
-
+// f("a");
+// setTimeout(() => f("b"), 1000);
+// setTimeout(() => f("c"), 1500);
+// f2000("2000");
 // ===============================================================
+
+// function f(x) {
+//     console.log(x);
+// }
+
+// function delay(f, ms) {
+//     return function (x) {
+//         setTimeout(() => f.apply(this, arguments), ms);
+//     };
+// }
+
+// let f1000 = delay(f, 1000);
+// let f2000 = delay(f, 2000);
+
+// f1000("1000");
+// f2000("2000");
+
+// let worker = {
+//     someMethod() {
+//         return 1;
+//     },
+
+//     slow(x) {
+//         // здесь может быть страшно тяжёлая задача для процессора
+//         console.log("Called with " + x);
+//         return x * this.someMethod(); // (*)
+//     },
+// };
+
+// function cachingDecorator(func) {
+//     let cache = new Map();
+//     return function (x) {
+//         if (cache.has(x)) {
+//             console.log("cache\n");
+//             return cache.get(x);
+//         }
+//         let result = func.call(this, x);
+//         cache.set(x, result);
+//         return result;
+//     };
+// }
+
+// // worker.slow("origin");
+
+// worker.slow = cachingDecorator(worker.slow);
+
+// // worker.slow(1);
+// // worker.slow(1);
+// console.log(worker.slow(1));
+// console.log(worker.slow(1));
+//=========================================
+
+// let worker = {
+//     slow(...args) {
+//         return args.reduce((acc, el) => acc + el);
+//     },
+//     mult(...args) {
+//         let mult = 1;
+//         for (let el of args) {
+//             mult *= el;
+//         }
+//         return mult;
+//     },
+// };
+// function hash(...args) {
+//     let hash = args.join(",");
+//     return hash;
+// }
+
+// function cachingDecorator(func, hash) {
+//     let cache = new Map();
+//     return function (...args) {
+//         let key = hash(...args);
+//         if (cache.has(key)) {
+//             console.log("cache\n");
+//             return cache.get(key);
+//         }
+//         let result = func.call(this, ...args);
+//         cache.set(key, result);
+//         for (let entry of cache) {
+//             console.log(entry);
+//         }
+//         return result;
+//     };
+// }
+
+// worker.slow = cachingDecorator(worker.slow, hash);
+// worker.mult = cachingDecorator(worker.mult, hash);
+
+// // console.log(worker.slow(11, 11, 1));
+// // console.log(worker.slow(11, 11, 2));
+// // console.log(worker.slow(11, 11, 3));
+// // console.log(worker.slow(11, 11, 4));
+// // console.log(worker.slow(11, 11, 12));
+// // console.log(worker.slow(11, 11, 12));
+// // console.log(worker.slow(11, 11, 12));
+
+// console.log(worker.mult(3, 3, 3, 3, 3, 3, 3));
+// console.log(worker.mult(3, 3, 3, 3, 3, 3, 3));
+// console.log(worker.mult(3, 3, 3, 3, 3, 3, 2));
+// console.log(worker.mult(3, 3, 3, 3, 3, 3, 1));
