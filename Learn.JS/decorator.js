@@ -416,23 +416,25 @@
 //         timeOut = setTimeout(() => f.apply(this, arguments), ms);
 //     };
 // }
-// function f(x) {
-//     console.log(x);
-// }
-// function debounce(func, ms) {
-//     let timeout;
-//     return function () {
-//         clearTimeout(timeout);
-//         timeout = setTimeout(() => func.apply(this, arguments), ms);
-//     };
-// }
+function f(x) {
+    console.log(x);
+}
+function debounce(func, ms) {
+    let timeout;
+    return function () {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, arguments), ms);
+    };
+}
 
-// let f2000 = debounce(f, 2000);
+let f2000 = debounce(f, 2000);
 
-// f("a");
-// setTimeout(() => f("b"), 1000);
-// setTimeout(() => f("c"), 1500);
-// f2000("2000");
+f("a");
+setTimeout(() => f("b"), 1000);
+setTimeout(() => f("c"), 1500);
+f2000("2000");
+f2000("2000-2");
+f2000("2000-3");
 // ===============================================================
 
 // function f(x) {

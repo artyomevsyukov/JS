@@ -1,4 +1,1 @@
-function hash(...args) {
-    let hash = args.join(",");
-    return hash;
-}
+button.addEventListener("click", handleClick.apply(this, [event]));
