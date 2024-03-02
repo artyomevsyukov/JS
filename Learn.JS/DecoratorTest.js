@@ -52,3 +52,24 @@
 // worker.fib = cachingDecorator(worker.fib, hash);
 // console.log(worker.fib(2, 3));
 // console.log("Again " + worker.fib(2, 3));
+
+function work(a, b) {
+    console.log(a + b); // произвольная функция или метод
+}
+function spy(f) {
+    function wrapper(...arg) {
+        wrapper.calls.push(arg);
+        return f.apply(this, arg);
+    }
+    wrapper.calls = [];
+    return wrapper;
+}
+
+work = spy(work);
+
+work(1, 2); // 3
+work(4, 5); // 9
+
+for (let args of work.calls) {
+    console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+}

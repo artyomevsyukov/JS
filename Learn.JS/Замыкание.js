@@ -78,3 +78,21 @@
 // let addFive = add(5);
 // console.log(addFive(1, 10)); // 8
 // console.log(add(null)(null, 10)); // 8
+
+// function makeCounter() {
+//     let count = 0;
+
+//     return function () {
+//         return count++; // есть доступ к внешней переменной "count"
+//     };
+// }
+
+// let counter = makeCounter();
+// let counter1 = makeCounter();
+
+// console.log(counter()); // 0
+// console.log(counter()); // 1
+// console.log(counter()); // 2
+// console.log(counter1()); // 2
+// console.log(counter1()); // 2
+// console.log(counter1()); // 2

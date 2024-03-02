@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 // function sayHi() {
 //     return console.log("Привет");
 // }
@@ -315,3 +315,34 @@
 //     // setTimeout(go, 300);
 // }
 // printNumbers(-3, 7);
+
+// function printNumber(from, to) {
+//     let current = from;
+
+//     function go() {
+//         if (current >= to) {
+//             clearInterval(timerId);
+//         }
+//         console.log(current);
+//         current++;
+//     }
+//     go();
+//     let timerId = setInterval(go, 1500);
+// }
+
+// printNumber(4, 9);
+// function printNumber(from, to) {
+//     let current = from;
+
+//     function go() {
+//         console.log(current);
+//         if (current < to) {
+//             setTimeout(go, 1000);
+//         }
+//         current++;
+//     }
+//     go();
+//     // setTimeout(go, 1000);
+// }
+
+// printNumber(4, 9);
