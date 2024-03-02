@@ -25,3 +25,13 @@ arr.forEach(up);
 for (const [ind, el] of arr.entries()) {
     console.log(ind, el);
 }
+function up(x) {
+    console.log(x);
+}
+
+arr.forEach(up);
+// arr.forEach((el) => console.log(el));
+
+for (const [ind, el] of arr.entries()) {
+    console.log(ind, el);
+}
