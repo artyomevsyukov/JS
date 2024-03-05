@@ -1,3 +1,5 @@
+"use strict";
+
 const warehouse = {
     goods: [],
     findGoodById: function (id) {

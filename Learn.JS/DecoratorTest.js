@@ -60,6 +60,7 @@ function spy(f) {
     function wrapper(...arg) {
         wrapper.calls.push(arg);
         return f.apply(this, arg);
+        ///todo Спросить контекст чего мы привязываем? контекст wrapper чтобы его передать в f?
     }
     wrapper.calls = [];
     return wrapper;
