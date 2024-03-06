@@ -53,14 +53,59 @@
 // console.log(worker.fib(2, 3));
 // console.log("Again " + worker.fib(2, 3));
 
-function work(a, b) {
-    console.log(a + b); // произвольная функция или метод
+// function work(...arg) {
+//     // console.log(a + b); // произвольная функция или метод
+//     console.log(
+//         arg.reduce((acc, el) => {
+//             return (acc += el);
+//         }, 0)
+//     ); // произвольная функция или метод
+//     console.log(work.test);
+// }
+// work.test = "WORK";
+// function spy(f) {
+//     function wrapper(...arg) {
+//         wrapper.calls.push(arg);
+//         wrapper.test = "wrapper-test";
+//         return f.apply(this, arg);
+//         // return f.call(this, ...arg);
+//         // return f(...arg);
+//     }
+//     wrapper.calls = [];
+//     return wrapper;
+// }
+
+// work = spy(work);
+
+// work(1, 2, 3, 3, 4, 6, 100); // 3
+// work(4, 5, 123); // 9
+
+// for (let args of work.calls) {
+//     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+// }
+// =====================================
+// через bind
+
+function work(...arg) {
+    // console.log(a + b); // произвольная функция или метод
+    console.log(
+        arg.reduce((acc, el) => {
+            return (acc += el);
+        }, 0)
+    ); // произвольная функция или метод
+    work.test = "WORK";
+    console.log(work.test);
 }
+work.test = "WORK";
 function spy(f) {
     function wrapper(...arg) {
         wrapper.calls.push(arg);
-        return f.apply(this, arg);
-        ///todo Спросить контекст чего мы привязываем? контекст wrapper чтобы его передать в f?
+        wrapper.test = "wrapper-test";
+        // return f.apply(this, arg);
+        let bind = f.bind(this, ...arg);
+        return bind();
+        // return f.call(this, ...arg);
+        // return f(...arg);
     }
     wrapper.calls = [];
     return wrapper;
@@ -68,8 +113,8 @@ function spy(f) {
 
 work = spy(work);
 
-work(1, 2); // 3
-work(4, 5); // 9
+work(1, 2, 3, 3, 4, 6, 100); // 3
+work(4, 5, 123); // 9
 
 for (let args of work.calls) {
     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
