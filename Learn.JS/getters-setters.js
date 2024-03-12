@@ -270,10 +270,82 @@
 
 // ====================================================================================
 
+// function User(name, birthday) {
+//     this.name = name;
+//     this.birthday = birthday;
+
+//     Object.defineProperty(this, "age", {
+//         get() {
+//             let todayYear = new Date().getFullYear();
+//             return todayYear - this.birthday.getFullYear();
+//         },
+//     });
+// }
+// // let John = new User("John", 25);
+// let John = new User("John", new Date(1987, 22, 8));
+// console.log(John);
+// console.log(John.name);
+// console.log(John.birthday);
+// console.log(John.age);
+
+// =================================================================
+// let user = {
+//     name: "John",
+//     surname: "Smith",
+//     get fullName() {
+//         return `${this.name} ${this.surname}`;
+//     },
+//     set fullName(value) {
+//         [this.name, this.surname] = value.split(" ");
+//     },
+// };
+
+// user.fullName = "Alice Cooper";
+
+// console.log(user.name); // Alice
+// console.log(user.surname); // Cooper
+// console.log(user.fullName); // Cooper
+// =================================================================
+// let user = {
+//     name: "John",
+//     surname: "Smit",
+//     get fullName() {
+//         return `${this.name} ${this.surname}`;
+//     },
+//     set fullName(value) {
+//         [this.name, this.surname] = value.split(" ");
+//     },
+// };
+
+// user.fullName = "Alice Pont";
+
+// console.log(user.name);
+// console.log(user.surname);
+// console.log(user.fullName);
+
+// =================================================================
+// let user = {
+//     get name() {
+//         return this._name;
+//     },
+//     set name(value) {
+//         if (value.length < 4) {
+//             console.log("Сдишком короткое имя");
+//             return;
+//         }
+//         this._name = value;
+//     },
+// };
+
+// user.name = "pet";
+// console.log(user.name);
+
+// =================================================================
+
 function User(name, birthday) {
     this.name = name;
     this.birthday = birthday;
-
+    this.age2 = 222;
     Object.defineProperty(this, "age", {
         get() {
             let todayYear = new Date().getFullYear();
@@ -281,9 +353,15 @@ function User(name, birthday) {
         },
     });
 }
-// let John = new User("John", 25);
-let John = new User("John", new Date(1987, 22, 8));
-console.log(John);
-console.log(John.name);
-console.log(John.birthday);
-console.log(John.age);
+
+let john = new User("John", new Date(1987, 23, 9));
+
+console.log(john);
+console.log(john.name);
+console.log(john.birthday);
+console.log(john.age);
+let print = Object.getOwnPropertyDescriptor(john, "name");
+console.log(JSON.stringify(print, null, " -- "));
+
+console.log(Object.getOwnPropertyDescriptor(john, "name"));
+console.log(Object.getOwnPropertyDescriptor(john, "age"));
