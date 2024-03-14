@@ -35,8 +35,7 @@ paintBlock();
 const inputCounterTime = document.querySelector(".counter-time");
 const start = document.querySelector(".start-counter-time-button");
 const counterTimeDisplay = document.querySelector(".counter-time-display");
-
-let timerId;
+// let timerId;
 
 // function timer() {
 //     clearInterval(timerId);
@@ -51,6 +50,7 @@ let timerId;
 //         }
 //     }, 1000);
 // }
+let timerId;
 function timer() {
     clearTimeout(timerId);
     console.log("Start timer");
@@ -69,3 +69,12 @@ function timer() {
 
 //Задача 4
 //================================================================================
+const h2input = document.querySelector(".h2input");
+const h2 = document.querySelector(".h2");
+let timerH2;
+function inputRender() {
+    clearTimeout(timerH2);
+    timerH2 = setTimeout(function run() {
+        h2.textContent = h2input.value;
+    }, 300);
+}
