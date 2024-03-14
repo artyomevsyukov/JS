@@ -16,8 +16,7 @@ const postsJSON = [
     '{"postId":2351,"commentsQuantity":8}',
 ];
 
-// const postJS = postsJSON.map((value) => JSON.parse(value));
-const postJS = postsJSON.map(JSON.parse);
+let postJS = postsJSON.map((el) => JSON.parse(el));
 console.log(postJS);
 console.log(postJS[1].postId);
 console.log(postJS[3].commentsQuantity);
