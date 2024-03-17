@@ -189,9 +189,45 @@
 
 // f.defer(1000); // выведет "Hello!" через 1 секунду
 
-let obj = {};
+// let obj = {};
 
-let key = "__proto__";
-obj[key] = "some value";
+// let key = "__proto__";
+// obj[key] = "some value";
 
-console.log(obj[key]); // [object Object], не "some value"!
+// console.log(obj[key]); // [object Object], не "some value"!
+
+// let dictionary = Object.create(null, {
+//     toString: {
+//         value: function () {
+//             Object.keys(this).join();
+//         },
+//     },
+// });
+
+// // ваш код, который добавляет метод dictionary.toString
+
+// // добавляем немного данных
+// dictionary.apple = "Apple";
+// dictionary.__proto__ = "test"; // здесь __proto__ -- это обычный ключ
+
+// // только apple и __proto__ выведены в цикле
+// for (let key in dictionary) {
+//     console.log(key); // "apple", затем "__proto__"
+// }
+
+// // ваш метод toString в действии
+// console.log(dictionary); // "apple,__proto__"
+
+function Rabbit(name) {
+    this.name = name;
+}
+Rabbit.prototype.sayHi = function () {
+    console.log(this.name);
+};
+
+let rabbit = new Rabbit("Rabbit");
+
+rabbit.sayHi(); //Rabbit
+Rabbit.prototype.sayHi(); //
+Object.getPrototypeOf(rabbit).sayHi(); //undefined
+rabbit.__proto__.sayHi(); //undefined
