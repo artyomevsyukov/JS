@@ -10,38 +10,40 @@
  *
  * 5. Если массив не отсортирован - вернуть "Массив не отсортирован"
  */
-"";
 const a = [5, "abc", 10, 1];
 const b = [4, 10, 14, 25, 25, 50];
 const c = [150, 132, 80, 40];
 const d = [15, 26, 10, 23, 85];
 
-// a.forEach((el) => {
-//     if (!(typeof el == "number")) {
-//         console.log("не число");
-//     }
-//     return;
-// });
+// function arraysEqual(arr1, arr2) {
+//     return (
+//         arr1.length === arr2.length &&
+//         arr1.every((value, index) => value === arr2[index])
+//     );
+// }
+// console.log(arraysEqual([1, 2], [1, 2])); // true
 
 function arraySortInfo(inputArray) {
-    let result = "";
-    inputArray.forEach((element) => {
-        result = "";
-        if (typeof element != "number") {
-            result = "некоторые элементы не являются числами";
-            return console.log(result);
-        } else console.log("123");
-        return result;
-    });
-    // console.log("Массив отсортирован по возрастанию");
-    // console.log("Массив отсортирован по убыванию");
-    // console.log("Массив не отсортирован");
+    if (inputArray.some((el) => typeof el !== "number")) {
+        return "Некоторые элементы не являются числами";
+    }
+
+    const sortedAscending = [...inputArray].sort((a, b) => a - b);
+    const sortedDescending = [...inputArray].sort((a, b) => b - a);
+
+    if (JSON.stringify(inputArray) === JSON.stringify(sortedAscending)) {
+        return "Массив отсортирован по возрастанию";
+    } else if (inputArray.join(",") === sortedDescending.join(",")) {
+        return "Массив отсортирован по убыванию";
+    } else {
+        return "Массив не отсортирован";
+    }
 }
 
 console.log(arraySortInfo(a)); // Некоторые элементы не являются числами
-// console.log(arraySortInfo(b)); // Массив отсортирован по возрастанию
-// console.log(arraySortInfo(c)); // Массив отсортирован по убыванию
-// console.log(arraySortInfo(d)); // Массив не отсортирован
+console.log(arraySortInfo(b)); // Массив отсортирован по возрастанию
+console.log(arraySortInfo(c)); // Массив отсортирован по убыванию
+console.log(arraySortInfo(d)); // Массив не отсортирован
 
 /**
  * ПОДСКАЗКИ

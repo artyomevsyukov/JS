@@ -11,14 +11,28 @@
  * ВАЖНО: Исходите из того, что массивы содержат элементы примитивных типов
  */
 
-const a = [1, 2, 3]
-const b = [1, 2, 3]
+const a = [1, 2, 3];
+const b = [1, 2, 3];
 
-console.log(a === b) // false (Почему?)
+function arraysEqual(firstArray, secondArray) {
+    if (
+        firstArray.length === secondArray.length &&
+        firstArray.every((el, index) => el === secondArray[index])
+    ) {
+        return true;
+    }
+    return false;
+    // if (firstArray.join(",") === secondArray.join(",")) {
+    // if (JSON.stringify(firstArray) === JSON.stringify(secondArray)) {
+    //     return "true 2";
+    // }
+    // return "false 2";
+}
 
-const c = [2, 1, 3]
-const d = [1, 2, 3, 4]
+console.log(a === b, "\n"); // false (Почему?)
+const c = [2, 1, 3];
+const d = [1, 2, 3, 4];
 
-console.log(areArraysEqual(a, b)) // true
-console.log(areArraysEqual(a, c)) // false
-console.log(areArraysEqual(a, d)) // false
+console.log(arraysEqual(a, b)); // true
+console.log(arraysEqual(a, c)); // false
+console.log(arraysEqual(a, d)); // false

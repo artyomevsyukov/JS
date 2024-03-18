@@ -7,8 +7,19 @@
  * 3. В противном случае вернуть "false"
  */
 
-const transports = ['Bus', 'Car', 'Bicycle', 'Airplane']
+const transports = ["Bus", "Car", "Bicycle", "Airplane"];
 
-console.log(isElementInArray(transports, 'Bus')) // true
-console.log(isElementInArray(transports, 'Phone')) // false
-console.log(isElementInArray(transports, 'Airplane')) // true
+function isElementInArray(inputArray, searchElement) {
+    return inputArray.includes(searchElement);
+}
+// function isElementInArray(inputArray, searchElement) {
+//     // if (inputArray.find((el) => el === searchElement)) {
+//     //     return true;
+//     // } else return false;
+// }
+// const isElementInArray = (inputArray, searchElement) =>
+//     inputArray.findIndex((el) => el === searchElement) >= 0 ? true : false;
+
+console.log(isElementInArray(transports, "Bus")); // true
+console.log(isElementInArray(transports, "Phone")); // false
+console.log(isElementInArray(transports, "Airplane")); // true
