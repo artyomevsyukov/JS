@@ -8,43 +8,44 @@
  */
 
 function quantitiesByCategories(products) {
-  return products.reduce((qtysByCategories, product) => {
-    const { category, quantity } = product
+    return products.reduce((qtysByCategories, product) => {
+        const { category, quantity } = product;
 
-    qtysByCategories[category] = (qtysByCategories[category] || 0) + quantity
+        qtysByCategories[category] =
+            (qtysByCategories[category] || 0) + quantity;
 
-    return qtysByCategories
-  }, {})
+        return qtysByCategories;
+    }, {});
 }
 
 const inputProducts = [
-  {
-    title: 'Phone case',
-    price: 23,
-    quantity: 2,
-    category: 'Accessories',
-  },
-  {
-    title: 'Android phone',
-    price: 150,
-    quantity: 1,
-    category: 'Phones',
-  },
-  {
-    title: 'Headphones',
-    price: 78,
-    quantity: 1,
-    category: 'Accessories',
-  },
-  {
-    title: 'Sport Watch',
-    price: 55,
-    quantity: 2,
-    category: 'Watches',
-  },
-]
+    {
+        title: "Phone case",
+        price: 23,
+        quantity: 2,
+        category: "Accessories",
+    },
+    {
+        title: "Android phone",
+        price: 150,
+        quantity: 1,
+        category: "Phones",
+    },
+    {
+        title: "Headphones",
+        price: 78,
+        quantity: 1,
+        category: "Accessories",
+    },
+    {
+        title: "Sport Watch",
+        price: 55,
+        quantity: 2,
+        category: "Watches",
+    },
+];
 
-console.log(quantitiesByCategories(inputProducts))
+console.log(quantitiesByCategories(inputProducts));
 /* {
   Accessories: 3,
   Phones: 1,
