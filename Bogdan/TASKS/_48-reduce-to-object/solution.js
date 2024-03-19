@@ -8,13 +8,13 @@
  */
 
 function quantitiesByCategories(products) {
-    return products.reduce((acc, item) => {
-        // acc[item.category] = (acc[item.category] || 0) + item.quantity;
-        // изначально acc = {}, acc[item.categor] = {}
-        const { category, quantity } = item;
-        acc[category] = (acc[category] || 0) + quantity;
+    return products.reduce((qtysByCategories, product) => {
+        const { category, quantity } = product;
 
-        return acc;
+        qtysByCategories[category] =
+            (qtysByCategories[category] || 0) + quantity;
+
+        return qtysByCategories;
     }, {});
 }
 
@@ -43,12 +43,6 @@ const inputProducts = [
         quantity: 2,
         category: "Watches",
     },
-    {
-        title: "Sport Watch",
-        price: 55,
-        quantity: 2,
-        category: "Watches",
-    },
 ];
 
 console.log(quantitiesByCategories(inputProducts));
@@ -57,11 +51,3 @@ console.log(quantitiesByCategories(inputProducts));
   Phones: 1,
   Watches: 2
 } */
-// return products.reduce((acc, item) => {
-//     const { category, quantity, title, price } = item;
-
-//     acc[title] = (acc[title] || 0) + price;
-//     acc[category] = (acc[category] || 0) + quantity;
-
-//     return acc;
-// }, {});

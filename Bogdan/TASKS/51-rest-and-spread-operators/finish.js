@@ -13,21 +13,57 @@
  * так и оператор "spread".
  */
 
-const scores1 = [0, 1.5, 2.5, 3.7]
-const scores2 = [1.7, 4.5, 0, 4.9, 5.0, 4.2]
-const scores3 = [1.3, 2.5, 1.9]
-const scores4 = ['abc', 1.3, true, 2.5, 1.9]
+function meanScore(...args) {
+    // if (args.every((el) => typeof el === "number")) {
+    //     // if (!args.some((el) => typeof el !== "number")) {
+    //     return +args
+    //         .reduce((acc, item) => acc + item / args.length, 0)
+    //         .toFixed(2);
+    // } else {
+    //     console.error("Все аргументы в вызове функции должны быть числами!");
 
-console.log(meanScore(/* все элементы из массива "scores1" */))
-// 1.93
+    // }
+    if (args.some((el) => typeof el !== "number")) {
+        // console.error("Все аргументы в вызове функции должны быть числами!");
+        throw new Error("Все аргументы в вызове функции должны быть числами!");
+        // return;
+    }
 
-console.log(meanScore(/* все элементы из массивов "scores1" и "scores2" */))
-// 2.8
+    // if (args.some((el) => el > 4)) {
+    //     // console.error("Все аргументы в вызове функции должны быть числами!");
+    //     throw new Error("Слишком большое число");
+    //     // return;
+    // }
 
-console.log(
-  meanScore(/* все элементы из массивов "scores1", "scores2" и "scores3" */)
-)
-// 2.59
+    return +args
+        .reduce((acc, item) => (acc += item / args.length), 0)
+        .toFixed(2);
+}
 
-console.log(meanScore(/* все элементы из массива "scores4" */))
-// Все аргументы в вызове функции должны быть числами!
+const scores1 = [0, 1.5, 2.5, 3.7];
+const scores2 = [1.7, 4.5, 0, 4.9, 5.0, 4.2];
+const scores3 = [1.3, 2.5, 1.9];
+const scores4 = ["abc", 1.3, true, 2.5, 1.9];
+
+// let error = "Все аргументы в вызове функции должны быть числами!";
+
+try {
+    console.log(meanScore(...scores1));
+    // 1.93
+
+    console.log(meanScore(...scores1, ...scores2));
+    // 2.8
+    console.log(meanScore(...scores4));
+
+    console.log(meanScore(...scores1, ...scores2, ...scores3));
+    console.log(meanScore(...scores1, ...scores3));
+    console.log(meanScore(...scores3));
+    // 2.59
+
+    console.log(meanScore(...scores4));
+    // Все аргументы в вызове функции должны быть числами!
+} catch (error) {
+    // console.error(error);
+    console.log(error.message);
+}
+console.log("Continue...");
