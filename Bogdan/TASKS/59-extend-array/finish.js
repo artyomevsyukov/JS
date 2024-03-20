@@ -14,50 +14,24 @@
  * как "forEach", "map" также доступны
  */
 
-class ExtendedArray {
-    constructor(arr) {
-        this.arr = arr;
-    }
+class ExtendedArray extends Array {
     sum() {
-        return this.arr.reduce((acc, el) => acc + el, 0);
+        return this.onlyNumbers().reduce((acc, el) => acc + el, 0);
     }
+    // onlyNumbers() {
+    //     return this.reduce(
+    //         (acc, num) => (typeof num == "number" ? acc.concat([num]) : acc),
+    //         []
+    //     );
+    // }
     onlyNumbers() {
-        return this.arr.reduce(
-            (acc, num) => (typeof num == "number" ? acc.concat([num]) : acc),
-            []
-        );
-        // let newArr = [];
-        // for (const number of arg) {
-        //     if (typeof number !== "number") {
-        //         continue;
-        //     } else {
-        //         newArr.push(number);
-        //     }
-        // }
-        // return newArr;
+        return this.filter((el) => typeof el === "number");
     }
 }
 
-// arr = [1, 2, 3, 5, 6, 4, "sdf", "", null];
-const arr = new ExtendedArray([1, 2, 3, 5, 6, 4, "sdf", "", null]);
+let array = [1, 2, 3, 5, 6, 4, "sdf", "", null];
+const arr = new ExtendedArray(...array);
 
-console.log(arr.arr);
 console.log(arr instanceof Array);
 console.log(arr.onlyNumbers());
 console.log(arr.sum());
-// console.log(arr.onlyNumbers().sum());
-// function onlyNumbers(arg) {
-//     return arg.reduce(
-//         (acc, num) => (typeof num == "number" ? acc.concat([num]) : acc),
-//         []
-//     );
-//     // let newArr = [];
-//     // for (const number of arg) {
-//     //     if (typeof number !== "number") {
-//     //         continue;
-//     //     } else {
-//     //         newArr.push(number);
-//     //     }
-//     // }
-//     // return newArr;
-// }
