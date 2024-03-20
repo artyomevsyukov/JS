@@ -9,25 +9,49 @@
  * 3. Исходный массив постов должен остаться без изменений
  */
 
-const testPosts = [
-  {
-    postId: 234,
-    author: 'robd',
-    commentsQty: 5,
-  },
-  {
-    postId: 823,
-    author: 'sady',
-  },
-  {
-    postId: 161,
-    author: 'merryl',
-    commentsQty: 8,
-  },
-]
+// function processPosts(posts) {
+//     return posts.map((post) => {
+//         return {
+//             postId: post.postId + 1000,
+//             postAuthor: post.author,
+//             postCommentsQty: post.commentsQty || 0,
+//         };
+//     });
+// }
+function processPosts(posts) {
+    return posts.map((post) => {
+        const {
+            postId,
+            author: postAuthor,
+            commentsQty: postCommentsQty = 0,
+        } = post;
+        return {
+            postId: postId + 1000,
+            postAuthor,
+            postCommentsQty: postCommentsQty || 0,
+        };
+    });
+}
 
-const processedPosts = processPosts(testPosts)
-console.log(processedPosts)
+const testPosts = [
+    {
+        postId: 234,
+        author: "robd",
+        commentsQty: "",
+    },
+    {
+        postId: 823,
+        author: "sady",
+    },
+    {
+        postId: 161,
+        author: "merryl",
+        commentsQty: 8,
+    },
+];
+
+const processedPosts = processPosts(testPosts);
+console.log(processedPosts);
 /*
 [
   {
@@ -48,5 +72,5 @@ console.log(processedPosts)
 ]
 */
 
-console.log(testPosts)
+console.log(testPosts);
 // оригинальный массив должен остаться без изменений
