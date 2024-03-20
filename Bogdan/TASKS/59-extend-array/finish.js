@@ -15,14 +15,14 @@
  */
 
 class ExtendedArray {
-    constructor(Array) {
-        this.Array = Array;
+    constructor(arr) {
+        this.arr = arr;
     }
-    sum(Array) {
-        arg.reduce((acc, el) => acc + el);
+    sum() {
+        return this.arr.reduce((acc, el) => acc + el, 0);
     }
-    onlyNumbers(Array) {
-        return Array.reduce(
+    onlyNumbers() {
+        return this.arr.reduce(
             (acc, num) => (typeof num == "number" ? acc.concat([num]) : acc),
             []
         );
@@ -41,8 +41,11 @@ class ExtendedArray {
 // arr = [1, 2, 3, 5, 6, 4, "sdf", "", null];
 const arr = new ExtendedArray([1, 2, 3, 5, 6, 4, "sdf", "", null]);
 
-arr.onlyNumbers();
+console.log(arr.arr);
 console.log(arr instanceof Array);
+console.log(arr.onlyNumbers());
+console.log(arr.sum());
+// console.log(arr.onlyNumbers().sum());
 // function onlyNumbers(arg) {
 //     return arg.reduce(
 //         (acc, num) => (typeof num == "number" ? acc.concat([num]) : acc),
