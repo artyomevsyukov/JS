@@ -6,17 +6,20 @@
  * Почему ошибка после строки 21 возникает?
  */
 
-const a = 5
-const b = 10
+const a = 5;
+const b = 10;
 
+// let c = 2;
 if (b > a) {
-  c = a + b + c
-  // ДО: ReferenceError: Cannot access 'c' before initialization
-  // ПОСЛЕ: Нет ошибки
-  let c = 2
-  console.log(c)
-  // 17
+    let c = 2;
+    c = a + b + c;
+    // ДО: ReferenceError: Cannot access 'c' before initialization
+    // var c = 2; // 2
+    // let c = 2;
+    // ПОСЛЕ: Нет ошибки
+    console.log(c);
+    // 17
 }
 
-console.log(c)
+console.log(c);
 // Uncaught ReferenceError: c is not defined

@@ -1,5 +1,5 @@
-/** 16 16 - Расширение массивов
- *161616
+/** ЗАДАЧА 59 - Расширение массивов
+ *
  * 1. Создайте новый класс "ExtendedArray", который должен расширять встроенный "Array"
  *
  * 2. Добавьте в новый класс два пользовательских метода:
@@ -16,26 +16,24 @@
 
 class ExtendedArray extends Array {
     sum() {
-        return this.onlyNumbers().reduce((acc, el) => acc + el, 0);
+        return this.reduce((sum, num) => sum + num, 0);
     }
-    // onlyNumbers() {
-    //     return this.reduce(
-    //         (acc, num) => (typeof num == "number" ? acc.concat([num]) : acc),
-    //         []
-    //     );
-    // }
+
     onlyNumbers() {
         return this.filter((el) => typeof el === "number");
     }
 }
-// # MyColorBlock {#f9e, 4}
-let array = [1, 2, 3, 5, 6, 4, "sdf", "", null];
-const arr = new ExtendedArray(...array);
 
-console.log(arr instanceof Array);
+const myExtendedArray = new ExtendedArray(10, 4, 5);
+console.log(myExtendedArray);
 
-// ! red
-// # MyColorBlock {#g4e, 3}
-//  {#513,3}
-console.log(arr.onlyNumbers());
-console.log(arr.sum());
+console.log(myExtendedArray.sum());
+
+const myExtendedArray2 = new ExtendedArray("abc", 5, true, 25);
+console.log(myExtendedArray2.onlyNumbers());
+
+myExtendedArray2.forEach((el) => console.log(el));
+
+// // Array instances don't have access to methods sum and onlyNumbers
+// const myArray = [1, 2, 3]
+// myArray.sum()

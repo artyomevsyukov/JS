@@ -8,11 +8,34 @@
  * 3. Также верните эту сумму как результат функции
  */
 
-sumNumbers(1, 3)
+// function sumNumbers(...args) {
+// let sum = args.reduce((acc, el) => acc + el);
+// let sum = 0;
+// for (const arg of args) {
+//     sum += arg;
+// }
+// console.log(sum);
+// return sum;
+// }
+
+function sumNumbers() {
+    let sum = 0;
+    // for (const arg of arguments) {
+    //     sum += arg;
+    // }
+    for (let i = 0; i < arguments.length; i++) {
+        sum += arguments[i];
+    }
+    console.log("Sum of all arguments is ", sum);
+
+    return sum;
+}
+
+sumNumbers(1, 3);
 // 4
 
-sumNumbers(10, 20, 5)
+sumNumbers(10, 20, 5);
 // 35
 
-sumNumbers(2, 5, 80, 1, 10, 12)
+sumNumbers(2, 5, 80, 1, 10, 12);
 // 110

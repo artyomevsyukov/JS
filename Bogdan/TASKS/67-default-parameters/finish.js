@@ -9,18 +9,26 @@
  */
 
 function multiplyBy(a, mult) {
-  mult = mult !== undefined ? mult : 2
-  console.log(a * mult)
+    // mult = mult !== undefined ? mult : 2;
+    mult = mult ?? 2;
+    // mult = mult || 2; //
+    console.log(a * mult);
+
+    /*
+    || возвращает первое истинное значение.
+    ?? возвращает первое определённое значение.
+Проще говоря, оператор || не различает false, 0, пустую строку "" и null/undefined. Для него они все одинаковы, т.е. являются ложными значениями. Если первым аргументом для оператора || будет любое из перечисленных значений, то в качестве результата мы получим второй аргумент.
+    **/
 }
 
-multiplyBy(2)
+multiplyBy(2);
 // 4
 
-multiplyBy(2, undefined)
+multiplyBy(2, undefined);
 // 4
 
-multiplyBy(2, 0)
+multiplyBy(2, 0);
 // 0
 
-multiplyBy(5, 10)
+multiplyBy(5, 10);
 // 50

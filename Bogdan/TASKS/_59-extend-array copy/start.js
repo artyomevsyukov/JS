@@ -1,5 +1,5 @@
-/** 16 16 - Расширение массивов
- *161616
+/** ЗАДАЧА 59 - Расширение массивов
+ *
  * 1. Создайте новый класс "ExtendedArray", который должен расширять встроенный "Array"
  *
  * 2. Добавьте в новый класс два пользовательских метода:
@@ -13,29 +13,3 @@
  * 4. Убедитесь, что остальные методы массивов такие,
  * как "forEach", "map" также доступны
  */
-
-class ExtendedArray extends Array {
-    sum() {
-        return this.onlyNumbers().reduce((acc, el) => acc + el, 0);
-    }
-    // onlyNumbers() {
-    //     return this.reduce(
-    //         (acc, num) => (typeof num == "number" ? acc.concat([num]) : acc),
-    //         []
-    //     );
-    // }
-    onlyNumbers() {
-        return this.filter((el) => typeof el === "number");
-    }
-}
-// # MyColorBlock {#f9e, 4}
-let array = [1, 2, 3, 5, 6, 4, "sdf", "", null];
-const arr = new ExtendedArray(...array);
-
-console.log(arr instanceof Array);
-
-// ! red
-// # MyColorBlock {#g4e, 3}
-//  {#513,3}
-console.log(arr.onlyNumbers());
-console.log(arr.sum());
