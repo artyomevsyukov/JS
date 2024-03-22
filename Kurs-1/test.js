@@ -34,7 +34,11 @@ const cities = {
 
 // console.log(avgTemp(cities));
 
-let user = "dfsd";
+// let user = "dfsd";
 
-console.log(user ?? "Аноним");
-console.log(user || "Аноним");
+// console.log(user ?? "Аноним");
+// console.log(user || "Аноним");
+
+var a = 5;
+
+console.log(globalThis);
