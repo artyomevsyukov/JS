@@ -10,14 +10,16 @@ const userInfo = {
 };
 
 function user() {
-    const userObj = {
-        balance: 0,
-        operations: 0,
-        increse(sum) {
-            this.balance += sum;
-            this.operations++;
-        },
-    };
+    // const userObj = {
+    //     balance: 0,
+    //     operations: 0,
+    //     increse(sum) {
+    //         this.balance += sum;
+    //         this.operations++;
+    //     },
+    // };
+    // const userObj = userInfo;
+    const userObj = { ...userInfo };
     return function () {
         return userObj;
     };

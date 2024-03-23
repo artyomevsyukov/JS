@@ -39,6 +39,16 @@ const cities = {
 // console.log(user ?? "Аноним");
 // console.log(user || "Аноним");
 
-var a = 5;
+// var a = 5;
 
-console.log(globalThis);
+// console.log(globalThis);
+
+// ["Бильбо", "Гэндальф", "Назгул"].forEach((el) => console.log(el));
+
+let arr = ["Бильбо", "Гэндальф", "Назгул"];
+
+arr.forEach((el) => console.log(el));
+let lengths = arr.map((item) => item.length);
+console.log(lengths); // 6,8,6
+
+console.log(arr);
