@@ -69,12 +69,28 @@ function timer() {
 
 //Задача 4
 //================================================================================
+// const h2input = document.querySelector(".h2input");
+// const h2 = document.querySelector(".h2");
+// let timerH2;
+// function inputRender() {
+//     clearTimeout(timerH2);
+//     timerH2 = setTimeout(function run() {
+//         h2.textContent = h2input.value;
+//     }, 300);
+// }
+//
+//
+//
+
+//
 const h2input = document.querySelector(".h2input");
-const h2 = document.querySelector(".h2");
+const h2 = document.querySelector(".h22");
 let timerH2;
 function inputRender() {
     clearTimeout(timerH2);
-    timerH2 = setTimeout(function run() {
+    timerH2 = setTimeout(() => {
         h2.textContent = h2input.value;
     }, 300);
 }
+
+// h2input.addEventListener("input", inputRender);
