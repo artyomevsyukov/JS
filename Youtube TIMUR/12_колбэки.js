@@ -41,16 +41,51 @@
 
 // step1();
 
-const timer = setInterval(() => {
-    console.log("callback 1");
-}, 10);
-// setInterval(() => {
-//     console.log("callback 2");
-// }, 15);
-// setInterval(() => {
-//     console.log("callback 3");
-// }, 20);
-setTimeout(() => {
-    console.log("calback #2");
-    clearInterval(timer);
-}, 50);
+// const timer = setInterval(() => {
+//     console.log("callback 1");
+// }, 10);
+// // setInterval(() => {
+// //     console.log("callback 2");
+// // }, 15);
+// // setInterval(() => {
+// //     console.log("callback 3");
+// // }, 20);
+// setTimeout(() => {
+//     console.log("calback #2");
+//     clearInterval(timer);
+// }, 50);
+
+//====================================================================
+// const add = (a, b, call) => call(a + b);
+// // const res = add(2, 3, (call) => {
+// add(2, 3, (call) => {
+//     // let cc = call + 2;
+//     // return cc;
+//     // return call + 2;
+//     console.log(call);
+// });
+// // console.log(res);
+
+// setTimeout(() => {
+//     console.log("Timer1000");
+// }, 1000);
+// let timer4000 = setTimeout(() => {
+//     console.log("Timer4000");
+// }, 4000);
+
+// setTimeout(() => {
+//     clearTimeout(timer4000);
+//     console.log("timer2000");
+// }, 2000);
+
+// const add = (a, b) => a + b;
+
+function mult(a) {
+    const res = a * a;
+    console.log(res);
+    return res;
+}
+
+const add = (a, b, callback) => callback(a + b);
+const res = add(2, 3, mult);
+// console.log(res);

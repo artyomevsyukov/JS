@@ -10,11 +10,20 @@
 // }
 // console.log(numbers);
 
-function parseEmpoyeesDate(dataString) {
-    return dataString.split("\n").filter((line) => line.lengrh > 0);
-}
-console.log(
-    parseEmpoyeesDate(`Тиунов Тимофей    Сергеевич,    системный архитектор
-Иванов Иван Иванович  .  Frontend-разработчик
-`)
-);
+// function parseEmpoyeesDate(dataString) {
+//     return dataString.split("\n").filter((line) => line.lengrh > 0);
+// }
+// console.log(
+//     parseEmpoyeesDate(`Тиунов Тимофей    Сергеевич,    системный архитектор
+// Иванов Иван Иванович  .  Frontend-разработчик
+// `)
+// );
+
+const purchase = [
+    { name: "Laptop", price: 1500 },
+    { name: "Keyboard", price: 100 },
+    { name: "Mouse", price: 50 },
+    { name: "Mic", price: 15 },
+];
+const re = purchase.find((item) => item.name === "Mic");
+console.log(re);
