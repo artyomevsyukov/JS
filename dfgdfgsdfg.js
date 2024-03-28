@@ -68,6 +68,7 @@
 
 // let x = 2 + 4;
 // let z = 2;
+
 // const arr = [1, 2, 3, 4, 5, 6, 7];
 
 // const res = arr.reduce((acc, el) => {
@@ -76,17 +77,65 @@
 
 // console.log(res);
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
+//=================================================
 
-Array.prototype.myReduce = function (arr, initialValue, indexArr, currentArr) {
-    let acc = initialValue;
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// Array.prototype.myReduce = function (array, callback, initialValue) {
+//     let accumulator = initialValue;
+//     for (let i = 0; i < array.length; i++) {
+//         if (accumulator === undefined && i === 0) {
+//             accumulator = array[0];
+//             continue;
+//         }
+//         accumulator = callback(accumulator, array[i], i, array);
+//     }
 
-    let index = arr.length - 1;
-    for (let i = 0; i < arr.length; i++) {
-        acc += arr[i];
-    }
-    console.log(index);
-    return acc;
-};
+//     return accumulator;
+// };
 
-console.log(arr.myReduce(arr, 0));
+// console.log(arr.myReduce((acc, el) => acc + el));
+
+//===============================================================
+//
+//
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+
+// Array.prototype.myReduce = function (callback, initialValue) {
+//     let accumulator = initialValue;
+
+//     if (initialValue === undefined && this.length > 0) {
+//         accumulator = this[0];
+//     }
+//     let startIndex = initialValue !== undefined ? 0 : 1;
+
+//     for (let i = startIndex; i < this.length; i++) {
+//         accumulator = callback(accumulator, this[i], i, this);
+//     }
+
+//     return accumulator;
+// };
+
+// // Пример использования:
+// const numbers = [1, 2, 3, 4, "fg"];
+// const sumReducer = (accumulator, currentValue) => accumulator + currentValue;
+
+// const total = numbers.myReduce((acc, el) => acc + el, 33);
+// const total2 = numbers.myReduce(sumReducer, 33);
+// console.log(total); // Выведет 10
+// console.log(total2); // Выведет 10
+
+// let options = {
+//     title: "Menu",
+//     // width: 100,
+//     height: 200,
+// };
+
+// function w() {
+//     let width = 0;
+//     return (width = 200);
+// }
+
+// // взять только title, игнорировать остальное
+// let { width = w() } = options;
+
+// console.log(width); // Menu
