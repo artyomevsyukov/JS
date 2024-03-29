@@ -139,3 +139,24 @@
 // let { width = w() } = options;
 
 // console.log(width); // Menu
+
+/* boj1
+1 undefined
+2 20
+
+obj2 call
+ 
+30
+undefined
+
+
+30
+20
+
+
+
+*/
+
+// const a = { x: 1 };
+// console.log(a.hasOwnProperty("__proto__"));
+// console.log(a.__proto__.hasOwnProperty("__proto__"));
