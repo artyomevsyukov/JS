@@ -160,3 +160,26 @@ undefined
 // const a = { x: 1 };
 // console.log(a.hasOwnProperty("__proto__"));
 // console.log(a.__proto__.hasOwnProperty("__proto__"));
+
+// function print(fn) {
+//     console.log(fn);
+//     console.log(fn());
+// }
+
+// function x() {
+//     return 2 + 2;
+// }
+
+// // print(x);
+// print(x)();
+// // print(x());
+// let user = {
+//     name: "John",
+// };
+
+// let descriptor = Object.getOwnPropertyDescriptor(user, "name");
+
+// console.log(descriptor);
+// console.log(JSON.stringify(descriptor, null, 2));
+
+// gulp
