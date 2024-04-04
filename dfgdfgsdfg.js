@@ -1,3 +1,4 @@
+"use strict";
 // const str = "привет что ты здесь делаешь?";
 // console.log(str);
 // console.log(str.split("е").join("ё"));

@@ -10,3 +10,8 @@ resolve - Разрешить, разрешать
 require - требовать
 common - общий, совмесный
 initial - начальное
+Own - собственный
+define - определять
+scope - бласть видимости
+Environment - среда
+assert - утверждать

@@ -342,26 +342,55 @@
 
 // =================================================================
 
-function User(name, birthday) {
+// function User(name, birthday) {
+//     this.name = name;
+//     this.birthday = birthday;
+//     this.age2 = 222;
+//     Object.defineProperty(this, "age", {
+//         get() {
+//             let todayYear = new Date().getFullYear();
+//             return todayYear - this.birthday.getFullYear();
+//         },
+//     });
+// }
+
+// let john = new User("John", new Date(1987, 23, 9));
+
+// console.log(john);
+// console.log(john.name);
+// console.log(john.birthday);
+// console.log(john.age);
+// let print = Object.getOwnPropertyDescriptor(john, "name");
+// console.log(JSON.stringify(print, null, " -- "));
+
+// console.log(Object.getOwnPropertyDescriptor(john, "name"));
+// console.log(Object.getOwnPropertyDescriptor(john, "age"));
+
+function User(name, surname, age, birthday) {
     this.name = name;
+    this.surname = surname;
+    this.age = age;
     this.birthday = birthday;
-    this.age2 = 222;
-    Object.defineProperty(this, "age", {
-        get() {
-            let todayYear = new Date().getFullYear();
-            return todayYear - this.birthday.getFullYear();
+
+    Object.defineProperties(this, {
+        fullname: {
+            get() {
+                return `${this.name} ${this.surname}`;
+            },
+            set(value) {
+                [this.name, this.surname] = value.split(" ");
+            },
+        },
+        age: {
+            get() {
+                let todayYear = new Date().getFullYear();
+                return todayYear - this.birthday.getFullYear();
+            },
         },
     });
 }
 
-let john = new User("John", new Date(1987, 23, 9));
+let john = new User("John", "Nox", 45, new Date(1992, 6, 1));
 
-console.log(john);
-console.log(john.name);
-console.log(john.birthday);
 console.log(john.age);
-let print = Object.getOwnPropertyDescriptor(john, "name");
-console.log(JSON.stringify(print, null, " -- "));
-
-console.log(Object.getOwnPropertyDescriptor(john, "name"));
-console.log(Object.getOwnPropertyDescriptor(john, "age"));
+console.log(john.fullname);
