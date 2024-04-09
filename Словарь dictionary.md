@@ -15,3 +15,6 @@ define - определять
 scope - бласть видимости
 Environment - среда
 assert - утверждать
+etc - и т.д.
+request - запрос
+response - ответ
