@@ -18,3 +18,7 @@ assert - утверждать
 etc - и т.д.
 request - запрос
 response - ответ
+replace - заменять
+phrase - фраза
+derived - полученный
+precision - Точность
