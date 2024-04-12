@@ -22,3 +22,4 @@ replace - заменять
 phrase - фраза
 derived - полученный
 precision - Точность
+application - приложение

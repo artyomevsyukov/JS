@@ -109,7 +109,7 @@ class ExtendedClock extends Clock {
     }
 
     start() {
-        this.render();
+        super.render();
         this.timer = setInterval(() => this.render(), this.precision);
         // this.timer = setInterval(this.render.bind(this), this.precision);
     }
