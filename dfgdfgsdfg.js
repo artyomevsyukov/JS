@@ -184,3 +184,38 @@ undefined
 // console.log(JSON.stringify(descriptor, null, 2));
 
 // gulp
+
+// let users = [
+//     { id: 1, name: "Вася" },
+//     { id: 2, name: "Петя" },
+//     { id: 3, name: "Маша" },
+// ];
+
+// // возвращает массив, состоящий из двух первых пользователей
+// let someUsers = users.filter((item) => item.id < 3);
+
+// console.log(someUsers);
+
+let salaries = {
+    John: 100,
+    Pete: 300,
+    Pete2: 1300,
+    Mary1: 350,
+    Mary: 1350,
+    Anna: 1350,
+    Mary3: 1350,
+};
+let max = 0;
+let maxName = null;
+
+for (const [name, salary] of Object.entries(salaries)) {
+    if (salary > max) {
+        max = salary;
+        maxName = name;
+    }
+}
+
+let arr = Object.entries(salaries);
+
+arr.filter((item) => item[1] == max);
+console.log(arr);

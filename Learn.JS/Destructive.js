@@ -197,52 +197,58 @@
 // }
 // topSalary(salaries);
 
-// let salaries = {
-//     John: 100,
-//     Pete: 300,
-//     Pete2: 1300,
-//     Mary1: 350,
-//     Mary: 1350,
-//     Anna: 1350,
-//     Mary3: 1350,
-// };
-// function topSalary(salaries) {
-//     if (Object.keys(salaries).length == 0) {
-//         return console.log("Пусто");
-//     }
-//     let max = 0;
-//     let maxName = null;
+let salaries = {
+    John: 100,
+    Pete: 300,
+    Pete2: 1300,
+    Mary1: 350,
+    Mary: 1350,
+    Anna: 1350,
+    Mary3: 1350,
+};
+function topSalary(salaries) {
+    if (Object.keys(salaries).length == 0) {
+        return console.log("Пусто");
+    }
+    let max = 0;
+    let maxName = null;
 
-//     for (const [name, salary] of Object.entries(salaries)) {
-//         if (salary > max) {
-//             max = salary;
-//             maxName = name;
+    for (const [name, salary] of Object.entries(salaries)) {
+        if (salary > max) {
+            max = salary;
+            maxName = name;
+        }
+    }
+    let arr = Object.entries(salaries);
+    // arr.filter((item) => item[1] == max);
+    let user = Object.fromEntries(arr.filter((item) => item[1] == max));
+    // let arr = Object.entries(salaries.filter((item) => item[1] == max));
+    // let user = Object.fromEntries(arr);
+    // let arrObj = [salaries];
+    // let newArrObj = arrObj.filter((item) => item[Object.keys(salaries)] == max);
+
+    // return console.log(newArrObj);
+    // return console.log(arrObj);
+    // return console.log(arr);
+    return console.log(user);
+}
+topSalary(salaries);
+
+// function topSalary(salaries) {
+//     const maxSalary = Math.max(...Object.values(salaries));
+//     let maxPriceSalary = {};
+//     for (let [name, salary] of Object.entries(salaries)) {
+//         if (salary === maxSalary) {
+//             maxPriceSalary = {
+//                 ...maxPriceSalary,
+//                 [name]: salary,
+//             };
 //         }
 //     }
-//     let arr = Object.entries(salaries);
-//     let user = Object.fromEntries(arr.filter((item) => item[1] == max).sort());
-// let arr = Object.entries(salaries.filter((item) => item[1] == max));
-// TODO
-//     // let user = Object.fromEntries(arr);
-//     // let arrObj = [salaries];
-//     // let newArrObj = arrObj.filter((item) => item[Object.keys(salaries)] == max);
-
-//     // return console.log(newArrObj);
-//     // return console.log(arrObj);
-//     return console.log(user);
-//     return console.log(arr);
+//     console.log(maxPriceSalary);
+//     return maxPriceSalary;
 // }
-// topSalary(salaries);
 
-// function topSalary(salaries) {
-//     let maxSalary = Math.max(...Object.values(salaries));
-//     return console.log(maxSalary);
-//     // for (let [name, salary] of Object.entries(salaries)) {
-//     //     if (salary === maxSalary) {
-//     //         return console.log(`${name}: ${salary}`);
-//     //     }
-//     // }
-// }
 // topSalary(salaries);
 
 // let salaries = {
