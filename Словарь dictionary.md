@@ -23,3 +23,4 @@ phrase - фраза
 derived - полученный
 precision - Точность
 application - приложение
+response - ответ
