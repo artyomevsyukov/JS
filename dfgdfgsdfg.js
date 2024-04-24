@@ -196,26 +196,35 @@ undefined
 
 // console.log(someUsers);
 
-let salaries = {
-    John: 100,
-    Pete: 300,
-    Pete2: 1300,
-    Mary1: 350,
-    Mary: 1350,
-    Anna: 1350,
-    Mary3: 1350,
-};
-let max = 0;
-let maxName = null;
+// let salaries = {
+//     John: 100,
+//     Pete: 300,
+//     Pete2: 1300,
+//     Mary1: 350,
+//     Mary: 1350,
+//     Anna: 1350,
+//     Mary3: 1350,
+// };
+// let max = 0;
+// let maxName = null;
 
-for (const [name, salary] of Object.entries(salaries)) {
-    if (salary > max) {
-        max = salary;
-        maxName = name;
-    }
+// for (const [name, salary] of Object.entries(salaries)) {
+//     if (salary > max) {
+//         max = salary;
+//         maxName = name;
+//     }
+// }
+
+// let arr = Object.entries(salaries);
+
+// arr.filter((item) => item[1] == max);
+// console.log(arr);
+
+function Sum(a) {
+    return function (b = 7) {
+        return console.log(a * b);
+        return a + b;
+    };
 }
 
-let arr = Object.entries(salaries);
-
-arr.filter((item) => item[1] == max);
-console.log(arr);
+Sum(7)();
