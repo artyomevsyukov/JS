@@ -1,3 +1,17 @@
+/*
+ В JavaScript у каждой выполняемой функции, блока кода {...} и скрипта есть связанный с ними внутренний (скрытый) объект, называемый лексическим окружением LexicalEnvironment.
+LexicalEnvironment - лексическое окрыжение
+Объект лексического окружения состоит из двух частей:
+
+Environment - среда, окружающая среда, окружение
+Environment Record (хранилище переменных)
+Environment Record – объект, в котором как свойства хранятся все локальные переменные (а также некоторая другая информация, такая как значение this).
+
+Ссылка на внешнее лексическое окружение – то есть то, которое соответствует коду снаружи (снаружи от текущих фигурных скобок).
+
+Все функции помнят лексическое окружение, в котором они были созданы. Технически здесь нет никакой магии: все функции имеют скрытое свойство [[Environment]], которое хранит ссылку на лексическое окружение, в котором была создана функция:
+*/
+
 "use strict";
 // function sum(a) {
 //     return function (b) {
@@ -96,3 +110,33 @@
 // console.log(counter1()); // 2
 // console.log(counter1()); // 2
 // console.log(counter1()); // 2
+// function makeCounter() {
+//     let count = 0;
+
+//     return function () {
+//         return count++;
+//     };
+// }
+
+// let counter = makeCounter();
+// let counter2 = makeCounter();
+
+// console.log(counter()); // 0
+// console.log(counter()); // 1
+// console.log(counter()); // 1
+// console.log(counter()); // 1
+// console.log(counter()); // 1
+
+// console.log(counter2()); // ?
+// console.log(counter2()); // ?
+
+// function sum(a) {
+//     return function (b) {
+//         return a + b;
+//     };
+// }
+
+// console.log(sum(1)(2));
+// console.log(sum(5)(-1));
+
+// Фильтрация с помощью функции

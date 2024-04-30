@@ -220,11 +220,41 @@ undefined
 // arr.filter((item) => item[1] == max);
 // console.log(arr);
 
-function Sum(a) {
-    return function (b = 7) {
-        return console.log(a * b);
-        return a + b;
-    };
+// function Sum(a) {
+//     return function (b = 7) {
+//         return console.log(a * b);
+//         return a + b;
+//     };
+// }
+
+// Sum(7)();
+
+let company = {
+    // тот же самый объект, сжатый для краткости
+    sales: [
+        { name: "John", salary: 1000 },
+        { name: "Alice", salary: 600 },
+    ],
+    development: {
+        sites: [
+            { name: "Peter", salary: 2000 },
+            { name: "Alex", salary: 1800 },
+        ],
+        internals: [{ name: "Jack", salary: 1300 }],
+    },
+};
+// subdep
+// Функция для подсчёта суммы зарплат
+function sumSalaries(department) {
+    if (Array.isArray(department)) {
+        return department.reduce((acc, current) => acc + current.salary, 0);
+    } else {
+        let sum = 0;
+        for (const subdep of Object.values(department)) {
+            sum += sumSalaries(subdep);
+        }
+        return sum;
+    }
 }
 
-Sum(7)();
+console.log(sumSalaries(company)); // 6700
