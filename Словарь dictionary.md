@@ -34,6 +34,7 @@ increase - увеличение
 decrease - уменьшение
 amount - сумма
 chaining - формирование цепочки, сцеление, связвание
+template - шаблон
 
 //рекурсия
 execution context - крнтекст выполнения

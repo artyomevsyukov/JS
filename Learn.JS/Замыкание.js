@@ -140,3 +140,20 @@ Environment Record – объект, в котором как свойства �
 // console.log(sum(5)(-1));
 
 // Фильтрация с помощью функции
+
+let arr = [1, 2, 3, 4, 5, 6, 7];
+
+function inBetween(a, b) {
+    return function (x) {
+        return x >= a && x <= b;
+    };
+}
+
+function inArray(arr) {
+    return function (x) {
+        return arr.includes(x);
+    };
+}
+console.log(arr.filter(inBetween(3, 6))); // 3,4,5,6
+
+console.log(arr.filter(inArray([1, 2, 10]))); // 1,2

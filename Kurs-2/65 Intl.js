@@ -30,6 +30,7 @@ function pizzaTimer(ms) {
     const end = new Date().getTime() + ms;
     const interval = setInterval(() => {
         console.log(
+            // navigator.language - ru-RU
             new Intl.DateTimeFormat("ru-RU", {
                 minute: "numeric",
                 second: "numeric",
