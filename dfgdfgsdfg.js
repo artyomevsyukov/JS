@@ -297,17 +297,36 @@ undefined
 // console.log(counter2()); // 1
 // console.log(counter2()); // 1
 
-let sayHi = function func(who) {
-    // let sayHi = function func(who='111') {
-    if (who) {
-        console.log(`Hello, ${who}`);
-    } else {
-        // func("Guest"); // использует func, чтобы снова вызвать себя же
-        sayHi("Guest"); // использует func, чтобы снова вызвать себя же
-    }
-};
+// let sayHi = function func(who) {
+//     // let sayHi = function func(who='111') {
+//     if (who) {
+//         console.log(`Hello, ${who}`);
+//     } else {
+//         // func("Guest"); // использует func, чтобы снова вызвать себя же
+//         sayHi("Guest"); // использует func, чтобы снова вызвать себя же
+//     }
+// };
 
-sayHi(); // Hello, Guest
+// sayHi(); // Hello, Guest
 
 // А вот так - не cработает:
 // func(); // Ошибка, func не определена (недоступна вне функции)
+
+function Cat(type) {
+    this.__proto__.type = type;
+}
+
+const cat = new Cat("кот");
+console.log(cat.type); // кот
+const cat2 = new Cat("кот2");
+console.log(cat.type); // кот2
+console.log(cat2.type); // кот2
+
+function CatTwo(type) {}
+CatTwo.prototype.type = "тоже кот";
+
+const catTwo = new CatTwo("тоже кот");
+console.log(catTwo.type); // тоже кот
+const catTwo2 = new CatTwo("тоже кот2");
+console.log(catTwo.type); // тоже кот
+console.log(catTwo2.type); // тоже кот
