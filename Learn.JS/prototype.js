@@ -218,16 +218,33 @@
 // // ваш метод toString в действии
 // console.log(dictionary); // "apple,__proto__"
 
-function Rabbit(name) {
-    this.name = name;
-}
-Rabbit.prototype.sayHi = function () {
-    console.log(this.name);
+// function Rabbit(name) {
+//     this.name = name;
+// }
+// Rabbit.prototype.sayHi = function () {
+//     console.log(this.name);
+// };
+
+// let rabbit = new Rabbit("Кролик");
+
+// rabbit.sayHi(); //Rabbit
+// Rabbit.prototype.sayHi(); //
+// Object.getPrototypeOf(rabbit).sayHi(); //undefined
+// rabbit.__proto__.sayHi(); //undefined
+
+const PapperBook = function (title, author) {
+    this.author = author;
+    this.title = title;
+    this.isRead = false;
+    this.color = "Blue";
 };
 
-let rabbit = new Rabbit("Rabbit");
+PapperBook.prototype.cover = "Paper";
+PapperBook.prototype.read = function () {
+    this.isRead = true;
+};
+PapperBook.prototype.wishful = function () {
+    this.wishful = true;
+};
 
-rabbit.sayHi(); //Rabbit
-Rabbit.prototype.sayHi(); //
-Object.getPrototypeOf(rabbit).sayHi(); //undefined
-rabbit.__proto__.sayHi(); //undefined
+const lord = new Book("Lord", "Tolkien");
