@@ -218,39 +218,6 @@
 // let clock = new Clock({ template: "h:m:s" });
 // clock.start();
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 // class Clock {
 //     constructor({ template }) {
 //         this.timer = null;
@@ -289,3 +256,157 @@
 
 // let clock = new Clock({ template: "h:m:s" });
 // clock.start();
+// ===================================================================================
+// class Clock {
+//     constructor({ template }) {
+//         this.template = template;
+//         this.timer = null;
+//     }
+
+//     render() {
+//         let date = new Date();
+
+//         let hours = date.getHours();
+//         if (hours < 10) hours = "0" + hours;
+
+//         let mins = date.getMinutes();
+//         if (mins < 10) mins = "0" + mins;
+
+//         let secs = date.getSeconds();
+//         if (secs < 10) secs = "0" + secs;
+
+//         let output = this.template
+//             .replace("h", hours)
+//             .replace("m", mins)
+//             .replace("s", secs);
+
+//         console.log(output);
+//     }
+
+//     stop() {
+//         clearInterval(this.timer);
+//     }
+
+//     start() {
+//         this.render();
+//         this.timer = setInterval(() => this.render(), 1000);
+//     }
+// }
+
+// class ExtendedClock extends Clock {
+//     timer1() {
+//         this.timerStart = setInterval(() => super.render(), this.precision);
+//     }
+//     constructor({ template }, precision = 500) {
+//         super({ template });
+//         this.precision = precision;
+//         // this.precision = precision || 500;
+//     }
+//     render() {
+//         console.log("ExtendedClock.render()");
+//     }
+//     // start() {
+//     //     this.render();
+//     //     this.timer = setInterval(() => this.render(), this.precision);
+//     // }
+//     start() {
+//         super.render();
+//         this.timer1();
+//     }
+// }
+
+// // todo
+// // class ExtendedClock extends Clock {
+// //     constructor(options) {
+// //         super(options);
+// //         let { precision = 1000 } = options;
+// //         this.precision = precision;
+// //     }
+
+// //     start() {
+// //         this.render();
+// //         this.timer = setInterval(() => this.render(), this.precision);
+// //     }
+// // }
+// // let lowResolutionClock = new ExtendedClock({
+// //     template: "h:m:s",
+// //     precision: 10000,
+// // });
+// // lowResolutionClock.start();
+// //
+// //
+// //
+// //
+
+// // let extendedClock = new ExtendedClock({ template: "h:m:s" });
+// let extendedClock = new ExtendedClock({ template: "h:m:s" }, 200);
+
+// // extendedClock.render();
+// extendedClock.start();
+// =======================================================================================
+
+// class Article {
+//     constructor(title, date) {
+//         this.title = title;
+//         this.date = date;
+//     }
+
+//     static compare(articleA, articleB) {
+//         return articleA.date - articleB.date;
+//     }
+// }
+
+// // использование
+// let articles = [
+//     new Article("JavaScript", new Date(2019, 11, 1)),
+//     new Article("HTML", new Date(2019, 1, 1)),
+//     new Article("JavaScript", new Date(2019, 11, 1)),
+//     new Article("CSS", new Date(2019, 0, 1)),
+// ];
+
+// articles.sort(Article.compare);
+
+// console.log(articles[0].title); // CSS
+// console.log(articles[1].title); // CSS
+// console.log(articles[2].title); // CSS
+// console.log(articles[3].title); // CSS
+// =======================================================================================
+
+// class Article {
+//     constructor(title, date) {
+//         this.title = title;
+//         this.date = date;
+//     }
+
+//     static createTodays() {
+//         // помним, что this = Article
+//         return new this("Сегодняшний дайджест", new Date());
+//     }
+// }
+
+// let article = Article.createTodays();
+
+// alert(article.title); // Сегодняшний дайджест
+// =======================================================================================
+class Article {
+    constructor(title, date) {
+        this.title = title;
+        this.date = date;
+    }
+
+    //  static createTodays(title = "Сегодняшний дайджест") {
+    //         // помним, что this = Article
+    //         return new this(title, new Date());
+    //     }
+    // }
+    static createTodays(title = "Сегодняшний дайджест") {
+        // помним, что this = Article
+        return new this(title, new Date());
+    }
+}
+
+let article = Article.createTodays("djjherfwef");
+
+console.log(article.title, article.date); // Сегодняшний дайджест
+// console.log(article.date); // Сегодняшний дайджест
+// =======================================================================================

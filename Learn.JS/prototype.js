@@ -247,4 +247,4 @@ PapperBook.prototype.wishful = function () {
     this.wishful = true;
 };
 
-const lord = new Book("Lord", "Tolkien");
+const lord = new PapperBook("Lord", "Tolkien");
