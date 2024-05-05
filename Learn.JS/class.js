@@ -399,13 +399,18 @@ class Article {
     //         return new this(title, new Date());
     //     }
     // }
-    static createTodays(title = "Сегодняшний дайджест") {
+    createTodays2(title = "Сегодняшний дайджест") {
+        return console.log(title, new Date());
+    }
+    static createTodays(title) {
         // помним, что this = Article
         return new this(title, new Date());
     }
 }
 
 let article = Article.createTodays("djjherfwef");
+
+new Article().createTodays2("12312313123");
 
 console.log(article.title, article.date); // Сегодняшний дайджест
 // console.log(article.date); // Сегодняшний дайджест
