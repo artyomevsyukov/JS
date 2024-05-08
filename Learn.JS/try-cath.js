@@ -1,3 +1,5 @@
+"use strict";
+
 // let json = "{ некорректный JSON }";
 
 // try {
@@ -114,21 +116,83 @@
 //   alert( "JSON Error: " + e.message ); // JSON Error: Данные неполны: нет имени
 // }
 
-let json = '{ "age": 30 }'; // данные неполны
-try {
-    let user = JSON.parse(json);
+// let json = '{ "age": 30 }'; // данные неполны
+// try {
+//     let user = JSON.parse(json);
 
-    blabla(); // неожиданная ошибка
-    if (!user.name) {
-        throw new SyntaxError("Данные неполны: нет имени");
-    }
+//     blabla(); // неожиданная ошибка
+//     if (!user.name) {
+//         throw new SyntaxError("Данные неполны: нет имени");
+//     }
 
-    console.log(user.name);
-} catch (e) {
-    if (e.name == "SyntaxError") {
-        console.log("JSON Error: " + e.message);
-    } else {
-        console.log("Неизвестная ошибка");
-        throw e;
+//     console.log(user.name);
+// } catch (e) {
+//     if (e.name == "SyntaxError") {
+//         console.log("JSON Error: " + e.message);
+//     } else {
+//         console.log("Неизвестная ошибка");
+//         throw e;
+//     }
+// }
+// ==========================================================================
+// class ValidationError extends Error {
+//     constructor(message) {
+//         super(message);
+//         this.name = "ValidationError";
+//     }
+// }
+
+// // Использование;
+// function readUser(json) {
+//     let user = JSON.parse(json);
+//     let errors = [];
+//     let probel = " ";
+//     if (!user.age) {
+//         errors.push(" Нет поля: age");
+//         // throw new ValidationError("Нет поля: age");
+//     }
+//     if (!user.name) {
+//         errors.length > 0
+// ? errors.push(probel + "Нет поля: name")
+//             : errors.push("Нет поля: name");
+//         // throw new ValidationError("Нет поля: name");
+//     }
+//     if (errors.length > 0) {
+//         throw new ValidationError(errors);
+//     }
+
+//     return user;
+// }
+
+// // Рабочий пример с try..catch
+
+// try {
+//     let user = readUser('{ "ag": 25, "nae": "Alexia" }');
+// } catch (err) {
+//     if (err instanceof ValidationError) {
+//         console.log("Некорректные данные: " + err.message); // Некорректные данные: Нет поля: name
+//     } else if (err instanceof SyntaxError) {
+//         // (*)
+//         console.log("JSON Ошибка Синтаксиса: " + err.message);
+//     } else {
+//         throw err; // неизвестная ошибка, пробросить исключение (**)
+//     }
+// }
+// ==========================================================================
+
+class FormatError extends SyntaxError {
+    constructor(message) {
+        super(message);
+        this.name = this.constructor.name;
+        // this.name = "FormatError";
     }
 }
+
+let err = new FormatError("ошибка форматирования");
+
+console.log(err.message); // ошибка форматирования
+console.log(err.name); // FormatError
+console.log(err.stack); // stack
+
+console.log(err instanceof FormatError); // true
+console.log(err instanceof SyntaxError); // true (потому что наследует от SyntaxError)

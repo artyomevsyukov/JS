@@ -28,18 +28,18 @@
 // };
 // ladder.up().up().up().down().showStep();
 
-function makeUser() {
-    return {
-        name: "John",
-        ref() {
-            return this;
-        },
-    };
-}
+// function makeUser() {
+//     return {
+//         name: "John",
+//         ref() {
+//             return this;
+//         },
+//     };
+// }
 
-let user = makeUser();
+// let user = makeUser();
 
-console.log(user.ref().name); // Каким будет результат?
+// console.log(user.ref().name); // Каким будет результат?
 
 /* 
 Если непонятно почему в 1ой задаче ошибка:
@@ -71,3 +71,28 @@ this вызывается в функции и там же принимает з
 // };
 
 // ladder.up().up().down().showStep().down().showStep();
+
+var sport = {
+    tournaments: "World Master",
+    players: [
+        { name: "Wood", age: 37 },
+        { name: "Mile", age: 43 },
+    ],
+    show() {
+        // console.log(this);
+        // this.players.forEach((players) =>
+        //     console.log(players.name, this.tournaments)
+        // );
+        // let self = this;
+        this.players.forEach(
+            // function (players) {
+            //     console.log(players.name, self.tournaments);
+            // }
+            function (players) {
+                console.log(players.name, this.tournaments);
+            }.bind(this)
+        );
+    },
+};
+
+sport.show();
