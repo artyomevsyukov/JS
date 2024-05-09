@@ -1,6 +1,11 @@
 "use strict";
 
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(Number.MIN_SAFE_INTEGER, "\n");
+
 class Test {
+    static a = 1;
+    static b = 2;
     static hello1() {
         console.log("hello-static");
     }
@@ -8,11 +13,17 @@ class Test {
     hello2() {
         console.log("hello-instance");
     }
+    // статичные блоки
+    static {
+        let c = 5;
+        this.b = c;
+    }
 }
 
 Test.hello1();
 
 const test = new Test();
+// test.hello1(); //-Error
 test.hello2();
 
 // Тоже самое через функцию конструктор и прототип, как работает под копотом (static это объявление не на прототипе, а на самой функции)
@@ -40,3 +51,5 @@ test2.hello2();
 test2.hello3();
 
 console.log(Number.MAX_SAFE_INTEGER); // Static
+
+console.log(Test.b);

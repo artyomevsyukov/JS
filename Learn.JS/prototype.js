@@ -1,3 +1,4 @@
+"use strict";
 // let hamster = {
 //     stomach: [],
 
@@ -234,7 +235,6 @@
 
 const PapperBook = function (title, author) {
     // function PapperBook(title, author) {
-    pages = null;
     this.author = author;
     this.title = title;
     this.isRead = false;
@@ -244,6 +244,7 @@ const PapperBook = function (title, author) {
     };
 };
 
+PapperBook.prototype.isRead = true;
 PapperBook.prototype.cover = "Paper";
 PapperBook.prototype.read = function () {
     this.isRead = true;
@@ -251,32 +252,32 @@ PapperBook.prototype.read = function () {
 PapperBook.prototype.wishful = function () {
     this.wishful = true;
 };
-// PapperBook.prototype.translate = function () {
-//     console.log("translate book");
-// };
+PapperBook.prototype.translate = function () {
+    console.log("prototype translate book");
+};
 
 const lord = new PapperBook("Lord", "Tolkien");
 console.log(lord.title);
 lord.translate();
 
-class BookClass {
-    constructor(title, author) {
-        this.author = author;
-        this.title = title;
-        this.isRead = false;
-        this.color = "Blue";
-    }
-    read() {
-        this.isRead = true;
-    }
-    wishful() {
-        this.wishful = true;
-    }
-    translate() {
-        console.log("translate book");
-    }
-}
+// class BookClass {
+//     constructor(title, author) {
+//         this.author = author;
+//         this.title = title;
+//         this.isRead = false;
+//         this.color = "Blue";
+//     }
+//     read() {
+//         this.isRead = true;
+//     }
+//     wishful() {
+//         this.wishful = true;
+//     }
+//     translate() {
+//         console.log("translate book");
+//     }
+// }
 
-const lordClass = new BookClass("Lord", "Tolkien");
-console.log(lordClass.title);
-lordClass.translate();
+// const lordClass = new BookClass("Lord", "Tolkien");
+// console.log(lordClass.title);
+// lordClass.translate();

@@ -312,21 +312,30 @@ undefined
 // А вот так - не cработает:
 // func(); // Ошибка, func не определена (недоступна вне функции)
 
-function Cat(type) {
-    this.__proto__.type = type;
+// function Cat(type) {
+//     this.__proto__.type = type;
+// }
+
+// const cat = new Cat("кот");
+// console.log(cat.type); // кот
+// const cat2 = new Cat("кот2");
+// console.log(cat.type); // кот2
+// console.log(cat2.type); // кот2
+
+// function CatTwo(type) {}
+// CatTwo.prototype.type = "тоже кот";
+
+// const catTwo = new CatTwo("тоже кот");
+// console.log(catTwo.type); // тоже кот
+// const catTwo2 = new CatTwo("тоже кот2");
+// console.log(catTwo.type); // тоже кот
+// console.log(catTwo2.type); // тоже кот
+
+function Book(title) {
+    cover: "paper";
+    this.title = title;
 }
+let myBook = new Book("The Hobbit");
 
-const cat = new Cat("кот");
-console.log(cat.type); // кот
-const cat2 = new Cat("кот2");
-console.log(cat.type); // кот2
-console.log(cat2.type); // кот2
-
-function CatTwo(type) {}
-CatTwo.prototype.type = "тоже кот";
-
-const catTwo = new CatTwo("тоже кот");
-console.log(catTwo.type); // тоже кот
-const catTwo2 = new CatTwo("тоже кот2");
-console.log(catTwo.type); // тоже кот
-console.log(catTwo2.type); // тоже кот
+console.log(myBook);
+console.log(myBook.cover);
