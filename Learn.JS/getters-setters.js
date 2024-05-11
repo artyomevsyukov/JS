@@ -366,56 +366,81 @@
 // console.log(Object.getOwnPropertyDescriptor(john, "name"));
 // console.log(Object.getOwnPropertyDescriptor(john, "age"));
 
-function User(name, surname, birthday) {
-    // this.name = name;
-    this.surname = surname;
-    // this.age = age;
-    this.birthday = birthday;
+// function User(name, surname, birthday) {
+//     // this.name = name;
+//     this.surname = surname;
+//     // this.age = age;
+//     this.birthday = birthday;
 
-    Object.defineProperties(this, {
-        fullname: {
-            get() {
-                return `${this._name} ${this.surname}`;
-            },
-            set(value) {
-                [this._name, this.surname] = value.split(" ");
-            },
-        },
-        age: {
-            get() {
-                let todayYear = new Date().getFullYear();
-                return todayYear - this.birthday.getFullYear();
-            },
-        },
-        name: {
-            get() {
-                return this._name;
-            },
-            set(value) {
-                if (value.length < 4) {
-                    console.log(
-                        "Имя слишком короткое, должно быть более 4 символов"
-                    );
-                    return;
-                }
-                this._name = value;
-            },
-        },
-    });
-    this.name = name;
-}
-let birthday = new Date(1991, 6, 1);
+//     Object.defineProperties(this, {
+//         fullname: {
+//             get() {
+//                 return `${this._name} ${this.surname}`;
+//             },
+//             set(value) {
+//                 [this._name, this.surname] = value.split(" ");
+//             },
+//         },
+//         age: {
+//             get() {
+//                 let todayYear = new Date().getFullYear();
+//                 return todayYear - this.birthday.getFullYear();
+//             },
+//         },
+//         name: {
+//             get() {
+//                 return this._name;
+//             },
+//             set(value) {
+//                 if (value.length < 4) {
+//                     console.log(
+//                         "Имя слишком короткое, должно быть более 4 символов"
+//                     );
+//                     return;
+//                 }
+//                 this._name = value;
+//             },
+//         },
+//     });
+//     this.name = name;
+// }
+// let birthday = new Date(1991, 6, 1);
 
-let john = new User("John   ", "Nox", birthday);
+// let john = new User("John   ", "Nox", birthday);
 
-// john.name = "123";
+// // john.name = "123";
 
-console.log(john.age);
-console.log(john.name);
-console.log(john.fullname);
-console.log(john);
+// console.log(john.age);
+// console.log(john.name);
+// console.log(john.fullname);
+// console.log(john);
 
 // let descriptor = Object.getOwnPropertyDescriptor(john, 'PI');
 
 // let descriptor = Object.getOwnPropertyDescriptors(john);
 // console.log(JSON.stringify(descriptor, null, 2));
+
+function User(name, birthday) {
+    this.name = name;
+    this.birthday = birthday;
+
+    Object.defineProperty(this, "age", {
+        get() {
+            let todayYear = new Date().getFullYear();
+            return todayYear - this.birthday.getFullYear();
+        },
+    });
+}
+
+let john = new User("John", new Date(1992, 6, 1));
+
+console.log(john.birthday);
+console.log(john.age);
+
+// возраст рассчитывается из текущей даты и дня рождения
+// Object.defineProperty(this, "age", {
+//     get() {
+//         let todayYear = new Date().getFullYear();
+//         return todayYear - this.birthday.getFullYear();
+//     },
+// });
