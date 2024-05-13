@@ -201,3 +201,73 @@
 //     if (list.next) printList(list.next);
 // }
 // printList(list);
+
+// let company = {
+//     sales: [
+//         { name: "John", salary: 1000 },
+//         { name: "Alice", salary: 600 },
+//     ],
+//     development: {
+//         sites: [
+//             { name: "Peter", salary: 2000 },
+//             { name: "Alex", salary: 1800 },
+//         ],
+//         internals: [{ name: "Jack", salary: 1300 }],
+//     },
+// };
+
+// function sumSalaries(department) {
+//     if (Array.isArray(department)) {
+//         return department.reduce((acc, curr) => acc + curr.salary, 0);
+//     } else {
+//         let sum = 0;
+//         for (const subdep of Object.values(department)) {
+//             sum += sumSalaries(subdep);
+//         }
+//         return sum;
+//     }
+// }
+
+// console.log(sumSalaries(company));
+
+// function sumTo(n) {
+//     let sum = 0;
+//     for (let i = n; i >= 0; i--) {
+//         sum += i;
+//     }
+//     return sum;
+// }
+// function sumTo(n) {
+//     return n == 1 ? n : n + sumTo(n - 1);
+// }
+// function sumTo(n) {
+//     return (n * (n + 1)) / 2;
+// }
+// console.log(sumTo(100));
+
+// function factorial(n) {
+//     return n == 1 ? n : n * factorial(n - 1);
+// }
+// console.log(factorial(5));
+// console.log(factorial(1));
+// console.log(factorial(7));
+// console.log(factorial(10));
+
+// function fib(n) {
+//     return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+// }
+function fib(n) {
+    let a = 1,
+        b = 1;
+
+    for (let i = 3; i <= n; i++) {
+        let c = a + b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+console.log(fib(3));
+console.log(fib(7));
+console.log(fib(77));

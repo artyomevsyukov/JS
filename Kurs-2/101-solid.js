@@ -42,7 +42,7 @@ class Weapon {
         }
     }
 }
-// todo а если есть растояние и меткость
+// todo а если есть расстояние и меткость
 class Sword extends Weapon {
     strike(enemy) {
         super.strike(enemy);
