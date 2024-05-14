@@ -346,3 +346,28 @@
 // }
 
 // printNumber(4, 9);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+function printNumbers(from, to) {
+    //
+}
+
+printNumbers(3, 8);

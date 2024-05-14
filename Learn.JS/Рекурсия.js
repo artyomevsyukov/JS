@@ -256,18 +256,97 @@
 // function fib(n) {
 //     return n <= 1 ? n : fib(n - 1) + fib(n - 2);
 // }
-function fib(n) {
-    let a = 1,
-        b = 1;
+// function fib(n) {
+//     let a = 1,
+//         b = 1;
 
-    for (let i = 3; i <= n; i++) {
-        let c = a + b;
-        a = b;
-        b = c;
+//     for (let i = 3; i <= n; i++) {
+//         let c = a + b;
+//         a = b;
+//         b = c;
+//     }
+//     return b;
+// }
+
+// console.log(fib(3));
+// console.log(fib(7));
+// console.log(fib(77));
+// =======================================================================
+
+// let list = {
+//     value: 1,
+//     next: {
+//         value: 2,
+//         next: {
+//             value: 3,
+//             next: {
+//                 value: 4,
+//                 next: null,
+//             },
+//         },
+//     },
+// };
+
+// function printList(list) {
+//     console.log(list.value);
+//     if (list.next) {
+//         printList(list.next);
+//     }
+//     // if (!list.next) {
+//     //     console.log(list.value);
+//     //     return;
+//     // } else {
+//     //     console.log(list.value);
+//     //     printList(list.next);
+//     // }
+// }
+
+// function printList(list) {
+//     let tmp = list;
+//     while (tmp) {
+//         console.log(tmp.value);
+//         tmp = tmp.next;
+//     }
+// }
+
+// printList(list);
+// =======================================================================
+
+let list = {
+    value: 1,
+    next: {
+        value: 2,
+        next: {
+            value: 3,
+            next: {
+                value: 4,
+                next: null,
+            },
+        },
+    },
+};
+
+// function printList(list) {
+//     if (list.next) {
+//         printList(list.next);
+//     }
+//     console.log(list.value);
+// }
+// printList(list);
+
+function printReverseList(list) {
+    let arr = [];
+    let tmp = list;
+
+    while (tmp) {
+        arr.push(tmp.value);
+        tmp = tmp.next;
     }
-    return b;
+
+    // arr.reverse().forEach((e) => console.log(e));
+    for (let i = arr.length - 1; i >= 0; --i) {
+        console.log(arr[i]);
+    }
 }
 
-console.log(fib(3));
-console.log(fib(7));
-console.log(fib(77));
+printReverseList(list);

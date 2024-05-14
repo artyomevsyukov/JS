@@ -331,11 +331,134 @@ undefined
 // console.log(catTwo.type); // тоже кот
 // console.log(catTwo2.type); // тоже кот
 
-function Book(title) {
-    cover: "paper";
-    this.title = title;
-}
-let myBook = new Book("The Hobbit");
+// function Book(title) {
+//     cover: "paper";
+//     this.title = title;
+// }
+// let myBook = new Book("The Hobbit");
 
-console.log(myBook);
-console.log(myBook.cover);
+// console.log(myBook);
+// console.log(myBook.cover);
+
+// function makeCounter() {
+//     let count = 0;
+//     function counter() {
+//         return count++;
+//     }
+//     counter.set = (value) => (count = value);
+//     counter.decrease = () => count--;
+
+//     return counter;
+// }
+
+// let welcome = makeCounter();
+
+// console.log(welcome());
+// console.log(welcome.set(12));
+// console.log(welcome.decrease());
+// console.log(welcome.decrease());
+// console.log(welcome.decrease());
+// console.log(welcome());
+// =========================================================
+// function sum(a) {
+//     let currentSum = a;
+
+//     function f(b) {
+//         currentSum += b;
+//         return f;
+//     }
+
+//     f.toString = function () {
+//         return currentSum;
+//     };
+
+//     return f;
+// }
+
+// // console.log(sum(1)(2)); // 3
+// // console.log(sum(5)(-1)(2)); // 6
+// // console.log(sum(6)(-1)(-2)(-3)); // 0
+// // console.log(sum(0)(1)(2)(3)(4)(5)); // 15
+
+// // Неявно приведём к строке:
+// console.log(sum(1)(2) + ""); // Вывод: '3'
+// // Явно приведём к строке:
+// console.log(String(sum(1)(2))); // Вывод: '3'
+
+// // Неявно приведём к числу:
+// console.log(+sum(1)(2)(3)); // Вывод: 6
+// // Явно приведём к числу:
+// console.log(Number(sum(1)(2)(3))); // Вывод: 6
+
+// // Явно вызовем метод [[toPrimitive]]
+// // console.log(sum(6)(-1)(-2)(-3)[Symbol.toPrimitive]()); // Вывод: 0
+
+// // Используем оператор сравнения:
+// console.log(sum(0)(1)(2)(3)(4)(5) == 15); // Вывод: true
+
+// =========================================================
+
+// function sayHi() {
+//     console.log("Hi");
+//     sayHi.value = 0; // начальное значение
+
+//     // давайте посчитаем, сколько вызовов мы сделали
+//     sayHi.counter++;
+//     sayHi.value++;
+// }
+// sayHi.counter = 0; // начальное значение
+// let c = sayHi;
+// sayHi(); // Hi
+// sayHi(); // Hi
+// sayHi(); // Hi
+// c();
+// c();
+// c();
+
+// console.log(`Вызвана ${sayHi.value} раза`); // Вызвана 2 раза
+// console.log(`Вызвана ${sayHi.counter} раза`); // Вызвана 2 раза
+// console.log(`Вызвана ${c.value} раза`); // Вызвана 2 раза
+// console.log(`Вызвана ${c.counter} раза`); // Вызвана 2 раза
+
+// say();
+// function say() {
+//     console.log("say");
+// }
+// console.log(say2());
+
+// {
+//     function say2() {
+//         console.log("say");
+//     }
+//     function makeCounter() {
+//         let count = 0;
+
+//         return function () {
+//             return count++; // есть доступ к внешней переменной "count"
+//         };
+//     }
+
+//     let counter = makeCounter();
+
+//     console.log(counter()); // 0
+//     console.log(counter()); // 1
+//     console.log(counter()); // 2
+
+//     let counter2 = makeCounter();
+
+//     console.log(counter2()); // 0
+//     console.log(counter2()); // 1
+//     console.log(counter2()); // 2
+// }
+
+// function makeCounter() {
+//     let count = 0;
+//     return function () {
+//         return ++count;
+//     };
+// }
+
+// let counter = makeCounter();
+// console.log(counter());
+// console.log(counter());
+// console.log(counter());

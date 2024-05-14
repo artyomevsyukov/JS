@@ -141,19 +141,101 @@ Environment Record – объект, в котором как свойства �
 
 // Фильтрация с помощью функции
 
-let arr = [1, 2, 3, 4, 5, 6, 7];
+// let arr = [1, 2, 3, 4, 5, 6, 7];
 
-function inBetween(a, b) {
-    return function (x) {
-        return x >= a && x <= b;
-    };
+// function inBetween(a, b) {
+//     return function (x) {
+//         return x >= a && x <= b;
+//     };
+// }
+
+// function inArray(arr) {
+//     return function (x) {
+//         return arr.includes(x);
+//     };
+// }
+// console.log(arr.filter(inBetween(3, 6))); // 3,4,5,6
+
+// console.log(arr.filter(inArray([1, 2, 10]))); // 1,2
+
+// let arr = [1, 2, 3, 4, 5, 6, 7];
+// let d = 3,
+//     f = 6;
+// function inBetween(a, b) {
+//     return function (x) {
+//         return x >= a && x <= b;
+//     };
+// }
+
+// function inArray(arr) {
+//     return function (x) {
+//         return arr.includes(x);
+//     };
+// }
+
+// function inBetweenFor(x, a, b) {
+//     return x >= a && x <= b;
+// }
+// let reslt = [];
+// for (let i = 0; i <= arr.length; i++) {
+//     if (inBetweenFor(arr[i], d, f)) {
+//         reslt.push(arr[i]);
+//     }
+// }
+// console.log(reslt);
+
+// console.log(arr.filter(inBetween(3, 6))); // 3,4,5,6
+
+// console.log(arr.filter(inArray([1, 2, 10]))); // 1,2
+
+// console.log(arr.filter((x) => x >= d && x <= f));
+
+// let users = [
+//     { name: "Иван", age: 20, surname: "Иванов" },
+//     { name: "Пётр", age: 18, surname: "Петров" },
+//     { name: "Анна", age: 19, surname: "Каренина" },
+// ];
+
+// // по имени (Анна, Иван, Пётр)
+// // console.log(users.sort((a, b) => (a.name > b.name ? 1 : -1)));
+
+// // по возрасту (Пётр, Анна, Иван)
+// // console.log(users.sort((a, b) => (a.age > b.age ? 1 : -1)));
+
+// function byField(fieldName) {
+//     return (a, b) => (a[fieldName] > b[fieldName] ? 1 : -1);
+//     // return function (a, b) {
+//     //     return a[fieldName] > b[fieldName] ? 1 : -1;
+//     // };
+// }
+
+// console.log(users.sort(byField("name")));
+// console.log(users.sort(byField("age")));
+
+function makeArmy() {
+    let shooters = [];
+
+    // let i = 0;
+
+    // while (i < 10) {
+
+    for (let i = 0; i < 10; i++) {
+        // let j = i;
+        let shooter = function () {
+            // функция shooter
+            // console.log(j); // должна выводить порядковый номер
+            console.log(i); // должна выводить порядковый номер
+        };
+        shooters.push(shooter); // и добавлять стрелка в массив
+        // i++;
+    }
+    return shooters;
+
+    // ...а в конце вернуть массив из всех стрелков
 }
 
-function inArray(arr) {
-    return function (x) {
-        return arr.includes(x);
-    };
-}
-console.log(arr.filter(inBetween(3, 6))); // 3,4,5,6
-
-console.log(arr.filter(inArray([1, 2, 10]))); // 1,2
+let army = makeArmy();
+// все стрелки выводят 10 вместо их порядковых номеров (0, 1, 2, 3...)
+army[0](); // 10 от стрелка с порядковым номером 0
+army[1](); // 10 от стрелка с порядковым номером 1
+army[2](); // 10 ...и т.д.

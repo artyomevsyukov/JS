@@ -36,6 +36,8 @@ decrease - уменьшение
 amount - сумма
 chaining - формирование цепочки, сцеление, связвание
 template - шаблон
+partia - опциональные
+required - обязаельные
 
 //рекурсия
 execution context - контекст выполнения
