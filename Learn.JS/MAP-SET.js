@@ -425,3 +425,57 @@
 // console.log(newObj1);
 
 // ===================
+
+// let set = new Set();
+
+// let john = { name: "John" };
+// let pete = { name: "Pete" };
+// let mary = { name: "Mary" };
+
+// // считаем гостей, некоторые приходят несколько раз
+// set.add(john);
+// set.add(pete);
+// set.add(mary);
+// set.add(john);
+// set.add(mary);
+
+// // set хранит только 3 уникальных значения
+// // console.log(set.size); // 3
+
+// // for (let user of set) {
+// //     console.log(user.name); // John (потом Pete и Mary)
+// // }
+
+// // set.forEach((e) => console.log(e.name));
+
+// console.log(set.values());
+// console.log(set.entries());
+
+// function unique(arr) {
+//     return Array.from(new Set(arr));
+// }
+
+// let values = [
+//     "Hare",
+//     "Krishna",
+//     "Hare",
+//     "Krishna",
+//     "Krishna",
+//     "Krishna",
+//     "Hare",
+//     "Hare",
+//     ":-O",
+// ];
+
+// console.log(unique(values)); // Hare,Krishna,:-O
+
+function aclean(arr) {
+    for (const el of arr) {
+        el.toLowerCase().inc;
+    }
+    // toLowerCase
+}
+
+let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+
+console.log(aclean(arr)); // "nap,teachers,ear" или "PAN,cheaters,era"

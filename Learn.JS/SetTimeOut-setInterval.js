@@ -135,21 +135,21 @@
 // go();
 
 // // ================================================
-// function printNumbers(from, to) {
-//     let current = from;
+function printNumbers(from, to) {
+    let current = from;
 
-//     function go() {
-//         console.log(current);
-//         if (current < to) {
-//             current++;
-//             setTimeout(go, 300);
-//         }
-//     }
-//     go();
-//     // setTimeout(go, 1000);
-// }
+    function go() {
+        console.log(current);
+        if (current < to) {
+            current++;
+            setTimeout(go, 300);
+        }
+    }
+    go();
+    // setTimeout(go, 1000);
+}
 
-// printNumbers(3, 8);
+printNumbers(3, 8);
 
 // function printNumbers(from, to) {
 //     let current = from;
@@ -344,30 +344,3 @@
 //     go();
 //     // setTimeout(go, 1000);
 // }
-
-// printNumber(4, 9);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-function printNumbers(from, to) {
-    //
-}
-
-printNumbers(3, 8);

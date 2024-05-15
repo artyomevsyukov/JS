@@ -72,27 +72,39 @@ this вызывается в функции и там же принимает з
 
 // ladder.up().up().down().showStep().down().showStep();
 
-var sport = {
-    tournaments: "World Master",
-    players: [
-        { name: "Wood", age: 37 },
-        { name: "Mile", age: 43 },
-    ],
-    show() {
-        // console.log(this);
-        // this.players.forEach((players) =>
-        //     console.log(players.name, this.tournaments)
-        // );
-        // let self = this;
-        this.players.forEach(
-            // function (players) {
-            //     console.log(players.name, self.tournaments);
-            // }
-            function (players) {
-                console.log(players.name, this.tournaments);
-            }.bind(this)
-        );
+// var sport = {
+//     tournaments: "World Master",
+//     players: [
+//         { name: "Wood", age: 37 },
+//         { name: "Mile", age: 43 },
+//     ],
+//     show() {
+//         // console.log(this);
+//         // this.players.forEach((players) =>
+//         //     console.log(players.name, this.tournaments)
+//         // );
+//         // let self = this;
+//         this.players.forEach(
+//             // function (players) {
+//             //     console.log(players.name, self.tournaments);
+//             // }
+//             function (players) {
+//                 console.log(players.name, this.tournaments);
+//             }.bind(this)
+//         );
+//     },
+// };
+
+// sport.show();
+const person = {
+    name: "Alice",
+    greet: function () {
+        console.log(`Hello, my name is ${this.name}`);
     },
 };
+person.greet();
 
-sport.show();
+const personGreetFunction = person.greet.bind(person);
+personGreetFunction();
+// const personGreetFunction = person.greet;
+// personGreetFunction.call(person);
