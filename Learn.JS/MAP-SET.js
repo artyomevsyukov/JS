@@ -469,11 +469,65 @@
 
 // console.log(unique(values)); // Hare,Krishna,:-O
 
+// function printNumbers(from, to) {
+//     let current = from;
+//     let timer = setInterval(() => {
+//         if (current >= to) {
+//             clearInterval(timer);
+//         }
+//         console.log(current);
+//         current++;
+//     }, 1000);
+// }
+// function printNumbers(from, to) {
+//     let current = from;
+//     function go() {
+//         if (current >= to) {
+//             clearInterval(timer);
+//         }
+//         console.log(current);
+//         current++;
+//     }
+//     go();
+//     let timer = setInterval(go, 1000);
+// }
+
+// function printNumbers(from, to) {
+//     let current = from;
+//     setTimeout(function go() {
+//         if (current <= to) {
+//             console.log(current);
+//             setTimeout(go, 1000);
+//         }
+//         ++current;
+//     }, 1000);
+// }
+// function printNumbers(from, to) {
+//     let current = from;
+
+//     function go() {
+//         console.log(current);
+//         if (current < to) {
+//             current++;
+//             setTimeout(go, 1000);
+//         }
+//     }
+//     go();
+// }
+
+// printNumbers(2, 7);
+
 function aclean(arr) {
-    for (const el of arr) {
-        el.toLowerCase().inc;
+    let map = new Map();
+    let set = new Set();
+    for (let word of arr) {
+        let sorted = word.toLowerCase().split("").sort().join("");
+        map.set(sorted, word);
+        set.add(sorted);
     }
-    // toLowerCase
+    // console.log("set:", set);
+    // console.log(map);
+    return Array.from(map.values());
 }
 
 let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];

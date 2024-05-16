@@ -131,3 +131,29 @@
 // }
 
 // printNumbers(3, 8);
+
+function pizzaTimer(ms) {
+    const end = new Date().getTime() + ms;
+    function go() {
+        console.log(
+            new Intl.DateTimeFormat("ru-RU", {
+                minute: "numeric",
+                second: "numeric",
+            }).format(ms)
+        );
+        let timer = setInterval(() => {
+            console.log(
+                new Intl.DateTimeFormat("ru-RU", {
+                    minute: "numeric",
+                    second: "numeric",
+                }).format(end + 100 - new Date())
+            );
+        }, 1000);
+        setTimeout(() => {
+            clearInterval(timer);
+            console.log("Finish");
+        }, ms);
+    }
+    go();
+}
+pizzaTimer(7000);
