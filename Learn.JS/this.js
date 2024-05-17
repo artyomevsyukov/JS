@@ -7,6 +7,8 @@
 //     };
 // }
 
+// const { use } = require("chai");
+
 // let user = makeUser();
 
 // console.log(user.ref().name); // John
@@ -96,15 +98,29 @@ this вызывается в функции и там же принимает з
 // };
 
 // sport.show();
-const person = {
-    name: "Alice",
-    greet: function () {
-        console.log(`Hello, my name is ${this.name}`);
+// const person = {
+//     name: "Alice",
+//     greet: function () {
+//         console.log(`Hello, my name is ${this.name}`);
+//     },
+// };
+// person.greet();
+
+// const personGreetFunction = person.greet.bind(person);
+// personGreetFunction();
+// // const personGreetFunction = person.greet;
+// // personGreetFunction.call(person);
+
+let user = {
+    firstName: "Вася",
+    sayHi() {
+        console.log(`Привет, ${this.firstName}!`);
     },
 };
-person.greet();
+let f = user.sayHi;
+f();
 
-const personGreetFunction = person.greet.bind(person);
-personGreetFunction();
-// const personGreetFunction = person.greet;
-// personGreetFunction.call(person);
+// setTimeout(user.sayHi.bind(user), 1000);
+setTimeout(() => user.sayHi(), 1000);
+// setTimeout(user.sayHi.call(user), 1000);
+// setTimeout(user.sayHi.call(this), 1000);

@@ -146,35 +146,100 @@
 // let dec = loggingDecorator(sum);
 // dec(5, 5);
 
-function work(a, b) {
-    console.log(a + b);
-}
-const obj = {
-    age: 22,
-    work(a, b) {
-        console.log(a + b + this.age);
-    },
-};
+// function work(a, b) {
+//     console.log(a + b);
+// }
+// const obj = {
+//     age: 22,
+//     work(a, b) {
+//         console.log(a + b + this.age);
+//     },
+// };
 
-function spy(func) {
-    wrapper.calls = [];
-    function wrapper(...args) {
-        wrapper.calls.push(args);
-        return func.apply(this, args);
-        return func(...args);
-    }
-    return wrapper;
-}
-console.log(obj);
-work = spy(work);
-obj.work2 = spy(obj.work);
+// function spy(func) {
+//     wrapper.calls = [];
+//     function wrapper(...args) {
+//         wrapper.calls.push(args);
+//         return func.apply(this, args);
+//         return func(...args);
+//     }
+//     return wrapper;
+// }
+// console.log(obj);
+// work = spy(work);
+// obj.work2 = spy(obj.work);
 
-work(1, 2); // 3
-work(4, 5); // 9
-obj.work2(7, 8); // 3
-obj.work2(9, 10); // 9
+// work(1, 2); // 3
+// work(4, 5); // 9
+// obj.work2(7, 8); // 3
+// obj.work2(9, 10); // 9
 
-for (let args of obj.work2.calls) {
-    console.log("call:" + args.join()); // "call:1,2", "call:4,5"
-}
-console.log(obj.work2.calls);
+// for (let args of obj.work2.calls) {
+//     console.log("call:" + args.join()); // "call:1,2", "call:4,5"
+// }
+// console.log(obj.work2.calls);
+
+// function f(x) {
+//     console.log(x);
+// }
+
+// function delay(f, ms) {
+//     return function (...args) {
+//         setTimeout(() => f.apply(this, args), ms);
+//     };
+// }
+
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 1500);
+
+// f1000("test");
+// f1500("test");
+// =================================================
+
+// function debounce(func, wait) {
+//     let timeout;
+
+//     return function executedFunction(...args) {
+//         const later = () => {
+//             clearTimeout(timeout);
+//             func(...args);
+//         };
+
+//         clearTimeout(timeout);
+//         timeout = setTimeout(later, wait);
+//     };
+// }
+
+// function handleInput(event) {
+//     console.log(event.target.value);
+// }
+
+// const debouncedInputHandler = debounce(handleInput, 500);
+
+//   const input = document.querySelector(".input");
+
+// function f(x) {
+//     // console.log(x);
+//     input.value = event.target.value
+// }
+
+// function debounce(f, ms) {
+//     return function (...args) {
+//         clearTimeout(timer);
+//         let timer = setTimeout(() => f.apply(this, args), ms);
+//     };
+// }
+
+// let f1000 = delay(f, 1000);
+// let f1500 = delay(f, 1500);
+
+// f1000("test");
+// f1500("test");
+
+// function debounce(func, ms) {
+//     let timeout;
+//     return function () {
+//         clearTimeout(timeout);
+//         timeout = setTimeout(() => func.apply(this, arguments), ms);
+//     };
+// }

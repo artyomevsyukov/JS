@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        debounce 22
+    </h1>
+    <input type="text" class="input1" value="123" oninput="debouncedInputHandler(event)">
+    <input type="text" class="input2">
+    <!-- <script>
+        const input1 = document.querySelector('.input1');
+        const input2 = document.querySelector('.input2');
+
+        function debounce(func, wait) {
+            let timeout;
+
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        };
+
+        function handleInput(event) {
+            input2.value = event.target.value
+
+            console.log(event.target.value);
+        }
+
+        const debouncedInputHandler = debounce(handleInput, 500);
+    </script> -->
+    <!-- <script>
+        const input1 = document.querySelector('.input1');
+        const input2 = document.querySelector('.input2');
+
+        function handleInput(event) {
+            input2.value = event.target.value
+
+            console.log(event.target.value);
+        }
+
+        function debounce(f, ms) {
+            let timer;
+            return function (...args) {
+                clearTimeout(timer);
+                timer = setTimeout(() => f.apply(this, args), ms);
+            };
+        }
+
+        const debouncedInputHandler = debounce(handleInput, 1500);
+
+    </script> -->
+    <script>
+        const body = {
+            inputs: {
+                input1: document.querySelector('.input1'),
+                input2: document.querySelector('.input2')
+            }
+        }
+        function inputHandler(event) {
+            // body.inputs.input2.value = event.target.value
+            body.inputs.input2.value = body.inputs.input1.value
+            console.log(event.target.value);
+        }
+
+        function debounce(f, ms) {
+
+
+            return function (...args) {
+                let timer;
+                clearTimeout(timer);
+                timer = setTimeout(() => f.apply(this, args), ms)
+            };
+        }
+
+        const debouncedInputHandler = debounce(inputHandler, 1500)
+    </script>
+</body>
+
+</html>
+<!-- console.log(event.target.value); -->
+
+<!-- debouncedInputHandler -->
