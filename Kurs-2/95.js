@@ -116,6 +116,7 @@ class Enemy {
             console.log(message);
             return message;
         }
+        // return this;
     }
 }
 
@@ -129,33 +130,43 @@ class Sword {
         } else {
             console.log("Противник уже мертв");
         }
+        return this;
     }
 }
 
 class Orc extends Enemy {
+    constructor(hp, armor) {
+        super(hp);
+        this.armor = armor;
+    }
+
     receiveDamage(damage) {
-        if (Math.random() > 0.5) {
-            console.log("Орк увернулся");
-        } else {
-            super.receiveDamage(damage);
-        }
+        // if (Math.random() > 0.5) {
+        //     console.log("Орк увернулся");
+        // } else {
+        const effectiveDamage = Math.max(0, damage - this.armor);
+        console.log("effectiveDamage:", effectiveDamage);
+        super.receiveDamage(effectiveDamage);
+        // }
+        // return this;
     }
 }
 const iceSword = new Sword(70);
-const orcBarbarian = new Orc(150);
+const orcBarbarian = new Orc(150, 50);
 const barbarian = new Enemy(100);
 
-//
+// console.log(barbarian.hp);
+// console.log(iceSword.strike(barbarian));
+// console.log(iceSword.strike(barbarian));
+// console.log(iceSword.strike(barbarian));
+// console.log(iceSword.strike(barbarian));
+// console.log(barbarian.hp);
+// console.log(barbarian.status);
 
-console.log(barbarian.hp);
-console.log(iceSword.strike(barbarian));
-console.log(iceSword.strike(barbarian));
-console.log(iceSword.strike(barbarian));
-console.log(iceSword.strike(barbarian));
-console.log(barbarian.hp);
-console.log(barbarian.status);
-
-// console.log(orcBarbarian);
+console.log(orcBarbarian);
+console.log(
+    iceSword.strike(orcBarbarian).strike(orcBarbarian).strike(orcBarbarian)
+);
 // console.log(iceSword.strike(orcBarbarian));
 // console.log(iceSword.strike(orcBarbarian));
 // console.log(iceSword.strike(orcBarbarian));
@@ -165,6 +176,5 @@ console.log(barbarian.status);
 // console.log(iceSword.strike(orcBarbarian));
 // console.log(iceSword.strike(orcBarbarian));
 // console.log(iceSword.strike(orcBarbarian));
-// console.log(iceSword.strike(orcBarbarian));
-// console.log(orcBarbarian.hp);
-// console.log(orcBarbarian.status);
+console.log("hp:", orcBarbarian.hp);
+console.log("status:", orcBarbarian.status);
