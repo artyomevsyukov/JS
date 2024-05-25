@@ -71,3 +71,10 @@ console.log("Нашли Span");
 
   alert(chapter.closest('h1')); // null (потому что h1 - не предок)
 </script>
+
+# Атрибуты и свойства
+
+elem.hasAttribute(name) – проверяет наличие атрибута.
+elem.getAttribute(name) – получает значение атрибута.
+elem.setAttribute(name, value) – устанавливает значение атрибута.
+elem.removeAttribute(name) – удаляет атрибут.
