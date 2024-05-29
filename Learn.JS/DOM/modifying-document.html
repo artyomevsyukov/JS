@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="elem1"></div>
+    <div id="elem2"></div>
+    <div id="elem3"></div>
+    <script>
+        let text = '<b>текст</b>';
+
+        elem1.append(document.createTextNode(text));
+        elem2.innerHTML = text;
+        elem3.textContent = text;
+    </script> -->
+    <!-- ========================================================================= -->
+    <!-- <ol id="elem">
+        <li>Привет</li>
+        <li>Мир</li>
+    </ol>
+    <script>
+
+        function clear(elem) {
+            elem.innerHTML = '';
+        }
+        clear(elem); 
+    </script> -->
+    <!-- ========================================================================= -->
+    <!-- <table id="table">
+        aaa
+        <tr>
+            <td>Тест</td>
+        </tr>
+    </table>
+
+    <script>
+        alert(table); // таблица, как и должно быть
+
+        table.remove();
+        // почему в документе остался текст "ааа"?
+    </script> -->
+    <!-- ========================================================================= -->
+    <!-- <input type="text" class="input-form">
+    <button class="btn" onclick="addLi()">Добавить</button>
+    <ol id="elem">
+        <li>Привет</li>
+        <li>Мир</li>
+    </ol>
+    <script>
+
+
+        const body = {
+            input: {
+                input1: document.querySelector('.input-form')
+            },
+            btn: document.querySelector('btn'),
+        }
+
+
+        function addLi(list) {
+
+            let listItem = document.querySelector('#elem')
+            let input
+            let item = document.createElement('li');
+            item.textContent = body.input.input1.value;
+            listItem.append(item)
+            body.input.input1.value = ''
+
+            do {
+                input = prompt('Добавьте пункт в список', 'Ваш текст')
+                let item = document.createElement('li')
+                item.textContent = input;
+                if (input) {
+                    listItem.append(item)
+                }
+            } while (input);
+        }
+
+
+    </script> -->
+    <!-- ========================================================================= -->
+
+    <!-- 
+    <div id="container"></div>
+
+    <script>
+        let data = {
+            "Рыбы": {
+                "форель": {},
+                "лосось": {}
+            },
+
+            "Деревья": {
+                "Огромные": {
+                    "секвойя": {},
+                    "дуб": {}
+                },
+                "Цветковые": {
+                    "яблоня": {},
+                    "магнолия": {}
+                }
+            }
+        };
+
+
+        // function createTree(container, obj) {
+        //     container.append(createTreeDom(obj))
+
+        // }
+
+        // function createTreeDom(obj) {
+        //     if (!Object.keys(obj).length) return;
+        //     let ul = document.createElement('ul');
+
+        //     for (let key in obj) {
+        //         console.log(key);
+        //         let li = document.createElement('li');
+        //         li.innerHTML = key;
+
+
+        //         let children = createTreeDom(obj[key])
+        //         if (children) {
+        //             li.append(children)
+        //         }
+        //         ul.append(li)
+
+        //     }
+        //     return ul
+        // }
+
+
+
+        function createTree(container, obj) {
+            container.append(createTreeDom(obj));
+            // container.innerHTML = createTreeText(obj)
+        }
+
+        function createTreeDom(obj) {
+            let ul = document.createElement('ul');
+
+            if (!Object.keys(obj).length) return;
+
+            for (let key in obj) {
+                let li = document.createElement('li')
+                li.innerHTML = key
+
+                let children = createTreeDom(obj[key])
+                if (children) {
+                    li.append(children)
+                }
+                ul.append(li)
+            }
+            return ul
+        }
+
+        // function createTreeText(obj) {
+        //     let li = '';
+        //     let ul;
+
+        //     for (let key in obj) {
+        //         li += '<li>' + key + createTreeText(obj[key]) + '</li>';
+        //     }
+        //     if (li) {
+        //         ul = '<ul>' + li + '</ul>';
+        //     }
+        //     return ul || '';
+        // }
+
+
+        let container = document.getElementById('container');
+        createTree(container, data);
+    </script> -->
+
+    <!-- ========================================================================= -->
+
+</body>
+
+</html>
