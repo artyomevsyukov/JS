@@ -2,7 +2,7 @@
 <html>
 
 <body>
-    <form class="form" name="search">
+    <!-- <form class="form" name="search">
         <label>Search the site:
             <input type="text" name="search" value="Input text">
         </label>
@@ -35,8 +35,46 @@
         </table>
 
         <input type="submit" value="Search!">
-    </form>
-    <script src="searching-elements-dom.js"></script>
+    </form> -->
+
+
+    <!-- <script>
+        const table = document.getElementById('age-table');
+        // const table1 = document.querySelector('#age-table');
+        // console.log(table);
+        // console.log(table1);
+
+        // console.log(table.getElementsByTagName('label')); //htmlCollection
+        // console.log(table.querySelectorAll('label')); //nodeList
+        // console.log(table1.querySelectorAll('label'));
+        // console.log(document.querySelectorAll('#age-table label'));
+
+        // console.log(table.rows[0].cells[0]);
+        // console.log(table.querySelector('td'));
+
+        const form = document.querySelector('form[name="search"]')
+        const form1 = document.getElementsByName('search')[0]
+        console.log(form);
+        console.log(form1);
+
+        console.log(form.querySelector('input'));
+        console.log(form.querySelector('input').value);
+
+        console.log(form.lastElementChild);
+        const inputs = form.querySelectorAll('input')
+        console.log(inputs[inputs.length - 1]);
+    </script> -->
+    <!-- <script src="searching-elements-dom.js"></script> -->
+</body>
+
+<body>
+    <div id="chatDiv">sdfsdfsdf</div>
+
+
+    <script>
+        chatDiv.innerHTML += "<div>Привет<img src='smile.gif'/> !</div>";
+        chatDiv.innerHTML += "Как дела?";
+    </script>
 </body>
 
 </html>
