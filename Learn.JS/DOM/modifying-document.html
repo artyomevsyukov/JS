@@ -7,8 +7,8 @@
     <title>Document</title>
 </head>
 
-<body>
-    <!-- <div id="elem1"></div>
+<!-- <body> -->
+<!-- <div id="elem1"></div>
     <div id="elem2"></div>
     <div id="elem3"></div>
     <script>
@@ -18,8 +18,8 @@
         elem2.innerHTML = text;
         elem3.textContent = text;
     </script> -->
-    <!-- ========================================================================= -->
-    <!-- <ol id="elem">
+<!-- ========================================================================= -->
+<!-- <ol id="elem">
         <li>Привет</li>
         <li>Мир</li>
     </ol>
@@ -30,8 +30,8 @@
         }
         clear(elem); 
     </script> -->
-    <!-- ========================================================================= -->
-    <!-- <table id="table">
+<!-- ========================================================================= -->
+<!-- <table id="table">
         aaa
         <tr>
             <td>Тест</td>
@@ -44,14 +44,14 @@
         table.remove();
         // почему в документе остался текст "ааа"?
     </script> -->
-    <!-- ========================================================================= -->
-    <input type="text" class="input-form">
+<!-- ========================================================================= -->
+<!-- <input type="text" class="input-form">
     <button class="btn" onclick="addLi()">Добавить</button>
     <ol id="elem">
         <li>Привет</li>
         <li>Мир</li>
-    </ol>
-    <!-- <script>
+    </ol> -->
+<!-- <script>
 
 
         const body = {
@@ -83,7 +83,7 @@
 
 
     </script> -->
-    <script>
+<!-- <script>
         const body = {
             input: {
                 input1: document.querySelector('.input-form')
@@ -99,10 +99,10 @@
             }
             body.input.input1.value = '';
         }
-    </script>
-    <!-- ========================================================================= -->
+    </script> -->
+<!-- ========================================================================= -->
 
-    <!-- 
+<!-- 
     <div id="container"></div>
 
     <script>
@@ -194,7 +194,7 @@
     </script>
 
     <!-- ========================================================================= -->
-    <!-- <ol id="ol">
+<!-- <ol id="ol">
         <li>0</li>
         <li>1</li>
         <li>2</li>
@@ -215,8 +215,8 @@
         liLast.innerHTML = 'append';
         ol.append(liLast); // вставить liLast в конец <ol>
     </script> -->
-    <!-- ========================================================================= -->
-    <!-- <div id="div"></div>
+<!-- ========================================================================= -->
+<!-- <div id="div"></div>
     <script>
         let div = document.getElementById('div')
         div.innerHTML = '<strong>Привет</strong>';
@@ -224,8 +224,8 @@
         div.insertAdjacentHTML('beforebegin', '<p>Привет</p>');
         div.insertAdjacentHTML('afterend', '<p>Пока</p>');
     </script> -->
-    <!-- ========================================================================= -->
-    <!-- <ol id="elem">
+<!-- ========================================================================= -->
+<!-- <ol id="elem">
         <li>Привет</li>
         <li>Мир</li>
     </ol>
@@ -237,8 +237,220 @@
         }
         clear(elem); // очищает список
     </script> -->
-    <!-- ========================================================================= -->
+<!-- ========================================================================= -->
 
+<!-- <div id="container"></div>
+
+    <script>
+        let data = {
+            "Рыбы": {
+                "форель": {},
+                "лосось": {}
+            },
+
+            "Деревья": {
+                "Огромные": {
+                    "секвойя": {},
+                    "дуб": {}
+                },
+                "Цветковые": {
+                    "яблоня": {},
+                    "магнолия": {}
+                }
+            }
+        };
+
+        function createTree(container, obj) {
+            container.append(createTreeDom(obj));
+        }
+        function createTreeDom(obj) {
+            if (!Object.keys(obj).length) return;
+            let ul = document.createElement('ul');
+            for (let key in obj) {
+                let li = document.createElement('li')
+                li.innerHTML = key;
+                ul.append(li)
+
+                let children = createTreeDom(obj[key]);
+                if (children) {
+                    ul.append(children)
+                }
+            }
+            return ul;
+        }
+
+        let container = document.getElementById('container')
+        createTree(container, data)
+
+    </script> -->
+<!-- ========================================================================= -->
+
+<!-- <ul id="list">
+        <li>Животные
+            <ul>
+                <li>Млекопитающие
+                    <ul>
+                        <li>Коровы</li>
+                        <li>Ослы</li>
+                        <li>Собаки</li>
+                        <li>Тигры</li>
+                    </ul>
+                </li>
+                <li>Другие
+                    <ul>
+                        <li>Змеи</li>
+                        <li>Птицы</li>
+                        <li>Ящерицы</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>Рыбы
+            <ul>
+                <li>Аквариумные
+                    <ul>
+                        <li>Гуппи</li>
+                        <li>Скалярии</li>
+                    </ul>
+                </li>
+                <li>Морские
+                    <ul>
+                        <li>Морская форель</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul> -->
+
+<!-- <script>
+        const list = document.getElementById('list');
+        function listCount(list) {
+            let sum = 0;
+            let next;
+            for (let i = 0; i < list.children.length; i++) {
+                // list.innerHTML += `[${list.children.length}]`;
+                next = list.children[i]
+                next.innerHTML += `[${list.children.length}]`
+
+                let children = listCount(next)
+            }
+            console.log(list.children.length);
+            console.log(list.nex);
+            return list;
+        }
+        listCount(list)
+    </script> -->
+
+<!-- <script>
+        const list = document.getElementById('list');
+        let lis = list.getElementsByTagName('li')
+        console.log(lis);
+        for (const li of lis) {
+            let liCount = li.getElementsByTagName('li').length
+            console.log(liCount);
+            if (!liCount) continue;
+            // li.firstChild.data += `[${liCount}]`;
+            li.firstChild.textContent += `[${liCount}]`;
+        }
+    </script> -->
+
+<!-- ========================================================================= -->
+
+
+<!-- ========================================================================= -->
+<!-- </body> -->
+
+<!-- <body>
+    <style>
+        .hours {
+            color: red;
+        }
+
+        .minutes {
+            color: green;
+        }
+
+        .seconds {
+            color: blue;
+        }
+    </style>
+    <div class="time">
+        <span class="hours">hh</span>:<span class="minutes">mm</span>:<span class="seconds">ss</span>
+    </div>
+    <input type="button" onclick="clockStart()" value="Старт">
+    <input type="button" onclick="clockStop()" value="Стоп">
+
+    <script>
+        let time = document.querySelector('.time');
+        let timer;
+
+        // let hour;
+        // let minute;
+        // let second;
+
+
+        // let formatter = new Intl.DateTimeFormat("ru", {
+        //     hour: "numeric",
+        //     minute: "numeric",
+        //     second: "numeric"
+        // });
+
+        // time.innerHTML = 'hh:mm:ss';
+
+        // function clockStart() {
+        // timer = setInterval(() => {
+        //     let date = new Date();
+        //     time.innerHTML = formatter.format(date)
+        // }, 1000)
+        // timer = setInterval(() => {
+        //     let hour = new Date().getHours();
+        //     let minute = new Date().getMinutes();
+        //     let second = new Date().getSeconds();
+        //     let date = `${hour}:${minute}:${second}`
+        //     time.innerHTML = formatter.format(date)
+        // }, 1000)
+        // }
+        function clockStart() {
+            timer = setInterval(updateTime, 1000);
+            updateTime()
+        }
+
+        function updateTime() {
+            let date = new Date();
+
+            let hours = formatTime(date.getHours());
+            let minutes = formatTime(date.getMinutes());
+            let seconds = formatTime(date.getSeconds());
+
+            document.querySelector('.hours').innerHTML = hours;
+            document.querySelector('.minutes').innerHTML = minutes;
+            document.querySelector('.seconds').innerHTML = seconds;
+        }
+
+        function formatTime(number) {
+            return number < 10 ? '0' + number : number;
+        }
+
+
+
+        function clockStop() {
+            clearInterval(timer)
+            timer = null;
+        }
+    </script>
+</body> -->
+
+<body>
+    <ul id="ul">
+        <li id="one">1</li>
+        <li id="two">4</li>
+    </ul>
+
+    <script>
+        let one = document.getElementById('one');
+        // one.insertAdjacentHTML('beforebegin', '<li>2</li><li>3</li>');
+
+    </script>
 </body>
 
 </html>
