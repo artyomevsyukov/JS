@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- <style>
+        body {
+            margin: 25px;
+        }
+
+        .time {
+            margin-bottom: 20px;
+        }
+
+        .hours {
+            color: red;
+        }
+
+        .minutes {
+            color: blue;
+        }
+
+        .seconds {
+            color: green;
+        }
+    </style> -->
+</head>
+
+<!-- <body>
+    <div class="time">
+        <span class="hours">hh</span>:<span class="minutes">mm</span>:<span class="seconds">ss</span>
+    </div>
+    <button onclick="clockStart()">Start</button>
+    <button onclick="clockStop()">Stop</button>
+
+    <script>
+        let time = document.querySelector('.time');
+        let clockTimer;
+
+        function clockStart() {
+            clockTimer = setInterval(updateTime, 1000);
+            updateTime();
+        }
+
+        function updateTime() {
+            let date = new Date();
+
+            let hours = formatTime(date.getHours());
+            let minutes = formatTime(date.getMinutes());
+            let seconds = formatTime(date.getSeconds());
+
+            document.querySelector('.hours').innerHTML = hours;
+            document.querySelector('.minutes').innerHTML = minutes;
+            document.querySelector('.seconds').innerHTML = seconds;
+
+        }
+
+        function formatTime(number) {
+            return number < 10 ? '0' + number : number;
+        }
+        function clockStop() {
+            clearInterval(clockTimer)
+            clockTimer = null;
+        }
+    </script>
+</body> -->
+
+<!-- <body>
+    <script>
+        let ul = document.createElement('ul');
+        document.body.append(ul);
+
+
+        while (true) {
+            let data = prompt("Введите текст для элемента списка", "");
+
+            if (!data) {
+                break;
+            }
+
+
+            let li = document.createElement('li');
+            li.textContent = data;
+            ul.append(li)
+        }
+
+
+    </script>
+</body> -->
+
+<body>
+    <div id="container"></div>
+    <script>
+        let data = {
+            "Рыбы": {
+                "форель": {},
+                "лосось": {}
+            },
+
+            "Деревья": {
+                "Огромные": {
+                    "секвойя": {},
+                    "дуб": {}
+                },
+                "Цветковые": {
+                    "яблоня": {},
+                    "магнолия": {}
+                }
+            }
+        };
+        for (const key of Object.keys(data)) {
+            console.log(key);
+        }
+        // function createTree(container, data) {
+        //     container.append(createTreeDom(data))
+
+
+        //     // if (!li) continue;
+        // }
+        // function createTreeDom(data) {
+        //     if (!Object.keys(data).length) return;
+        //     let li = document.createElement('li');
+        //     for (const key in Object.keys(data)) {
+        //         console.log(key);
+
+        //     }
+        // }
+        // createTreeDom(data)
+
+        // let container = document.getElementById('container');
+        // createTree(container, data); // создаёт дерево в контейнере
+
+    </script>
+</body>
+
+</html>
