@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table id="table">
+        <tr>
+            <td>Ваш возраст:</td>
+            <td>
+                <label>
+                    <input type="radio" name="age" value="young" checked> младше 18
+                </label>
+                <label>
+                    <input type="radio" name="age" value="mature"> от 18 до 50
+                </label>
+                <label>
+                    <input type="radio" name="age" value="senior"> старше 60
+                </label>
+            </td>
+        </tr>
+    </table>
+
+    <script>
+        // let table = document.getElementById('table');
+        // let inputs = table.querySelectorAll('input[name="age"]');
+        let inputs = table.querySelectorAll('#table input[name="age"]');
+        let label = document.querySelector
+
+        for (let input of inputs) {
+            input.parentElement.style.backgroundColor = 'red'; // Устанавливаем красный фон для каждого input
+            console.log('name: ' + input.name + ', value: ' + input.value + ', checked: ' + input.checked);
+        }
+    </script>
+</body>
+
+</html>

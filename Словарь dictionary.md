@@ -38,6 +38,7 @@ chaining - формирование цепочки, сцеление, связв
 template - шаблон
 partia - опциональные
 required - обязаельные
+execute - выполнять
 
 //рекурсия
 execution context - контекст выполнения
