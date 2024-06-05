@@ -233,32 +233,32 @@
 // Object.getPrototypeOf(rabbit).sayHi(); //undefined
 // rabbit.__proto__.sayHi(); //undefined
 
-const PapperBook = function (title, author) {
-    // function PapperBook(title, author) {
-    this.author = author;
-    this.title = title;
-    this.isRead = false;
-    this.color = "Blue";
-    this.translate = function () {
-        console.log("tranlate book");
-    };
-};
+// const PapperBook = function (title, author) {
+//     // function PapperBook(title, author) {
+//     this.author = author;
+//     this.title = title;
+//     this.isRead = false;
+//     this.color = "Blue";
+//     this.translate = function () {
+//         console.log("tranlate book");
+//     };
+// };
 
-PapperBook.prototype.isRead = true;
-PapperBook.prototype.cover = "Paper";
-PapperBook.prototype.read = function () {
-    this.isRead = true;
-};
-PapperBook.prototype.wishful = function () {
-    this.wishful = true;
-};
-PapperBook.prototype.translate = function () {
-    console.log("prototype translate book");
-};
+// PapperBook.prototype.isRead = true;
+// PapperBook.prototype.cover = "Paper";
+// PapperBook.prototype.read = function () {
+//     this.isRead = true;
+// };
+// PapperBook.prototype.wishful = function () {
+//     this.wishful = true;
+// };
+// PapperBook.prototype.translate = function () {
+//     console.log("prototype translate book");
+// };
 
-const lord = new PapperBook("Lord", "Tolkien");
-console.log(lord.title);
-lord.translate();
+// const lord = new PapperBook("Lord", "Tolkien");
+// console.log(lord.title);
+// lord.translate();
 
 // class BookClass {
 //     constructor(title, author) {
@@ -281,3 +281,23 @@ lord.translate();
 // const lordClass = new BookClass("Lord", "Tolkien");
 // console.log(lordClass.title);
 // lordClass.translate();
+
+const PapperBook = function (title, author) {
+    this.author = author;
+    this.title = title;
+    this.isRead = false;
+    this.color = "Blue";
+    this.translate = function () {
+        console.log("tranlate book");
+    };
+};
+PapperBook.prototype.Read = function () {
+    this.isRead = true;
+};
+PapperBook.hello = function () {
+    console.log("Hello");
+};
+PapperBook.stat = 5;
+const book = new PapperBook("Lord", "Tolkien");
+console.log(book);
+console.log(book.__proto__);

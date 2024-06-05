@@ -389,9 +389,11 @@
 // alert(article.title); // Сегодняшний дайджест
 // =======================================================================================
 class Article {
+    category = science;
     constructor(title, date) {
         this.title = title;
         this.date = date;
+        this.color = blue;
     }
 
     //  static createTodays(title = "Сегодняшний дайджест") {
