@@ -388,32 +388,58 @@
 
 // alert(article.title); // Сегодняшний дайджест
 // =======================================================================================
-class Article {
-    category = science;
-    constructor(title, date) {
-        this.title = title;
-        this.date = date;
-        this.color = blue;
-    }
+// class Article {
+//     category = science;
+//     constructor(title, date) {
+//         this.title = title;
+//         this.date = date;
+//         this.color = blue;
+//     }
 
-    //  static createTodays(title = "Сегодняшний дайджест") {
-    //         // помним, что this = Article
-    //         return new this(title, new Date());
-    //     }
-    // }
-    createTodays2(title = "Сегодняшний дайджест") {
-        return console.log(title, new Date());
-    }
-    static createTodays(title) {
-        // помним, что this = Article
-        return new this(title, new Date());
-    }
-}
+//     //  static createTodays(title = "Сегодняшний дайджест") {
+//     //         // помним, что this = Article
+//     //         return new this(title, new Date());
+//     //     }
+//     // }
+//     createTodays2(title = "Сегодняшний дайджест") {
+//         return console.log(title, new Date());
+//     }
+//     static createTodays(title) {
+//         // помним, что this = Article
+//         return new this(title, new Date());
+//     }
+// }
 
-let article = Article.createTodays("djjherfwef");
+// let article = Article.createTodays("djjherfwef");
 
-new Article().createTodays2("12312313123");
+// new Article().createTodays2("12312313123");
 
-console.log(article.title, article.date); // Сегодняшний дайджест
-// console.log(article.date); // Сегодняшний дайджест
+// console.log(article.title, article.date); // Сегодняшний дайджест
+// // console.log(article.date); // Сегодняшний дайджест
 // =======================================================================================
+
+export class Grid {
+    tiles = [];
+    selectTiles = null;
+    constructor(wrap, matrix) {
+        this.wrap = wrap;
+        this.createTiles(matrix);
+    }
+    createTiles(matrix) {}
+    createTile(row, colum, value) {
+        const tile = new Tile(
+            this.wrap,
+            row,
+            colum,
+            value,
+            this.handlTileCklick
+        );
+        this.tiles.push(tile);
+    }
+    handlTileCklick = (row, colum) => {
+        if (!this.selectTiles) {
+            this.selectTiles(row, colum);
+            return;
+        }
+    };
+}
