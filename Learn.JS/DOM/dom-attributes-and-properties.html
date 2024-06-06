@@ -1,7 +1,44 @@
 <!DOCTYPE HTML>
 <html>
 
-<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 15px;
+            flex: auto;
+
+        }
+
+        .atr[data-test-atr='1'] {
+            color: red;
+        }
+
+        .atr[data-test-atr='2'] {
+            color: green;
+        }
+
+        .atr[data-test-atr='3'] {
+            color: blue;
+        }
+
+        .atr[data-status='new'] {
+            background-color: rgb(216, 168, 104);
+        }
+
+        .atr[data-status='work'] {
+            background-color: rgb(56, 146, 206);
+        }
+
+        .atr[data-status='сompleted'] {
+            background-color: rgb(60, 151, 95);
+        }
+    </style>
+</head>
+<!-- <body>
 
     <a name="list">The list:</a>
     <ul>
@@ -21,12 +58,40 @@
             el.style.color = 'orange';  
         })
     </script> -->
-    <!-- <script>
+<!-- <script>
         let selector = 'a[href*="://"]:not([href^="http://internal.com"])';
         let links = document.querySelectorAll(selector);
 
         links.forEach(link => link.style.color = 'orange');
     </script> -->
+
+<!-- </body> -->
+
+
+<body style="font-size: 26px">
+    dgdfgdg
+    <div id="test" class="atr" data-test-atr="1">asdfsdf</div>
+    <div class="atr" data-test-atr="2">123sdf234234sdf</div>
+    <div class="atr" data-test-atr="3" data-status="work">m,jk;ljlguk</div>
+    <div class="atr" data-test-atr="2" data-status="new">m,jk;ljlguk</div>
+    <script>
+        let computedStyle = getComputedStyle(document.body);
+
+        let select = Array.from(document.querySelectorAll('[data-test-atr]'))
+        console.log(select);
+        let i = 1;
+        select.map(e => {
+            if (!e.hasAttribute('data-status')) {
+                e.setAttribute('data-status', 'new')
+
+            }
+            else { e.setAttribute('data-status', 'сompleted') }
+
+            // e.setAttribute('data-number', i++);
+            // todo
+            e.dataset.number = i++;
+        })
+    </script>
 
 </body>
 
