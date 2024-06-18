@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        /* .hide {
+            display: none;
+        } */
+
+        .open1 {
+            display: '';
+            /* color: red; */
+        }
+
+        /* .btn {
+            cursor: pointer;
+        } */
+
+        .menu ul {
+            display: none;
+        }
+
+        .menu.open1 ul {
+            margin: 0;
+            list-style: none;
+            padding-left: 20px;
+            display: block;
+        }
+
+        .menu ul {}
+
+        .title {
+            cursor: pointer;
+        }
+
+        .menu .title::before {
+            content: '▶ ';
+            font-size: 80%;
+            color: green;
+        }
+
+        .menu.open1 .title::before {
+            content: '▼ ';
+        }
+
+        /* .title ::before {
+            content: '▼ ';
+            font-size: 80%;
+            color: rgb(28, 15, 203);
+        } */
+    </style> -->
+</head>
+
+<!-- <body>
+    <input type="button" id="hider" value="Нажмите, чтобы спрятать текст" />
+    <button type="button" id="hiderButton">button</button>
+    <input type="button" onclick="this.hidden=true" value="Нажми, чтобы спрятать">
+    <div id="text">Текст</div>
+
+    <script>
+        let hider = document.getElementById('hider')
+        let hiderButton = document.getElementById('hiderButton')
+
+
+        function hide(event) {
+            event.target.hidden = true;
+        }
+        // function show(event) {
+        //     hider.hidden = false
+        // }
+        function show(node) {
+            node.hidden = false
+        }
+
+        hider.addEventListener('click', () => {
+            console.log(text);
+            text.hidden = true
+            // text.style.display = 'none';
+        })
+        hider.addEventListener('click', hide);
+        hiderButton.addEventListener('click', () => show(hider)); 
+    </script>
+</body> -->
+sdfs
+
+<body>
+
+    <!-- <span class="btn show-btn" onclick="hide()">▶</span> <span class="btn hide-btn hide" onclick="show()">▼</span> -->
+    <div id="sweeties" class="menu">
+        <span class="title" onclick="open1()">Сладости (нажми меня)!</span>
+        <ul class="list open1">
+            <li>Пирожное</li>
+            <li>Пончик</li>
+            <li>Мёд</li>
+        </ul>
+    </div>
+    <script>
+        let showBtn = document.querySelector('.show-btn')
+        let hideBtn = document.querySelector('.hide-btn')
+        // let list = document.querySelector('.list')
+        let menu = document.querySelector('.menu')
+
+        function open1() {
+            // list.classList.toggle('open1');
+            menu.classList.toggle('open1');
+
+        }
+
+        // function show() {
+        //     list.classList.toggle('hide');
+        //     showBtn.classList.toggle('hide');
+        //     hideBtn.classList.toggle('hide');
+        // }
+        // function hide() {
+        //     list.classList.toggle('hide');
+        //     hideBtn.classList.toggle('hide');
+        //     showBtn.classList.toggle('hide');
+
+        // }
+    </script>
+</body>
+
+
+
+</html>
