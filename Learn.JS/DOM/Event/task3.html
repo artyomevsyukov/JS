@@ -28,60 +28,97 @@
 
 <body>
 
-    <!-- <table id="grid"> -->
     <table id="table">
         <thead>
             <tr>
                 <th data-type="number">Возраст</th>
                 <th data-type="string">Имя</th>
+                <th data-type="number">Зарплата</th>
+                <th data-type="string">Должность</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>5</td>
                 <td>Вася</td>
+                <td>500</td>
+                <td>Тестировщик</td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Петя</td>
+                <td>2234</td>
+                <td>Программист</td>
             </tr>
             <tr>
                 <td>12</td>
                 <td>Женя</td>
+                <td>22222</td>
+                <td>Начальник</td>
             </tr>
             <tr>
                 <td>9</td>
                 <td>Маша</td>
+                <td>954</td>
+                <td>Менеджер</td>
             </tr>
             <tr>
                 <td>1</td>
                 <td>Илья</td>
+                <td>100</td>
+                <td>Уборщик</td>
             </tr>
         </tbody>
     </table>
 
+
     <script>
-        // const grid = document.getElementById('grid');
-        // grid.addEventListener('click', function (event) {
-        //     let sortedRows = Array.from(grid.rows);
+        const table = document.getElementById('table');
+        class SortedTable {
+            constructor(elem) {
+                this.elem = elem;
+                this.sortDirection = {};
+                elem.onclick = this.onClick.bind(this);
 
-        //     if (event.target.dataset.type == 'number') {
-        //         console.log('number');
+            }
 
-        //         sortedRows.slice(1).sort((rowA, rowB) => rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1);
-        //         grid.tBodies[0].append(...sortedRows);
+            sort(columnIndex, isNumeric) {
+                this.sortDirection[columnIndex] = !this.sortDirection[columnIndex];
 
-        //     }
-        //     if (event.target.dataset.type == 'string') {
-        //         console.log('string');
-        //     }
-        // })
+                let rowsArray = Array.from(this.elem.tBodies[0].rows);
 
-        let sortedRows = Array.from(table.rows)
-            .slice(1)
-            .sort((rowA, rowB) => rowA.cells[0].innerHTML > rowB.cells[0].innerHTML ? 1 : -1);
+                rowsArray
+                    .sort((rowA, rowB) => {
+                        let valueA = rowA.cells[columnIndex].innerHTML;
+                        let valueB = rowB.cells[columnIndex].innerHTML;
+                        if (isNumeric) {
+                            return this.sortDirection[columnIndex] ? valueA - valueB : valueB - valueA;
+                        } else {
+                            return this.sortDirection[columnIndex] ? valueA.localeCompare(valueB) : valueB.localeCompare(valueA);
+                        }
+                    });
 
-        table.tBodies[0].append(...sortedRows); 
+                this.render(rowsArray)
+            }
+            render(sortedRows) {
+                this.elem.tBodies[0].append(...sortedRows);
+
+
+            }
+            onClick(event) {
+                if (event.target.tagName === 'TH') {
+                    let isNumeric = event.target.dataset.type == "number";
+                    let columnIndex = event.target.cellIndex;
+                    console.log(isNumeric);
+
+                    this.sort(columnIndex, isNumeric)
+                }
+
+            }
+        }
+        new SortedTable(table);
+
+
     </script>
 
 </body>
