@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .menu li {
+            display: inline-block;
+            margin: 0;
+        }
+
+        .menu>li a {
+            display: inline-block;
+            margin: 0 2px;
+            outline: none;
+            text-align: center;
+            text-decoration: none;
+            font: 14px/100% sans-serif;
+            padding: .5em 2em .55em;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+            border-radius: .5em;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+            color: #d9eef7;
+            border: solid 1px #0076a3;
+            background: #0095cd;
+        }
+
+        .menu>li:hover a {
+            text-decoration: none;
+            background: #007ead;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu" class="menu">
+        <li><a href="/html">HTML</a></li>
+        <li><a href="/javascript">JavaScript</a></li>
+        <li><a href="/css">CSS</a></li>
+    </ul>
+    <br>
+    <input value="Фокус работает" onfocus="value=''">
+    <input onmousedown="return false" onfocus="this.value=''" value="Кликни меня">
+    <br>
+    <p>Правый клик вызывает меню документа (добавлена проверка event.defaultPrevented)</p>
+    <button id="elem">Правый клик вызывает меню кнопки</button>
+
+    <script>
+        menu.addEventListener('click', function (event) {
+            event.preventDefault()
+            if (event.target.nodeName != 'A') return;
+            let href = event.target.getAttribute('href');
+            console.log(href);
+        })
+        menu.oncontextmenu = function (event) {
+            event.preventDefault()
+        }
+
+
+        // menu.onclick = function (event) {
+        //     if (event.target.nodeName != 'A') return;
+
+        //     let href = event.target.getAttribute('href');
+        //     console.log(href); // может быть подгрузка с сервера, генерация интерфейса и т.п.
+
+        //     return false; // отменить действие браузера (переход по ссылке)
+        // };
+
+    </script>
+    <script>
+        elem.oncontextmenu = function (event) {
+            event.preventDefault();
+            alert("Контекстное меню кнопки");
+        };
+
+        document.oncontextmenu = function (event) {
+            if (event.defaultPrevented) return;
+
+            event.preventDefault();
+            alert("Контекстное меню документа");
+        };
+    </script>
+</body>
+
+</html>
