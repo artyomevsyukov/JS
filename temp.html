@@ -1,55 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
 <body>
-
-  <div id="container"></div>
+  <button id="elem">Нажми меня</button>
 
   <script>
-    let data = {
-      "Рыбы": {
-        "форель": {},
-        "лосось": {}
-      },
-
-      "Деревья": {
-        "Огромные": {
-          "секвойя": {},
-          "дуб": {}
-        },
-        "Цветковые": {
-          "яблоня": {},
-          "магнолия": {}
+    class Menu {
+      handleEvent(event) {
+        switch (event.type) {
+          case 'mousedown':
+            elem.innerHTML = "Нажата кнопка мыши";
+            break;
+          case 'mouseup':
+            elem.innerHTML += "...и отжата.";
+            break;
         }
       }
-    };
-
-    function createTree(container, obj) {
-      container.append(createTreeDom(obj));
     }
 
-    function createTreeDom(obj) {
-      if (!Object.keys(obj).length) return;
+    // let menu = new Menu()
+    // elem.addEventListener('mousedown', menu);
+    // elem.addEventListener('mouseup', menu);
 
-      let ul = document.createElement('ul');
-
-      for (let key in obj) {
-        let li = document.createElement('li');
-        li.innerHTML = key;
-        let children = createTreeDom(obj[key])
-        console.log(li);
-        if (children) {
-          li.append(children);
-        }
-        ul.append(li);
-      }
-      return ul
-    }
-
-    const container = document.getElementById('container');
-    createTree(container, data);
+    elem.addEventListener('mousedown', new Menu());
+    elem.addEventListener('mouseup', new Menu());
   </script>
-
 </body>
 
 </html>

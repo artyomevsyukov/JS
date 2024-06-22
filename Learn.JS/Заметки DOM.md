@@ -120,3 +120,60 @@ parentElement – родитель-элемент.
 И, напоследок, давайте упомянем ещё один метод, который проверяет наличие отношений между предком и потомком:
 
 elemA.contains(elemB) вернёт true, если elemB находится внутри elemA (elemB потомок elemA) или когда elemA==elemB.
+
+<!-- ======================================================================================================== -->
+
+childNodes, firstChild, lastChild
+elem.hasChildNodes() Для проверки наличия дочерних узлов существует также специальная функция elem.hasChildNodes()
+
+DOM-коллекции живые
+
+# только элементы
+
+children – коллекция детей, которые являются элементами.
+firstElementChild, lastElementChild – первый и последний дочерний элемент.
+previousElementSibling, nextElementSibling – соседи-элементы.
+parentElement – родитель-элемент.
+
+# Поиск: getElement*, querySelector*
+
+let elements = document.querySelectorAll('ul > li:last-child');
+
+for (let elem of elements) {
+alert(elem.innerHTML); // "тест", "пройден"
+}
+
+## closest
+
+## matches
+
+Этот метод удобен, когда мы перебираем элементы (например, в массиве или в чём-то подобном) и пытаемся выбрать те из них, которые нас интересуют.
+
+Есть метод elem.matches(css), который проверяет, удовлетворяет ли элемент CSS-селектору.
+Метод elem.closest(css) ищет ближайшего по иерархии предка, соответствующему данному CSS-селектору. Сам элемент также включён в поиск.
+
+## querySelectorAll возвращает статическую коллекцию
+
+# Свойства узлов: тип, тег и содержимое
+
+Для того, чтобы узнать имя класса DOM-узла, вспомним, что обычно у объекта есть свойство constructor. Оно ссылается на конструктор класса, и в свойстве constructor.name содержится его имя:
+
+alert( document.body.constructor.name ); // HTMLBodyElement
+
+==============================================
+Свойство tagName есть только у элементов Element.
+Свойство nodeName определено для любых узлов Node:
+
+Тег: nodeName и tagName
+Получив DOM-узел, мы можем узнать имя его тега из свойств nodeName и tagName:
+
+Например:
+
+alert( document.body.nodeName ); // BODY
+alert( document.body.tagName ); // BODY
+
+# outerHTML: HTML элемента целиком
+
+Свойство outerHTML содержит HTML элемента целиком. Это как innerHTML плюс сам элемент.
+
+Посмотрим на пример:

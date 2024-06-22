@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #contents {
+            padding: 5px;
+            border: 1px green solid;
+        }
+    </style>
+</head>
+
+<body>
+    <fieldset id="contents">
+        <legend>#contents</legend>
+        <p>
+            Как насчёт того, чтобы прочитать <a href="https://wikipedia.org">Википедию</a> или посетить <a
+                href="https://w3.org"><i>W3.org</i></a> и узнать о современных стандартах?
+        </p>
+    </fieldset>
+
+    <!-- <script>
+        contents = document.getElementById('contents');
+        // contents.addEventListener('click', function (event) {
+
+        // })
+        contents.onclick = function (event) {
+            // event.preventDefault();
+            // let href = event.target.getAttribute('href');
+            // let href = event.target.closest('A')
+            let href = event.target.closest('a').getAttribute('href');
+            let isLeaving = confirm(`Leave for ${href}?`)
+            // if (isLeaving) {
+            //     // window.location.href = `${href}`;
+            //     console.log(href);
+            // } else {
+            //     return;
+            // }
+            if (!isLeaving) {
+                console.log("Отмена");
+                event.preventDefault();
+            }
+            // console.log("Переход ", href);
+        }
+    </script> -->
+    <script>
+        contents = document.getElementById('contents');
+        contents.onclick = function (event) {
+            let href = event.target.closest('a');
+            if (href) {
+                href.getAttribute('href');
+                let isLeaving = confirm(`Leave for ${href}?`);
+                if (!isLeaving) {
+                    console.log("Отмена");
+                    event.preventDefault();
+                }
+            }
+
+        }
+    </script>
+    <!-- <script>
+        contents.onclick = check.bind(contents);
+
+
+        function check(event) {
+
+            function handleLink(href) {
+                let isLeaving = confirm(`Leave for ${href}?`);
+                if (!isLeaving) return false;
+            }
+
+            let target = event.target.closest('a');
+
+            if (target && this.contains(target)) {
+                return handleLink(target.getAttribute('href'));
+            }
+        };
+    </script> -->
+
+
+</body>
+
+</html>
