@@ -1,55 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
 <body>
+  <h1>Содержание</h1>
 
-  <div id="container"></div>
+  <div class="contents">
+    <ul class="book">
+      <li class="chapter">Глава 1</li>
+      <li class="chapter">Глава 2</li>
+    </ul>
+  </div>
 
   <script>
-    let data = {
-      "Рыбы": {
-        "форель": {},
-        "лосось": {}
-      },
+    let chapter = document.querySelector('.chapter'); // LI
 
-      "Деревья": {
-        "Огромные": {
-          "секвойя": {},
-          "дуб": {}
-        },
-        "Цветковые": {
-          "яблоня": {},
-          "магнолия": {}
-        }
-      }
-    };
+    console.log(chapter.closest('.book')); // UL
+    console.log(chapter.closest('.contents')); // DIV
 
-    function createTree(container, obj) {
-      container.append(createTreeDom(obj));
-    }
-
-    function createTreeDom(obj) {
-      if (!Object.keys(obj).length) return;
-
-      let ul = document.createElement('ul');
-
-      for (let key in obj) {
-        let li = document.createElement('li');
-        li.innerHTML = key;
-        let children = createTreeDom(obj[key])
-        console.log(li);
-        if (children) {
-          li.append(children);
-        }
-        ul.append(li);
-      }
-      return ul
-    }
-
-    const container = document.getElementById('container');
-    createTree(container, data);
+    console.log(chapter.closest('h1')); // null (потому что h1 - не предок)
   </script>
-
 </body>
 
 </html>
