@@ -4,26 +4,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>sdfgsdg</title>
+
 </head>
 
 <body>
-  <h1>Содержание</h1>
+  <pre id="rabbit">
+        |\   /|
+         \|_|/
+         /. .\
+        =\_Y_/=
+         {>o<}
+      </pre>
 
-  <div class="contents">
-    <ul class="book">
-      <li class="chapter">Глава 1</li>
-      <li class="chapter">Глава 2</li>
-    </ul>
-  </div>
+  <button onclick="hide()">Hide()</button>
+  <script> // hide() будет вызван при щелчке на кнопке
 
-  <script>
-    let chapter = document.querySelector('.chapter'); // LI
+    function hide() {
+      let event = new CustomEvent("hide", {
+        cancelable: true // без этого флага preventDefault не сработает
+      });
 
-    console.log(chapter.closest('.book')); // UL
-    console.log(chapter.closest('.contents')); // DIV
+      if (!rabbit.dispatchEvent(event)) {
+        alert('Действие отменено обработчиком');
+      }
 
-    console.log(chapter.closest('h1')); // null (потому что h1 - не предок)
+      else {
+        rabbit.hidden = !rabbit.hidden;
+      }
+    }
+
+    rabbit.addEventListener('hide', function (event) {
+      if (confirm("Вызвать preventDefault?")) {
+        event.preventDefault();
+      }
+    });
   </script>
 </body>
 
