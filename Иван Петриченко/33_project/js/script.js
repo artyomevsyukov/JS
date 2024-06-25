@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             addForm: document.querySelector("form.add"),
             input: document.querySelector("form .adding__input"),
             btn: document.querySelector("form button"),
+            checBox: document.querySelector('form input[type="checkbox"]'),
         },
         deleteBtn: document.querySelectorAll(".delete"),
     };
@@ -113,22 +114,22 @@ document.addEventListener("DOMContentLoaded", () => {
     data.form.btn.addEventListener("click", (event) => {
         event.preventDefault();
         let value = data.form.input.value;
+
         if (value.length > 21) {
             value = value.slice(0, 20) + "...";
         }
+        if (data.form.checBox.checked) {
+            console.log("Добавляем любимый фильм");
+        }
         movieDB.movies.push(value);
-        console.log(data.form.input.value);
-        console.log(movieDB);
-        console.log("send");
         render();
     });
 
     //3
-    console.log(data.deleteBtn);
 
     data.movieList.list.addEventListener("click", (event) => {
         let item = event.target.closest("li");
-        console.log(item);
+        console.log("item ", item);
         if (item) {
             item.remove();
             // получить его индекс в массиве и удалить из массива
@@ -136,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    //
+    //4
+
     render();
 });
