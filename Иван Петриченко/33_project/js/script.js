@@ -111,7 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //3
     // =================================================================
     data.movieList.list.addEventListener("click", (event) => {
-        if (event.target.classList.contains("delete")) {
+        // if (event.target.classList.contains("delete")) {
+        if (event.target.matches("div.delete")) {
             let item = event.target.closest("li");
             let movieId = item.dataset.movieId;
 
