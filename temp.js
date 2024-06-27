@@ -32,4 +32,4 @@ console.log(newNumbers);
 numbers.c.x = 111;
 console.log(numbers);
 console.log(newNumbers);
-console.log(objAssign);
+console.log(as);
