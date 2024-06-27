@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setClock(".timer", dedline);
 
-    // Modal
+    // Modal 43-44 ========================================================
 
     const modal = document.querySelector(".modal"),
         modalcloseBtn = modal.querySelector(".modal__close");
@@ -152,5 +152,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const modalTimerId = setTimeout(openModal, 5000);
+    const modalTimerId = setTimeout(openModal, 15000);
 });
