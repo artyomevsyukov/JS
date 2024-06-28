@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // document.addEventListener('keydown', handler)
+        // function handler(e) {
+
+        //     function runOnKeys(func, ...code) {
+
+        // }
+        // }
+
+        function cons() {
+            console.log(`Нажаты клавиши`);
+        }
+        function runOnKeys(func, ...code) {
+            let pressed = new Set();
+            document.addEventListener('keydown', (e) => {
+                if ([...code].includes(e.code)) {
+                    pressed.add(e.code)
+                    console.log(pressed);
+
+                    if (code.every(item => pressed.has(item))) {
+                        console.log("Все клавиши нажаты");
+                        func();
+                    }
+                }
+            })
+            document.addEventListener('keyup', (e) => {
+                if (pressed.has(e.code)) {
+                    pressed.delete(e.code)
+                }
+                console.log(pressed);
+            })
+        }
+
+        // runOnKeys(
+        //     () => alert("Привет!"),
+        //     "KeyQ",
+        //     "KeyW"
+        // );
+        runOnKeys(
+            cons,
+            "KeyQ",
+            "KeyW"
+        );
+    </script>
+</body>
+
+</html>

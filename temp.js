@@ -1,35 +1,33 @@
+"use strict";
+// function showThis(a, b) {
+//     console.log(this);
+//     function sum() {
+//         console.log(this);
+//         return a + b;
+//     }
+//     console.log(sum());
+// }
+// showThis(10, 4);
+
 const obj = {
-    name: "Bogdan",
-    age: 33,
-};
-
-function copy(mainObj) {
-    const copyObj = {};
-
-    for (let key in mainObj) {
-        copyObj[key] = mainObj[key];
-    }
-    return copyObj;
-}
-
-console.log(copy(obj));
-
-const numbers = {
-    a: 2,
-    b: 3,
-    c: {
-        x: 7,
-        y: 10,
+    a: 5,
+    b: 10,
+    c: this,
+    sum() {
+        console.log(this);
+        console.log(this.a + this.b);
+        const show = () => {
+            console.log("sfdsf", this);
+        };
+        show();
+        function lostThis() {
+            console.log("lostThis bindThis: ", this.a + this.b);
+        }
+        lostThis.call(obj);
+        // let bindThis = lostThis.bind(obj);
+        // bindThis();
     },
 };
-// let newNumbers = copy(numbers);
-let newNumbers = { ...numbers };
-let objAssign = Object.assign({}, numbers);
-numbers.a = 10;
-console.log(numbers);
-console.log(newNumbers);
 
-numbers.c.x = 111;
-console.log(numbers);
-console.log(newNumbers);
-console.log(as);
+obj.sum(3, 4);
+// console.log(obj.c);

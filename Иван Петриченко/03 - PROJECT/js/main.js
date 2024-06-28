@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Timer 41 =============================================================================
 
-    let dedline = "2024-7-2";
+    let dedline = "2024-6-29";
 
     function getTimeRemaining(endTime) {
         const t = Date.parse(endTime) - Date.now(),
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function updateClock() {
             const t = getTimeRemaining(endtime);
-
+            // console.log(t.total);
             days.innerHTML = getZero(t.days);
             hours.innerHTML = getZero(t.hours);
             minutes.innerHTML = getZero(t.minutes);
@@ -109,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function closeModal() {
         modal.classList.toggle("show");
         document.body.style.overflow = "";
+        window.removeEventListener("scroll", showModalbySroll);
     }
 
     document.addEventListener("click", (e) => {
@@ -124,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
             closeModal();
         }
 
-        console.log(target);
+        // console.log(target);
     });
 
     modal.addEventListener("click", (e) => {
@@ -144,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (
             // window.pageYOffset
             // window.scrollY
-            window.pageYOffset + document.documentElement.clientHeight >=
+            window.scrollY + document.documentElement.clientHeight >=
             document.documentElement.scrollHeight
         ) {
             openModal();
@@ -152,5 +153,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const modalTimerId = setTimeout(openModal, 15000);
+    const modalTimerId = setTimeout(openModal, 5000);
 });
