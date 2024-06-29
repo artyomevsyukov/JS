@@ -1,13 +1,13 @@
 "use strict";
-// function showThis(a, b) {
-//     console.log(this);
-//     function sum() {
-//         console.log(this);
-//         return a + b;
-//     }
-//     console.log(sum());
-// }
-// showThis(10, 4);
+function showThis(a, b) {
+    console.log(this);
+    function sum() {
+        console.log(this);
+        return a + b;
+    }
+    console.log(sum());
+}
+showThis(10, 4);
 
 const obj = {
     a: 5,
