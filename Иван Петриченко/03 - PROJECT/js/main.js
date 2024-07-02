@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Timer 41 =============================================================================
 
-    let dedline = "2024-6-29";
+    let dedline = "2025-6-29";
 
     function getTimeRemaining(endTime) {
         const t = Date.parse(endTime) - Date.now(),
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // const modalTimerId = setTimeout(openModal, 5000);
+    const modalTimerId = setTimeout(openModal, 25000);
 
     // Menu cards
 
@@ -233,4 +233,85 @@ document.addEventListener("DOMContentLoaded", () => {
         ".menu .container",
         "menu__item"
     ).render();
+
+    // Forms
+
+    const forms = document.querySelectorAll("form");
+
+    const message = {
+        loading: "Загрузка",
+        success: "Спасибо! Скоро мы с вами свяжемся",
+        failure: "Что-то пошло не так...",
+    };
+
+    forms.forEach((item) => {
+        postData(item);
+    });
+    // Обычный формат
+    // function postData(form) {
+    //     form.addEventListener("submit", (e) => {
+    //         e.preventDefault();
+
+    //         const statusMessage = document.createElement("div");
+    //         statusMessage.classList.add("status");
+    //         statusMessage.textContent = message.loading;
+    //         form.append(statusMessage);
+
+    //         const request = new XMLHttpRequest();
+    //         request.open("POST", "server.php");
+
+    //         // request.setRequestHeader("Content-type", "multiform/form-data");
+    //         const formData = new FormData(form);
+
+    //         request.send(formData);
+
+    //         request.addEventListener("load", () => {
+    //             if (request.status === 200) {
+    //                 console.log(request.response);
+    //                 statusMessage.textContent = message.success;
+    //                 form.reset();
+    //                 setTimeout(() => statusMessage.remove(), 3000);
+    //             } else {
+    //                 statusMessage.textContent = message.failure;
+    //             }
+    //         });
+    //     });
+    // }
+    // JSON формат
+    function postData(form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const statusMessage = document.createElement("div");
+            statusMessage.classList.add("status");
+            statusMessage.textContent = message.loading;
+            form.append(statusMessage);
+
+            const request = new XMLHttpRequest();
+            request.open("POST", "server.php");
+
+            request.setRequestHeader("Content-type", "aplication/json");
+            const formData = new FormData(form);
+
+            const object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+            const json = JSON.stringify(object);
+            console.log(json);
+
+            request.send(json);
+
+            request.addEventListener("load", () => {
+                if (request.status === 200) {
+                    console.log(request.response);
+                    statusMessage.textContent = message.success;
+                    form.reset();
+                    setTimeout(() => statusMessage.remove(), 3000);
+                } else {
+                    statusMessage.textContent = message.failure;
+                }
+            });
+        });
+    }
 });
