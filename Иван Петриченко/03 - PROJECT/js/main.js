@@ -43,14 +43,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Timer 41 =============================================================================
 
-    let dedline = "2025-6-29";
+    let dedline = "2024-6-29";
 
     function getTimeRemaining(endTime) {
-        const t = Date.parse(endTime) - Date.now(),
-            days = Math.floor(t / 1000 / 60 / 60 / 24),
-            hours = Math.floor((t / 1000 / 60 / 60) % 24),
-            minutes = Math.floor((t / 1000 / 60) % 60),
+        let days, hours, minutes, seconds;
+        const t = Date.parse(endTime) - Date.now();
+
+        if (t <= 0) {
+            days = 0;
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+        } else {
+            days = Math.floor(t / 1000 / 60 / 60 / 24);
+            hours = Math.floor((t / 1000 / 60 / 60) % 24);
+            minutes = Math.floor((t / 1000 / 60) % 60);
             seconds = Math.floor((t / 1000) % 60);
+        }
 
         return {
             total: t,
@@ -88,30 +97,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (t.total <= 0) {
                 clearInterval(timeInterval);
-                days.innerHTML = getZero(0);
-                hours.innerHTML = getZero(0);
-                minutes.innerHTML = getZero(0);
-                seconds.innerHTML = getZero(0);
+                // days.innerHTML = getZero(0);
+                // hours.innerHTML = getZero(0);
+                // minutes.innerHTML = getZero(0);
+                // seconds.innerHTML = getZero(0);
             }
         }
     }
 
     setClock(".timer", dedline);
 
-    // Modal 43-44 ========================================================
+    //todo modal// Modal 43-44 ========================================================
 
+    // const modal = document.querySelector(".modal"),
+    //     modalcloseBtn = modal.querySelector(".modal__close");
     const modal = document.querySelector(".modal"),
-        modalcloseBtn = modal.querySelector(".modal__close");
-    // modalTriger = document.querySelectorAll("[data-modal]");
+        modalcloseBtn = modal.querySelector("[data-close]"),
+        modalTriger = document.querySelectorAll("[data-modal]");
 
     function openModal() {
-        modal.classList.toggle("show");
+        // modal.classList.toggle("show");
+        modal.classList.add("show");
         document.body.style.overflow = "hidden";
         clearInterval(modalTimerId);
     }
 
     function closeModal() {
-        modal.classList.toggle("show");
+        modal.classList.remove("show");
         document.body.style.overflow = "";
         window.removeEventListener("scroll", showModalbySroll);
     }
@@ -122,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (target.matches("[data-modal]")) {
             openModal();
         }
-        if (target == modalcloseBtn) {
+        if (target.matches("[data-close]")) {
             closeModal();
         }
         if (e.key === "Escape") {
@@ -157,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    const modalTimerId = setTimeout(openModal, 25000);
+    const modalTimerId = setTimeout(openModal, 50000);
 
     // Menu cards
 
@@ -192,15 +204,15 @@ document.addEventListener("DOMContentLoaded", () => {
             // console.log("Со значением по умолчанию", this.classes);
 
             element.innerHTML = `
-                    <img src=${this.img} alt=${this.alt}>
-                    <h3 class="menu__item-subtitle">${this.title}</h3>
-                    <div class="menu__item-descr">${this.descr}</div>
-                    <div class="menu__item-divider"></div>
-                    <div class="menu__item-price">
-                        <div class="menu__item-cost">Цена:</div>
-                        <div class="menu__item-total"><span>${this.price}</span> руб/день</div>
-                    </div>
-            `;
+                        <img src=${this.img} alt=${this.alt}>
+                        <h3 class="menu__item-subtitle">${this.title}</h3>
+                        <div class="menu__item-descr">${this.descr}</div>
+                        <div class="menu__item-divider"></div>
+                        <div class="menu__item-price">
+                            <div class="menu__item-cost">Цена:</div>
+                            <div class="menu__item-total"><span>${this.price}</span> руб/день</div>
+                        </div>
+                `;
             this.parent.append(element);
         }
     }
@@ -234,12 +246,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "menu__item"
     ).render();
 
-    // Forms
+    // Forms =========================================================================================================
 
     const forms = document.querySelectorAll("form");
 
     const message = {
-        loading: "Загрузка",
+        loading: "img/form/spinner.svg",
+        loading: "img/form/spinner.svg",
         success: "Спасибо! Скоро мы с вами свяжемся",
         failure: "Что-то пошло не так...",
     };
@@ -282,10 +295,14 @@ document.addEventListener("DOMContentLoaded", () => {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            const statusMessage = document.createElement("div");
-            statusMessage.classList.add("status");
-            statusMessage.textContent = message.loading;
-            form.append(statusMessage);
+            const statusMessage = document.createElement("img");
+            statusMessage.src = message.loading;
+            statusMessage.style.cssText = `
+                    display: block;
+                    margin: 0 auto;
+                `;
+            // form.append(statusMessage);
+            form.insertAdjacentElement("afterend", statusMessage);
 
             const request = new XMLHttpRequest();
             request.open("POST", "server.php");
@@ -305,13 +322,39 @@ document.addEventListener("DOMContentLoaded", () => {
             request.addEventListener("load", () => {
                 if (request.status === 200) {
                     console.log(request.response);
-                    statusMessage.textContent = message.success;
+                    // statusMessage.textContent = message.success;
+                    showThanksModal(message.success);
                     form.reset();
-                    setTimeout(() => statusMessage.remove(), 3000);
+                    statusMessage.remove();
                 } else {
-                    statusMessage.textContent = message.failure;
+                    // statusMessage.textContent = message.failure;
+                    showThanksModal(message.failure);
                 }
             });
         });
+    }
+
+    function showThanksModal(message) {
+        const prevModalDialog = document.querySelector(".modal__dialog");
+
+        openModal();
+        prevModalDialog.classList.add("hide");
+
+        const thanksModal = document.createElement("div");
+        thanksModal.classList.add("modal__dialog");
+        thanksModal.innerHTML = `
+            <div class="modal__content">
+                <div data-close class="modal__close">&times;</div>
+                <div class="modal__title">${message}</div>
+            </div>
+            `;
+        // document.querySelector(".modal").append(thanksModal);
+        modal.append(thanksModal);
+        setTimeout(() => {
+            thanksModal.remove();
+            prevModalDialog.classList.add("show");
+            prevModalDialog.classList.remove("hide");
+            closeModal();
+        }, 4000);
     }
 });
