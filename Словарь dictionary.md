@@ -39,6 +39,9 @@ template - шаблон
 partia - опциональные
 required - обязаельные
 execute - выполнять
+unique - уникальный
+issue - вопрос
+permission - разрешения
 
 //рекурсия
 execution context - контекст выполнения
