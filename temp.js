@@ -18,19 +18,19 @@
 //3. console.log("Обработка промиса");
 //4. console.log("Таймаут");
 
-console.log(1);
+// console.log(1);
 
-setTimeout(() => console.log(2));
+// setTimeout(() => console.log(2));
 
-Promise.resolve().then(() => console.log(3));
+// Promise.resolve().then(() => console.log(3));
 
-Promise.resolve().then(() => setTimeout(() => console.log(4)));
+// Promise.resolve().then(() => setTimeout(() => console.log(4)));
 
-Promise.resolve().then(() => console.log(5));
+// Promise.resolve().then(() => console.log(5));
 
-setTimeout(() => console.log(6));
+// setTimeout(() => console.log(6));
 
-console.log(7);
+// console.log(7);
 
 //1,7
 //3,5
@@ -44,3 +44,25 @@ console.log(7);
 //
 //
 //
+
+class TestClass {
+    static hello() {
+        console.log("hello class");
+    }
+}
+TestClass.hello();
+
+const testClass = new TestClass();
+// testClass.hello();
+
+const Test = function (name) {
+    this.name = name;
+};
+Test.hello = function () {
+    console.log("hello proto static");
+};
+Test.hello();
+
+const testNew = new Test("Mike");
+console.log(testNew);
+console.log(testNew.name);
