@@ -1,0 +1,92 @@
+<!-- <!DOCTYPE html>
+
+<body>
+  <div contenteditable id="elem">Отредактируй <b>меня</b>, пожалуйста</div>
+
+  <script>
+    let observer = new MutationObserver((mutationRecords) => {
+      console.log(mutationRecords); // console.log(изменения)
+    });
+
+    // наблюдать за всем, кроме атрибутов
+    observer.observe(elem, {
+      childList: true, // наблюдать за непосредственными детьми
+      subtree: true, // и более глубокими потомками
+      characterDataOldValue: true, // передавать старое значение в колбэк
+    });
+  </script>
+</body> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="prism.css">
+
+</head>
+
+<body>
+    <button id="btn">Вставить код</button>
+    <div class="highlight-demo" id="highlight-demo">
+        <pre class="language-javascript"><code> let hello = "world!"; </code></pre>
+        <div>Ещё один:</div>
+        <div>
+            <pre class="language-css"><code>.class { margin: 5px; } </code></pre>
+        </div>
+    </div>
+    <div id="container"></div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/9000.0.1/prism.js"></script> -->
+    <script src="prism.js"></script>
+
+    <script>
+
+        console.log(Prism.highlightElem);
+        let observer = new MutationObserver(mutations => {
+
+            for (let mutation of mutations) {
+                // проверим новые узлы, есть ли что-то, что надо подсветить?
+                for (let node of mutation.addedNodes) {
+                    // отслеживаем только узлы-элементы, другие (текстовые) пропускаем
+                    if (!(node instanceof HTMLElement)) continue;
+
+                    // проверить, не является ли вставленный элемент примером кода
+                    if (node.matches('pre[class*="language-"]')) {
+                        Prism.highlightElement(node);
+                    }
+
+                    // или, может быть, пример кода есть в его поддереве?
+                    for (let elem of node.querySelectorAll('pre[class*="language-"]')) {
+                        Prism.highlightElement(elem);
+                    }
+                }
+            }
+
+        });
+
+        let container = document.getElementById('container');
+
+        observer.observe(container, { childList: true, subtree: true });
+
+        const btn = document.getElementById('btn');
+        btn.onclick = function () {
+
+            elem = document.createElement('div');
+            elem.classList.add('language-javascript')
+            elem.innerHTML = `Фрагмент кода ниже:
+             <pre class="language-javascript"><code> let hello = "world!"; </code></pre>
+                <div>Ещё один:</div>
+                <div>
+                    <pre class="language-css"><code>.class { margin: 5px; } </code></pre>
+                </div>
+            `;
+            container.append(elem)
+        }
+
+    </script>
+
+</body>
+
+</html>

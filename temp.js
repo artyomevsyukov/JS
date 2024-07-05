@@ -1,33 +1,46 @@
-"use strict";
-function showThis(a, b) {
-    console.log(this);
-    function sum() {
-        console.log(this);
-        return a + b;
-    }
-    console.log(sum());
-}
-showThis(10, 4);
+// setTimeout(function timeout() {
+//     console.log("Таймаут");
+// }, 0);
 
-const obj = {
-    a: 5,
-    b: 10,
-    c: this,
-    sum() {
-        console.log(this);
-        console.log(this.a + this.b);
-        const show = () => {
-            console.log("sfdsf", this);
-        };
-        show();
-        function lostThis() {
-            console.log("lostThis bindThis: ", this.a + this.b);
-        }
-        lostThis.call(obj);
-        // let bindThis = lostThis.bind(obj);
-        // bindThis();
-    },
-};
+// let p = new Promise(function (resolve, reject) {
+//     console.log("Создание промиса");
+//     resolve();
+// });
 
-obj.sum(3, 4);
-// console.log(obj.c);
+// p.then(function () {
+//     console.log("Обработка промиса");
+// });
+
+// console.log("Конец скрипта");
+
+//1. console.log("Создание промиса");
+//2. console.log("Конец скрипта");
+//3. console.log("Обработка промиса");
+//4. console.log("Таймаут");
+
+console.log(1);
+
+setTimeout(() => console.log(2));
+
+Promise.resolve().then(() => console.log(3));
+
+Promise.resolve().then(() => setTimeout(() => console.log(4)));
+
+Promise.resolve().then(() => console.log(5));
+
+setTimeout(() => console.log(6));
+
+console.log(7);
+
+//1,7
+//3,5
+//2,6,4
+//
+//
+//mic 3,5
+//
+//mac 2,6,4
+//
+//
+//
+//

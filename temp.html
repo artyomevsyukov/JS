@@ -1,36 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
 
 <body>
-  <button id="elem">Нажми меня</button>
+  <div contenteditable id="elem">Отредактируй <b>меня</b>, пожалуйста</div>
 
   <script>
-    class Menu {
-      handleEvent(event) {
-        switch (event.type) {
-          case 'mousedown':
-            elem.innerHTML = "Нажата кнопка мыши";
-            break;
-          case 'mouseup':
-            elem.innerHTML += "...и отжата.";
-            break;
-        }
-      }
-    }
+    let observer = new MutationObserver((mutationRecords) => {
+      console.log(mutationRecords); // console.log(изменения)
+    });
 
-    // let menu = new Menu()
-    // elem.addEventListener('mousedown', menu);
-    // elem.addEventListener('mouseup', menu);
-
-    elem.addEventListener('mousedown', new Menu());
-    elem.addEventListener('mouseup', new Menu());
+    // наблюдать за всем, кроме атрибутов
+    observer.observe(elem, {
+      childList: true, // наблюдать за непосредственными детьми
+      subtree: true, // и более глубокими потомками
+      characterDataOldValue: true, // передавать старое значение в колбэк
+    });
   </script>
 </body>
-
-</html>
