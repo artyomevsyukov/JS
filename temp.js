@@ -1,3 +1,4 @@
+// "use strict";
 // setTimeout(function timeout() {
 //     console.log("Таймаут");
 // }, 0);
@@ -243,26 +244,94 @@
 
 // askPassword(user.login.bind(user, true), user.login.bind(user, false));
 
-function User(name, birthday) {
-    this.name = name;
-    this.birthday = birthday;
+// function User(name, birthday) {
+//     this.name = name;
+//     this.birthday = birthday;
 
-    // возраст рассчитывается из текущей даты и дня рождения
-    // Object.defineProperty(this, "age", {
-    //     get() {
-    //         let todayYear = new Date().getFullYear();
-    //         return todayYear - this.birthday.getFullYear();
-    //     },
-    // });
-    Object.defineProperty(this, "age", {
-        get age() {
-            let todayYear = new Date().getFullYear();
-            return todayYear - this.birthday.getFullYear();
+//     // возраст рассчитывается из текущей даты и дня рождения
+//     // Object.defineProperty(this, "age", {
+//     //     get() {
+//     //         let todayYear = new Date().getFullYear();
+//     //         return todayYear - this.birthday.getFullYear();
+//     //     },
+//     // });
+//     Object.defineProperty(this, "age", {
+//         get age() {
+//             let todayYear = new Date().getFullYear();
+//             return todayYear - this.birthday.getFullYear();
+//         },
+//     });
+// }
+
+// let john = new User("John", new Date(1992, 6, 1));
+
+// console.log(john.birthday); // доступен как день рождения
+// console.log(john.age); // ...так и возраст
+// "use strict";
+// var b = 7;
+// function aaa3sum(a, b) {
+//     return a + b;
+// }
+// const a = 10;
+// if (a > b) {
+//     function aaaa4sum(a, b) {
+//         return a + b;
+//     }
+// }
+// console.log(aaa3sum(3, 4));
+
+// const user = {
+//     name: "Вася",
+//     age: 20,
+//     getName: function () {
+//         console.log(this.name);
+//         // function canDrink() {
+//         //     if (this.age > 18) {
+//         //         console.log("yes");
+//         //     } else {
+//         //         console.log("no");
+//         //     }
+//         // }
+//         const canDrink = () => {
+//             const yes = () => {
+//                 console.log(this.age, "yes");
+//                 const test = () => {
+//                     console.log(this.name);
+//                 };
+//                 test();
+//             };
+//             const no = () => {
+//                 console.log(this.age, "no");
+//             };
+//             if (this.age > 18) {
+//                 yes();
+//             } else {
+//                 no();
+//             }
+//         };
+//         canDrink();
+//     },
+// };
+
+// user.getName();
+
+const company = {
+    name: "AO SPB",
+    obj: {
+        name: "sdfsd",
+        ceo: {
+            name: "Artem",
+            getName: () => {
+                console.log(this);
+                console.log(this.name);
+            },
+            getName2() {
+                console.log(this);
+                console.log(this.name);
+            },
         },
-    });
-}
+    },
+};
 
-let john = new User("John", new Date(1992, 6, 1));
-
-console.log(john.birthday); // доступен как день рождения
-console.log(john.age); // ...так и возраст
+company.obj.ceo.getName();
+company.obj.ceo.getName2();
