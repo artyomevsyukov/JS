@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        const request = new XMLHttpRequest();
+        request.open("GET", "https://dummyjson.com/products/");
+        request.send();
+
+        request.addEventListener("load", function () {
+            const { products } = JSON.parse(this.responseText);
+
+            const sum = products.reduce((acc, product) => ((acc += product.price)), 0)
+            console.log(products);
+            console.log(sum / products.length);
+        });
+
+    </script>
+</body>
+
+</html>
