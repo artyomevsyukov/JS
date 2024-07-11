@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // const timerPromise = () =>
+        //     new Promise((resolve, rejeect) =>
+        //         setTimeout(() => resolve(), 2000)
+        //     );
+        // function timerPromise() {
+        //     return new Promise((resolve, rejeect) =>
+        //         setTimeout(() => resolve(), 2000)
+        //     );
+        // }
+
+
+
+        // const asynFn = async () => {
+        //     console.log("timer start");
+        //     const startTime = performance.now();
+        //     await timerPromise();
+        //     const endTimer = performance.now();
+        //     console.log("Timer End", endTimer - startTime + "ms");
+        // };
+        // asynFn();
+
+        // const getData = (url) =>
+        //     new Promise((resolve, reject) =>
+        //         fetch(url)
+        //             .then(response => response.json())
+        //             .then(json => resolve(json))
+        //             .catch(err => reject(err))
+        //     )
+
+
+
+        // getData('https://jsonplaceholder.typicode.com/todos/1')
+        //     .then(data => console.log(data))
+        //     .catch(error => console.error(error.message, 'ERROR!!!'))
+
+
+        (async () => {
+            const getData = async (url) => {
+                const res = await fetch(url);
+                const json = await res.json();
+                return json;
+            };
+            const url = "https://jsonplaceholder.typicode.com/todos";
+            try {
+                const data = await getData(url);
+                console.log(data);
+            } catch (error) {
+                console.log(error.message);
+            }
+        })();
+
+    </script>
+</body>
+
+</html>
