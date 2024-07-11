@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+</head>
+
+<body>
+    <h1>Location</h1>
+    <script>
+        let cord
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+        };
+
+        function success(pos) {
+            const crd = pos.coords;
+
+            console.log("Ваше текущее местоположение:");
+            console.log(`Широта: ${crd.latitude}`);
+            console.log(`Долгота: ${crd.longitude}`);
+            console.log(`Плюс-минус ${crd.accuracy} метров.`);
+        }
+
+        function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+        }
+
+
+        navigator.geolocation.getCurrentPosition(success, error, options);
+
+        // function getSity() {
+
+
+        //     fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?${crd.latitude}&${crd.longitude}&localityLanguage=en`)
+        //         .then(response => {
+        //             console.log(response);
+        //             return response.json()
+        //         })
+
+        // }
+        // getSity()
+
+        // if (crd) {
+        //     getSity()
+        // }
+
+        // fetch('https://dummyjson.com/products')
+        //     .then(response => response.json())
+        //     .then(({ products }) => console.log(products))
+
+
+    </script>
+</body>
+
+</html>

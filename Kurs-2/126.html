@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch categories</title>
+</head>
+
+<body>
+    <h1>select Categories</h1>
+    <div class="filter"></div>
+
+    <script>
+        function createSelect(arr) {
+            const el = document.querySelector('.filter');
+            el.innerHTML = `
+            <select name="categories" id="categories">
+                <option value="">-- Выберите категорию --</option>
+                ${arr.map(arrEl => `<option value="${arrEl}">${arrEl}</option>`)}
+            </select>
+            `
+        }
+
+        function getCategories(url) {
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    const names = [];
+                    data.forEach(({ name }) => {
+                        names.push(name);
+                    });
+                    return names
+                })
+                .then(data => createSelect(data))
+                .catch(err => console.log('Ошибка данных', err))
+        }
+        getCategories('https://dummyjson.com/products/categories')
+
+
+    </script>
+
+
+</body>
+
+</html>
