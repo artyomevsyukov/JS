@@ -50,20 +50,79 @@
         //     .catch(error => console.error(error.message, 'ERROR!!!'))
 
 
-        (async () => {
-            const getData = async (url) => {
-                const res = await fetch(url);
-                const json = await res.json();
-                return json;
-            };
-            const url = "https://jsonplaceholder.typicode.com/todos";
-            try {
-                const data = await getData(url);
-                console.log(data);
-            } catch (error) {
-                console.log(error.message);
-            }
-        })();
+        // (async () => {
+        //     const getData = async (url) => {
+        //         const res = await fetch(url);
+        //         const json = await res.json();
+        //         return json;
+        //     };
+        //     const url = "https://jsonplaceholder.typicode.com/todos";
+        //     try {
+        //         const data = await getData(url);
+        //         console.log(data);
+        //     } catch (error) {
+        //         console.log(error.message);
+        //     }
+        // })();
+    </script>
+    <script>
+        // function getData(url) {
+        //     return new Promise((resolve, reject) =>
+        //         fetch(url)
+        //             .then(response => {
+        //                 if (!response.ok) {
+        //                     throw new Error(`HTTP error! status: ${response.status}`);
+        //                 }
+        //                 return response.json()
+        //             })
+        //             .then(json => resolve(json))
+        //             .catch(error => reject(error))
+        //     )
+        // }
+        // getData("https://jsonplaceholder.typicode.com/todos1/1")
+        //     .then(data => console.log(data))
+        //     .catch(error => console.error(error.message))
+    </script>
+    <script>
+
+        function getData(url) {
+            return new Promise((resolve, reject) =>
+                fetch(url)
+                    .then(response => {
+
+                        if (!response.ok) {
+                            throw new Error(`HTTP Error, status code ${response.status}`);
+                        }
+                        return response.json()
+                    })
+                    .then(json => resolve(json)
+                    )
+                    .catch(error => reject(error))
+            )
+        }
+
+        getData('https://dummyjson.com/products/categories')
+            // .then((data) => console.log(data))
+            .then((data) => {
+                // const categories = data.map(category => category.name)
+                const categories = data.map(({ name }) => {
+                    // console.log(name);
+                    return name
+                })
+                console.log(categories);
+                return categories
+
+            })
+            .catch(error => console.error(error.message));
+
+
+        getData('https://dummyjson.com/products')
+            .then(({ products }) => {
+                console.log(products);
+                const sum = products.reduce((acc, product) => acc += product.price, 0);
+                console.log('Средняя сумма: ', sum / products.length);
+            })
+            .catch(error => console.error(error.message));
 
     </script>
 </body>
