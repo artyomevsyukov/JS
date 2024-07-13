@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            margin: 30px auto;
+            grid-gap: 10px;
+            /* flex-direction: column; */
+        }
+
+        .category {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn" id="category" onclick="renderData()">Render</button>
+    <div class="container"></div>
+    <script>
+        const container = document.querySelector('.container')
+        const btn = document.getElementById('category')
+
+
+
+        async function getData(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error("Ошибка при получении данных:", error);
+                return [];
+            }
+        }
+
+        async function renderData() {
+            clear();
+            const categories = await getData("https://dummyjson.com/products/categories");
+            console.log(categories);
+            categories.forEach(category => {
+                const a = document.createElement("a");
+                a.textContent = category.name;
+                a.setAttribute('href', `${category.url}`)
+                a.classList.add("category");
+                container.append(a);
+            })
+        }
+
+        function clear() {
+            container.innerHTML = ''
+        }
+
+        container.addEventListener('mouseover', (event) => {
+            const target = event.target
+            if (target.closest('.category')) {
+                target.style.background = 'pink'
+            }
+        });
+        container.addEventListener('mouseout', (event) => {
+            const target = event.target
+            if (target.closest('.category')) {
+                target.style.background = ''
+            }
+        });
+
+    </script>
+</body>
+
+</html>
