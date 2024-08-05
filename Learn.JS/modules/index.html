@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        async function load() {
+            let say = await import('./say.js');
+            say.hi(); // Привет!
+            say.bye(); // Пока!
+            say.default(); // Модуль загружен (экспорт по умолчанию)!
+        }
+    </script>
+    <button onclick="load()">Нажми меня</button>
+
+
+</body>
+
+</html>
