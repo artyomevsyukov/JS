@@ -10,16 +10,23 @@
 <body>
 
 
-    <script>
-        async function load() {
-            let say = await import('./say.js');
-            say.hi(); // Привет!
-            say.bye(); // Пока!
-            say.default(); // Модуль загружен (экспорт по умолчанию)!
-        }
+    <script type="module">
+        let user = 'John'
+        // async function load() {/say.js');
+        //     say.hi(); // Привет!
+        //     let say = await import('.
+        //     say.bye(); // Пока!
+        //     say.default(); // Модуль загружен (экспорт по умолчанию)!
+        // }
+        console.log(user);
     </script>
     <button onclick="load()">Нажми меня</button>
+    <script>
+        <!-- <script type="module"> -->
+        console.log('2');
+        console.log('script2 ', user);
 
+    </script>
 
 </body>
 
