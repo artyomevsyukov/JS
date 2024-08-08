@@ -315,23 +315,47 @@
 
 // user.getName();
 
-const company = {
-    name: "AO SPB",
-    obj: {
-        name: "sdfsd",
-        ceo: {
-            name: "Artem",
-            getName: () => {
-                console.log(this);
-                console.log(this.name);
-            },
-            getName2() {
-                console.log(this);
-                console.log(this.name);
-            },
-        },
-    },
-};
+// const company = {
+//     name: "AO SPB",
+//     obj: {
+//         name: "sdfsd",
+//         ceo: {
+//             name: "Artem",
+//             getName: () => {
+//                 console.log(this);
+//                 console.log(this.name);
+//             },
+//             getName2() {
+//                 console.log(this);
+//                 console.log(this.name);
+//             },
+//         },
+//     },
+// };
 
-company.obj.ceo.getName();
-company.obj.ceo.getName2();
+// company.obj.ceo.getName();
+// company.obj.ceo.getName2();
+
+// let name = "Вася";
+// function sayHi() {
+//     console.log(name);
+// }
+
+// setTimeout(function () {
+//     let name = "Петя";
+//     sayHi();
+// }, 500);
+
+// for (var i = 0; i < 10; i++) {
+//     console.log(i);
+// }
+// // i = ?
+// console.log("i:", i);
+
+// console.log([, [1]][1][0]);
+
+// if (function f() {}) {
+//     console.log(typeof f);
+// }
+
+console.log("1"[0]);
