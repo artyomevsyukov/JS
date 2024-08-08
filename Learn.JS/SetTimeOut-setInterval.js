@@ -135,21 +135,51 @@
 // go();
 
 // // ================================================
-function printNumbers(from, to) {
-    let current = from;
+// function printNumbers(from, to) {
+//     let current = from;
 
-    function go() {
-        console.log(current);
-        if (current < to) {
-            current++;
-            setTimeout(go, 300);
-        }
-    }
-    go();
-    // setTimeout(go, 1000);
-}
+//     function go() {
+//         console.log(current);
+//         if (current < to) {
+//             current++;
+//             setTimeout(go, 300);
+//         }
+//     }
+//     go();
+//     // setTimeout(go, 1000);
+// }
 
-printNumbers(3, 8);
+// printNumbers(3, 8);
+
+// function printNumbers(from, to) {
+//     let current = from;
+
+//     function go() {
+//         console.log(current);
+//         if (current < to) {
+//             current++;
+//             setTimeout(go, 300);
+//         }
+//     }
+//     go();
+// }
+
+// printNumbers(3, 8);
+
+// function printNumbers(from, to) {
+//     let current = from;
+
+//     function go() {
+//         console.log(current);
+//         if (current < to) {
+//             current++;
+//             setTimeout(go, 300);
+//         }
+//     }
+//     go();
+// }
+
+// printNumbers(1, 20);
 
 // function printNumbers(from, to) {
 //     let current = from;
@@ -344,3 +374,21 @@ printNumbers(3, 8);
 //     go();
 //     // setTimeout(go, 1000);
 // }
+
+function pizzaTimer(ms) {
+    const end = new Date().getTime() + ms;
+    const interval = setInterval(() => {
+        console.log(
+            new Intl.DateTimeFormat("ru-RU", {
+                minute: "numeric",
+                second: "numeric",
+            }).format(end - new Date())
+        );
+    }, 1000);
+
+    setTimeout(() => {
+        clearInterval(interval);
+        console.log("pizza!!!");
+    }, ms);
+}
+pizzaTimer(5000);
