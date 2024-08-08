@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+
+        class Task {
+            constructor(title, dueDate) {
+                this.title = title;
+                this.dueDate = dueDate;
+            }
+            get isOverdue() {
+                return this.dueDate < new Date();
+            }
+
+            set dueDate(date) {
+                if (date < new Date()) {
+                    return
+                }
+                this._dueDate = date;
+            }
+        }
+
+        const newTask1 = new Task("Задача1", new Date("2025/05/05"));
+        console.log(newTask1.isOverdue);
+        console.log(newTask1.dueDate);
+        console.log(newTask1);
+
+
+    </script>
+</body>
+
+</html>
