@@ -130,7 +130,7 @@ class Sword {
         } else {
             console.log("Противник уже мертв");
         }
-        return this;
+        return this; // Для цепочки вызовов iceSword.strike(orcBarbarian).strike(orcBarbarian).strike(orcBarbarian)
     }
 }
 
@@ -151,6 +151,8 @@ class Orc extends Enemy {
         // return this;
     }
 }
+
+const stick = new Sword(5);
 const iceSword = new Sword(70);
 const orcBarbarian = new Orc(150, 50);
 const barbarian = new Enemy(100);
@@ -178,3 +180,11 @@ console.log(
 // console.log(iceSword.strike(orcBarbarian));
 console.log("hp:", orcBarbarian.hp);
 console.log("status:", orcBarbarian.status);
+
+class Human extends Enemy {}
+
+let human = new Human(100);
+console.log(stick.strike(human));
+console.log(stick.strike(human));
+console.log(stick.strike(human));
+console.log(stick.strike(human));
