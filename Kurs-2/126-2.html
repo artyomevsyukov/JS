@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create select</title>
+</head>
+
+<body>
+    <div class="filter"></div>
+    <script>
+        function createSelectr(arr) {
+            const el = document.querySelector('.filter');
+            console.log(arr);
+            el.innerHTML = `<select>
+                ${arr.map(arrEl => `<option value=${arrEl.name}>${arrEl.name}</option>`)}
+                </select>`
+        }
+
+        function getData() {
+            fetch('https://dummyjson.com/products/categories')
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error(`Ощибка, код ошибки: ${res.status}`)
+                    }
+                    return res.json()
+                })
+                .then(data => createSelectr(data))
+                .catch(error => {
+                    console.log('Ошибка', error.message);
+                    const el = document.querySelector('.filter');
+                    el.innerHTML = error.message;
+                })
+        }
+        getData()
+
+    </script>
+</body>
+
+</html>
