@@ -147,19 +147,22 @@
 async function getData(url) {
     try {
         const res = await fetch(url);
+        console.log("res ok? ", res.ok, res.status);
         // console.log(res);
-        console.log("res ok? ", res.ok);
         const json = await res.json();
+        // const {products} = await res.json();
         // console.log(json);
 
         if (res.ok && json) {
             return json;
         }
     } catch (error) {
-        throw new Error("Ошибка получения данных: " + error.message);
+        throw new Error(
+            "Ошибка получения данных: " + error.status + " " + error.message
+        );
     }
 }
-const url = "https://dummyjson.com/products/1";
+const url = "https://dummyjson.com/products!/1";
 
 try {
     const data = await getData(url);
