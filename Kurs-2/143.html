@@ -9,29 +9,29 @@
 
 <body>
     <h1>Location</h1>
-    <script>
-        let cord
-        const options = {
-            enableHighAccuracy: true,
-            timeout: 5000,
-            maximumAge: 0,
-        };
+    <!-- <script>
+        // let cord
+        // const options = {
+        //     enableHighAccuracy: true,
+        //     timeout: 5000,
+        //     maximumAge: 0,
+        // };
 
-        function success(pos) {
-            const crd = pos.coords;
+        // function success(pos) {
+        //     const crd = pos.coords;
 
-            console.log("Ваше текущее местоположение:");
-            console.log(`Широта: ${crd.latitude}`);
-            console.log(`Долгота: ${crd.longitude}`);
-            console.log(`Плюс-минус ${crd.accuracy} метров.`);
-        }
+        //     console.log("Ваше текущее местоположение:");
+        //     console.log(`Широта: ${crd.latitude}`);
+        //     console.log(`Долгота: ${crd.longitude}`);
+        //     console.log(`Плюс-минус ${crd.accuracy} метров.`);
+        // }
 
-        function error(err) {
-            console.warn(`ERROR(${err.code}): ${err.message}`);
-        }
+        // function error(err) {
+        //     console.warn(`ERROR(${err.code}): ${err.message}`);
+        // }
 
 
-        navigator.geolocation.getCurrentPosition(success, error, options);
+        // navigator.geolocation.getCurrentPosition(success, error, options);
 
         // function getSity() {
 
@@ -86,7 +86,46 @@
 
         getMyCity()
 
-    </script>
+    </script> -->
+
+
+
+    <!-- <script>
+        function getMyCoordinates() {
+            return new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(({ coords }) => {
+                    resolve({
+                        latitude: coords.latitude,
+                        longitude: coords.longitude
+                    })
+                },
+                    (error) => {
+                        reject(error)
+                    });
+            })
+
+
+        }
+
+        async function getMyCity(urlApi) {
+            try {
+                const { latitude, longitude } = await getMyCoordinates();
+                const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}`)
+                // console.log(response);
+                // console.log('response: ', response.ok);
+                if (!response.ok) {
+                    throw new Error(`Ошибка запроса: ${response.status}`);
+                    // throw new Error("Ошибка запроса " + response.status);
+                }
+                const data = await response.json()
+                console.log(data);
+                console.log('Город: ', data.city);
+            } catch (e) {
+                console.log(e.message);
+            }
+        }
+        getMyCity()
+    </script> -->
 </body>
 
 </html>
