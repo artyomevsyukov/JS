@@ -144,30 +144,118 @@
 
 // asyncFn("Jonh");
 
-async function getData(url) {
-    try {
-        const res = await fetch(url);
-        console.log("res ok? ", res.ok, res.status);
-        // console.log(res);
-        const json = await res.json();
-        // const {products} = await res.json();
-        // console.log(json);
+// async function getData(url) {
+//     try {
+//         const res = await fetch(url);
+//         console.log("res ok? ", res.ok, res.status);
+//         // console.log(res);
+//         const json = await res.json();
+//         // const {products} = await res.json();
+//         // console.log(json);
 
-        if (res.ok && json) {
-            return json;
-        }
-    } catch (error) {
-        throw new Error(
-            "Ошибка получения данных: " + error.status + " " + error.message
-        );
+//         if (res.ok && json) {
+//             return json;
+//         }
+//     } catch (error) {
+//         throw new Error(
+//             "Ошибка получения данных: " + error.status + " " + error.message
+//         );
+//     }
+// }
+// const url = "https://dummyjson.com/products!/1";
+
+// try {
+//     const data = await getData(url);
+//     console.log(data.title);
+// } catch (e) {
+//     console.log(e.message);
+// }
+// console.log("sdfg");
+
+// async function wait() {
+//     await new Promise((resolve) => setTimeout(resolve, 1000));
+
+//     return 10;
+// }
+
+// function f() {
+//     wait().then((result) => console.log(result));
+//     wait().then(console.log);
+//     // ...что здесь написать?
+//     // чтобы вызвать wait() и дождаться результата "10" от async–функции
+//     // не забывайте, здесь нельзя использовать "await"
+// }
+
+// f();
+
+// async function loadJson(url) {
+//     const response = await fetch(url);
+//     if (response.status == 200) {
+//         return response.json();
+//     } else {
+//         throw new Error(response.status);
+//     }
+// }
+// function loadJson(url) {
+//     return fetch(url).then((response) => {
+//         if (response.status == 200) {
+//             return response.json();
+//         } else {
+//             throw new Error(response.status);
+//         }
+//     });
+// }
+
+// loadJson("no-such-user.json")
+//     .then(console.log) // (3)
+//     .catch(console.log); // Error: 404
+// loadJson("https://jsonplaceholder.typicode.com/todos/1")
+//     .then(console.log) // (3)
+//     .catch(console.log); // Error: 404
+// loadJson("https://jsonplaceholder.typicode.com/todos1/1")
+//     .then(console.log) // (3)
+//     .catch(console.log); // Error: 404
+
+class HttpError extends Error {
+    constructor(response) {
+        super(`${response.status} for ${response.url}`);
+        this.name = "HttpError";
+        this.response = response;
     }
 }
-const url = "https://dummyjson.com/products!/1";
 
-try {
-    const data = await getData(url);
-    console.log(data.title);
-} catch (e) {
-    console.log(e.message);
+async function loadJson(url) {
+    const response = await fetch(url);
+    if (response.status == 200) {
+        return response.json();
+    } else {
+        throw new HttpError(response);
+    }
 }
-console.log("sdfg");
+
+async function demoGithubUser() {
+    let user;
+    while (true) {
+        // let name = "iliakan";
+        let name = prompt("Введите логин?", "iliakan");
+        try {
+            user = await loadJson(`https://api.github.com/users/${name}`);
+            break; // ошибок не было, выходим из цикла
+        } catch (err) {
+            if (err instanceof HttpError && err.response.status == 404) {
+                // после alert начнётся новая итерация цикла
+                alert(
+                    "Такого пользователя не существует, пожалуйста, повторите ввод."
+                );
+            } else {
+                // неизвестная ошибка, пробрасываем её
+                throw err;
+            }
+        }
+    }
+
+    console.log(`Полное имя: ${user.name}.`);
+    return user;
+}
+
+demoGithubUser();
