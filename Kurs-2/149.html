@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENERATE</title>
+    <style>
+        .btn {
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: purple;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        .btn:hover {
+            background-color: rgb(163, 92, 163);
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>GENERATE</h1>
+    <button class="btn" onclick="generate()">Generate</button>
+    <div class="wrapper"></div>
+
+    <script>
+        const wrapper = document.querySelector('.wrapper');
+
+
+        async function getActivity() {
+            const response = await fetch('https://dog.ceo/api/breeds/image/random')
+            // const response = await fetch('https://randomuser.me/api/')
+            return response.json()
+
+        }
+
+
+        async function generate() {
+            try {
+                wrapper.innerHTML = ''
+                const data = await Promise.all([
+                    getActivity(),
+                    getActivity(),
+                    getActivity(),
+                ])
+                console.log(data);
+
+                renderCard(data)
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+
+        function renderCard(arr) {
+            arr.map(el => {
+                const elem = document.createElement('div');
+                elem.innerHTML = `
+                ${el.status}
+                    `;
+                const img = document.createElement('img');
+                img.src = el.message;
+                wrapper.append(elem)
+                wrapper.append(img)
+            })
+
+        }
+
+    </script>
+</body>
+
+</html>
