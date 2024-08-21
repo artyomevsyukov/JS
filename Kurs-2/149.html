@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GENERATE</title>
     <style>
+        body {
+            background-color: rgba(31, 20, 6, 0.893);
+        }
+
         .btn {
             padding: 10px;
             margin-bottom: 20px;
@@ -24,6 +28,11 @@
             display: flex;
             flex-direction: column;
         }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
     </style>
 </head>
 
@@ -31,6 +40,7 @@
     <h1>GENERATE</h1>
     <button class="btn" onclick="generate()">Generate</button>
     <div class="wrapper"></div>
+
 
     <script>
         const wrapper = document.querySelector('.wrapper');
@@ -63,13 +73,15 @@
         function renderCard(arr) {
             arr.map(el => {
                 const elem = document.createElement('div');
+                elem.classList.add('content');
                 elem.innerHTML = `
                 ${el.status}
+                <img src="${el.message}" alt="">
                     `;
                 const img = document.createElement('img');
-                img.src = el.message;
+                // img.src = el.message;
                 wrapper.append(elem)
-                wrapper.append(img)
+                // wrapper.append(img)
             })
 
         }

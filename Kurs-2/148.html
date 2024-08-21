@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body {
+            background-color: rgb(29, 22, 14);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>login</h1>
+    <script>
+        "use strict";
+
+        async function login() {
+            const res = await fetch("https://dummyjson.com/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username: "emilys",
+                    password: "emilyspass",
+                }),
+            });
+            const data = await res.json();
+            console.log(data);
+        }
+        login();
+
+    </script>
+</body>
+
+</html>
