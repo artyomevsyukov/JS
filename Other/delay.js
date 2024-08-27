@@ -1,18 +1,18 @@
-function delay(f, ms) {
-    return function (...args) {
-        setTimeout(() => f(...args), ms);
-    };
-}
-const f = delay((...args) => console.log(...args), 1000);
-const f2 = delay(console.log, 500);
-f("12312312312312312", "sdfgsdfgsdfgsdf");
-f2("anl;asjdoipfjanewlrkvnlksdnvs", "32141234", "fdsgdfjhnsfg");
+// function delay(f, ms) {
+//     return function (...args) {
+//         setTimeout(() => f(...args), ms);
+//     };
+// }
+// const f = delay((...args) => console.log(...args), 1000);
+// const f2 = delay(console.log, 500);
+// f("12312312312312312", "sdfgsdfgsdfgsdf");
+// f2("anl;asjdoipfjanewlrkvnlksdnvs", "32141234", "fdsgdfjhnsfg");
 
-function delay(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// function delay(ms) {
+//     return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
-delay(1000).then(() => console.log("выполнилось через 3 секунды"));
+// delay(1000).then(() => console.log("выполнилось через 3 секунды"));
 
 // function print(text) {
 //     console.log(text);
