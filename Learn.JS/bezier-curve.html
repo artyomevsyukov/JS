@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezier Curve</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .wrapper {
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <canvas id="bezierChart"></canvas>
+    </div>
+
+    <script>
+        const arrPoints = [
+            [0, 0],
+            [1, 2],
+            [2, 0],
+        ];
+
+        function bezierDot3(arr) {
+            const [p0, p1, p2] = arr
+            const result = [];
+            for (let t = 0; t <= 1; t += 0.1) {
+                let x =
+                    (1 - t) ** 2 * p0[0] +
+                    2 * (1 - t) * t * p1[0] +
+                    t ** 2 * p2[0];
+
+                let y =
+                    (1 - t) ** 2 * p0[1] +
+                    2 * (1 - t) * t * p1[1] +
+                    t ** 2 * p2[1];
+
+                result.push({ x: parseFloat(x.toFixed(3)), y: parseFloat(y.toFixed(3)) });
+            }
+            return result;
+        }
+
+
+
+        const points = bezierDot3(arrPoints);
+
+        // Теперь отобразим результат на графике
+        const ctx = document.getElementById('bezierChart').getContext('2d');
+        const data = {
+            datasets: [{
+                label: 'Bezier Curve',
+                data: points,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false,
+                showLine: true,
+                pointRadius: 3,
+                borderWidth: 2,
+            }]
+        };
+
+        const config = {
+            type: 'scatter',
+            data: data,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'X'
+                        }
+                    },
+                    y: {
+                        type: 'linear',
+                        title: {
+                            display: true,
+                            text: 'Y'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        // display: false,
+                        text: 'Bezier Curve'
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+
+</html>
