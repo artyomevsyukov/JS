@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+            cursor: pointer;
+        }
+
+        #flyjet {
+            width: 40px;
+            height: 24px;
+            transition: all 3s cubic-bezier(0.25, 1.5, 0.75, 1.5);
+        }
+
+        #flyjet.growing {
+            width: 400px;
+            height: 240px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img id="flyjet" src="https://en.js.cx/clipart/flyjet.jpg">
+
+    <script>
+        let ended = false;
+
+        flyjet.onclick = function () {
+
+            // flyjet.addEventListener('transitionend', () => {
+            //     if (!ended) {
+            //         ended = true;
+            //         alert('Анимация закончилась!');
+            //     }
+            // });
+
+            flyjet.classList.add('growing');
+        }
+
+
+    </script>
+</body>
+
+
+</html>
