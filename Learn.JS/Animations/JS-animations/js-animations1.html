@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #train { */
+        /* position: relative; */
+        /* cursor: pointer;
+            margin-bottom: 30px; */
+        /* } */
+        .relative {
+            display: block;
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .over {
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="over">
+        <img class="relative" id="train" src="https://js.cx/clipart/train.gif" alt="Train">
+        <img class="relative" id="boat" src="https://js.cx/clipart/boat.png">
+    </div>
+    <!-- <script>
+        train.onclick = function () {
+            let start = Date.now()
+            let timer = setInterval(function () {
+                let timePassed = Date.now() - start;
+                if (timePassed >= 2000) {
+                    clearInterval(timer);
+                }
+                draft(timePassed)
+            }, 20)
+        }
+        function draft(timePassed) {
+            train.style.left = timePassed / 5 + 'px'
+        }
+
+    </script> -->
+    <script>
+        function go() {
+            let element = this;
+
+            if (element.classList.contains('animating')) return;
+
+            element.classList.add('animating');
+
+            let startLeft = parseFloat(getComputedStyle(element).left) || 0;
+
+            let start = Date.now();
+            let timer = setInterval(function () {
+                let timePassed = Date.now() - start;
+                element.style.left = startLeft + timePassed / 5 + 'px';
+
+                if (timePassed >= 2000) {
+                    clearInterval(timer);
+                    element.classList.remove('animating');
+                }
+            }, 20);
+        }
+
+        train.onclick = go;
+        boat.onclick = go;
+    </script>
+</body>
+
+</html>
