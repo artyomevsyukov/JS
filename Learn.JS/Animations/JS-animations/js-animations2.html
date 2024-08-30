@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            margin-bottom: 20px;
+        }
+    </style>
+    <style>
+        #brick {
+            width: 40px;
+            height: 20px;
+            background: #EE6B47;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #path {
+            outline: 1px solid #E8C48E;
+            width: 540px;
+            height: 20px;
+        }
+    </style>
+    <style>
+        #brick2 {
+            width: 40px;
+            height: 20px;
+            background: #EE6B47;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #path2 {
+            outline: 1px solid #E8C48E;
+            width: 540px;
+            height: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper" id="path">
+        <div id="brick"></div>
+    </div>
+    <div class="wrapper" id="path2">
+        <div id="brick2"></div>
+    </div>
+    <script>
+        function makeEaseInOut(timing) {
+            return function (timeFraction) {
+                if (timeFraction < .5)
+                    return timing(2 * timeFraction) / 2;
+                else
+                    return (2 - timing(2 * (1 - timeFraction))) / 2;
+            }
+        }
+
+
+        function bounce(timeFraction) {
+            for (let a = 0, b = 1; 1; a += b, b /= 2) {
+                if (timeFraction >= (7 - 4 * a) / 11) {
+                    return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+                }
+            }
+        }
+
+        let bounceEaseInOut = makeEaseInOut(bounce);
+        let bounceElastic = makeEaseInOut(elastic);
+        let bounceCirc = makeEaseInOut(circ);
+
+        // ===========================================================
+
+        function elastic(x, timeFraction) {
+            return Math.pow(2, 10 * (timeFraction - 1)) * Math.cos(20 * Math.PI * x / 3 * timeFraction)
+        }
+
+        function circ(timeFraction) {
+            return 1 - Math.sin(Math.acos(timeFraction));
+        }
+
+        function animate(options) {
+
+            var start = performance.now();
+
+            requestAnimationFrame(function animate(time) {
+                // timeFraction от 0 до 1
+                var timeFraction = (time - start) / options.duration;
+                if (timeFraction > 1) timeFraction = 1;
+
+                // текущее состояние анимации
+                var progress = options.timing(timeFraction)
+
+                options.draw(progress);
+
+                if (timeFraction < 1) {
+                    requestAnimationFrame(animate);
+                }
+
+            });
+        }
+
+        brick.onclick = function () {
+            animate({
+                duration: 3000,
+                timing: bounceEaseInOut,
+                draw: function (progress) {
+                    brick.style.left = progress * 500 + 'px';
+                }
+            });
+        };
+        brick2.onclick = function () {
+            animate({
+                duration: 3000,
+                timing: circ,
+                draw: function (progress) {
+                    brick2.style.left = progress * 500 + 'px';
+                }
+            });
+        };
+    </script>
+</body>
+
+</html>
