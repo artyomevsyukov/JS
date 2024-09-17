@@ -358,4 +358,19 @@
 //     console.log(typeof f);
 // }
 
-console.log("1"[0]);
+// console.log("1"[0]);
+
+// const controller = new AbortController();
+
+// const { signal } = controller;
+// console.log(signal);
+
+// const arr = [2, 5, 10, -65, 100];
+
+// const newArr = arr.map((e) => e * 60);
+// console.log(arr);
+// console.log(newArr);
+
+// const newArrF = arr.forEach((e) => e * 60);
+// console.log(arr);
+// console.log(newArrF);
