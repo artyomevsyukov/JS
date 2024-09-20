@@ -374,3 +374,44 @@
 // const newArrF = arr.forEach((e) => e * 60);
 // console.log(arr);
 // console.log(newArrF);
+
+// let x = 1;
+
+// function fun() {
+//     console.log(x);
+//     let x = 2;
+// }
+// fun();
+
+// if (true) {
+// var a = 2;
+// let a = 2;
+// }
+// console.log(a);
+
+const obj = {
+    name: "obj",
+    sum(a, b) {
+        console.log(a + b);
+        return a + b;
+    },
+    timer() {
+        // setTimeout(() => this.sum(1, 2), 500);
+        // setTimeout(this.sum.bind(this), 500, 2, 2);
+        // setTimeout(this.sum.bind(this, 1, 2), 500);
+        setTimeout(this.sum, 500, 1, 2);
+        setTimeout(this.sum.bind(this, 1, 2), 500);
+        setTimeout(() => this.sum(1, 2), 500);
+    },
+    timer2(a, b) {
+        // setTimeout(() => this.sum(a, b), 500);
+        // setTimeout(this.sum.bind(this), 500, a, b);
+        // setTimeout(this.sum.bind(this, a, b), 500);
+        setTimeout(this.sum, 500, a, b);
+    },
+};
+
+// setTimeout(() => obj.sum(1, 2), 500);
+// setTimeout(obj.sum, 500, 1, 2);
+obj.timer();
+obj.timer2(3, 3);
