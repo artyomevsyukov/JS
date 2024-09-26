@@ -55,3 +55,4 @@ function groupById(users) {
 }
 
 console.log(usersById);
+console.log("test");
