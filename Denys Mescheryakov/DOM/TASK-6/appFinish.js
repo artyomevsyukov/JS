@@ -50,11 +50,12 @@ const tableSchema = {
 };
 
 // generateThead
-// generateTbody
 // generateTr
 // generateTableTemplate
-//generateItemsShema
 //initTable
+// generateTbody
+//generateItemsShema
+
 //generateTotalBalance
 
 function generateThead(tableSchema) {
@@ -70,11 +71,8 @@ function generateTbody(tableSchema, items) {
 
     items.forEach((value, index) => {
         value.index = index + 1;
-        // console.log(`value: ${value}; value.index: ${value.index}`);
-        // console.log("Object.values(value): ", Object.keys(value));
-        // console.log(value);
         const itemShema = generateItemsShema(tableSchema, value);
-        console.log(itemShema);
+        console.log("itemShema", itemShema);
 
         const tr = generateTr(itemShema);
         tbody.append(tr);
@@ -85,45 +83,57 @@ function generateTbody(tableSchema, items) {
 
 function generateItemsShema(tableSchema, item) {
     const itemShema = Object.keys(tableSchema).reduce((result, key) => {
-        // if (item.hasOwnProperty(key)) {
         if (key in item) {
+            // if (item.hasOwnProperty(key)) {
             result[key] = item[key];
         }
         return result;
     }, {});
-
+    // console.log("itemShema:", itemShema);
     return itemShema;
 }
 
 function generateTr(tableSchema, tagName = "td") {
     const tr = document.createElement("tr");
-    Object.values(tableSchema).forEach((values) => {
+    Object.values(tableSchema).forEach((value) => {
         const td = document.createElement(tagName);
-        td.textContent = values;
+        td.textContent = value;
         tr.append(td);
     });
 
     return tr;
 }
 
-function generateTotalBalance() {}
+function generateTotalBalance(tableSchema, items) {
+    const totalBalance = items.reduce(
+        (acc, item) => acc + parseFloat(item.balance),
+        0
+    );
+    const tr = document.createElement("tr");
+    const td = document.createElement("td");
+    const columnCounts = Object.keys(tableSchema).length;
+    console.log(columnCounts);
+    // td.innerHTML = `Total balance: <b>${totalBalance}</b>`;
+    td.insertAdjacentHTML("beforeend", `Total balance: <b>${totalBalance}</b>`);
+    td.setAttribute("colspan", columnCounts);
+    td.setAttribute("align", "right");
+    td.classList.add("total-balance");
+    tr.append(td);
 
-// function generateTableTemplate() {
-//     const table = document.createElement("table");
-//     table.classList.add("table");
-
-//     return table;
-// }
+    return tr;
+}
 
 function initTable(tableSchema, items) {
     const container = document.querySelector(".table-container");
     const table = document.createElement("table");
     table.classList.add("table");
-    // const table = generateTableTemplate();
-    const header = generateThead(tableSchema);
-    const body = generateTbody(tableSchema, items);
 
-    table.append(header, body);
+    const thead = generateThead(tableSchema);
+    const tbody = generateTbody(tableSchema, items);
+    const totalBalance = generateTotalBalance(tableSchema, items);
+    tbody.append(totalBalance);
+
+    table.append(thead, tbody);
 
     container.append(table);
 }
