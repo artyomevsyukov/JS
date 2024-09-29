@@ -22,11 +22,11 @@
 // console.log(usersMapped[0].id); // 1
 // console.log(usersMapped[0].fullName); // Вася Пупкин
 
-// let users = [
-//     { id: "john", name: "John Smith", age: 20 },
-//     { id: "ann", name: "Ann Smith", age: 24 },
-//     { id: "pete", name: "Pete Peterson", age: 31 },
-// ];
+let users = [
+    { id: "john", name: "John Smith", age: 20 },
+    { id: "ann", name: "Ann Smith", age: 24 },
+    { id: "pete", name: "Pete Peterson", age: 31 },
+];
 
 // let usersById = groupById(users);
 
@@ -46,13 +46,12 @@
 //         return obj;
 //     }, {});
 // }
-// function groupById(users) {
-//     let result = {};
-//     users.forEach((user) => {
-//         result[user.id] = user;
-//     });
-//     return result;
-// }
-
-// console.log(usersById);
-// console.log("test");
+function groupById(users) {
+    let result = {};
+    users.forEach((user) => {
+        result[user.id] = user;
+    });
+    return result;
+}
+console.log(users);
+console.log(groupById(users));
