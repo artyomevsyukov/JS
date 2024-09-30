@@ -26,6 +26,7 @@ const movieDB = {
         "Скотт Пилигрим против...",
     ],
 };
+const container = document.querySelector(".promo__interactive-list");
 
 const adv = document.querySelectorAll(".promo__adv img");
 adv.forEach((element) => {
@@ -38,8 +39,7 @@ promoGenre.textContent = "ДРАМА";
 const promoBg = document.querySelector(".promo__bg");
 promoBg.style.backgroundImage = "url('./img/bg.jpg')";
 
-function generateFilmList(movieDB) {
-    const container = document.querySelector(".promo__interactive-list");
+function createMovieList(movieDB, parent) {
     container.innerHTML = "";
     movieDB.sort().forEach((film, index) => {
         const li = generateLi(film, index);
@@ -60,4 +60,58 @@ function generateLi(film, index) {
     return li;
 }
 
-generateFilmList(movieDB.movies);
+createMovieList(movieDB.movies, container);
+
+// ===============================================
+
+const form = document.querySelector("form.add");
+const addBtn = form.querySelector("button");
+const checkBox = form.querySelector('input[type="checkbox"]');
+console.log(checkBox);
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let filmInput = document.querySelector(".adding__input").value;
+    if (filmInput.length < 1) return;
+    if (filmInput.length > 20) {
+        filmInput = filmInput.slice(0, 20) + "...";
+    }
+    if (checkBox.checked) {
+        console.log("Добавляем любимый фильм");
+    }
+    movieDB.movies.push(filmInput);
+    createMovieList(movieDB.movies);
+    e.target.reset();
+});
+
+const filmList = document.querySelector(".promo__interactive-list");
+
+filmList.addEventListener("click", (event) => {
+    const { target } = event;
+    // if (!target.classList.contains("delete")) return;
+    // console.log("delete");
+    // console.log(target);
+    // if (target && target.closest(".promo__interactive-item")) {
+    //     // target.closest(".promo__interactive-item").remove();
+    //     console.log(target.closest(".promo__interactive-item"));
+    // }
+
+    if (target && target.classList.contains("delete")) {
+        console.log("delete");
+        const listItem = target.parentElement; // Получаем родительский <li>
+        const filmName = listItem.textContent.slice(4).trim(); // Убираем индекс "1 - " и пробелы
+
+        console.log(filmName);
+
+        // Находим индекс фильма в массиве и удаляем его
+        const filmIndex = movieDB.movies.indexOf(filmName);
+        if (filmIndex !== -1) {
+            movieDB.movies.splice(filmIndex, 1); // Удаляем фильм из массива
+        }
+
+        // Обновляем интерфейс
+        createMovieList(movieDB.movies);
+    }
+});
+
+// function deleteFilm(e)
