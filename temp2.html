@@ -739,33 +739,87 @@
         consectetur itaque voluptatem non eaque pariatur, in possimus incidunt nihil inventore quo. Corrupti eius quos
         velit tenetur maiores rem facilis accusantium nesciunt. Nobis saepe id voluptates culpa asperiores, numquam,
         optio dolorum ratione a, nisi excepturi veniam impedit eligendi quibusdam.</div>
-    <div id="modal" class="modal hidden">
-        <h1>Modal</h1>
-        <div class="modal-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis alias eaque eos
-            itaque molestiae quam maiores laboriosam minus dolorum. Distinctio quaerat recusandae aperiam nulla minus,
-            vero perspiciatis nemo ipsum aut saepe soluta optio aliquam excepturi quas dolorem, esse reiciendis omnis
-            eius. Dolorum sint dolor atque, tenetur aliquid facilis fuga earum tempora repellat beatae hic iste
-            reiciendis nulla impedit, asperiores nisi corporis similique omnis quae. Quibusdam exercitationem eveniet
-            veritatis illum nulla omnis, nostrum laboriosam! Quas, ipsam eos. Odit at molestias esse laboriosam dolorum
-            enim earum ipsum voluptas, suscipit corrupti minima doloribus, sed a atque? Ab, laudantium est! Sunt iste
-            illo doloremque?</div>
-        <button id="modalBtn">Закрыть</button>
+    <div class="over">
+
+        <div id="modal" class="modal hidden">
+            <h1>Modal</h1>
+            <div class="modal-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis alias eaque eos
+                itaque molestiae quam maiores laboriosam minus dolorum. Distinctio quaerat recusandae aperiam nulla
+                minus,
+                vero perspiciatis nemo ipsum aut saepe soluta optio aliquam excepturi quas dolorem, esse reiciendis
+                omnis
+                eius. Dolorum sint dolor atque, tenetur aliquid facilis fuga earum tempora repellat beatae hic iste
+                reiciendis nulla impedit, asperiores nisi corporis similique omnis quae. Quibusdam exercitationem
+                eveniet
+                veritatis illum nulla omnis, nostrum laboriosam! Quas, ipsam eos. Odit at molestias esse laboriosam
+                dolorum
+                enim earum ipsum voluptas, suscipit corrupti minima doloribus, sed a atque? Ab, laudantium est! Sunt
+                iste
+                illo doloremque?</div>
+            <button id="modalBtn">Закрыть</button>
+        </div>
     </div>
+
     <script>
         function togglePopup() {
-            document.body.classList.toggle('overlay')
-            modal.classList.toggle('hidden')
+            document.body.classList.toggle('overlay');
+            modal.classList.toggle('hidden');
+            clearTimeout(Modaltimer);
         }
+
+        function openModal() {
+            document.body.classList.add('overlay');
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.body.classList.remove('overlay');
+            modal.classList.add('hidden');
+            window.removeEventListener("scroll", showModalbyScroll);
+        }
+
+
+
         btn.onclick = function () {
-            togglePopup()
+            openModal()
+            // togglePopup()
             // document.body.classList.add('overlay')
             // modal.classList.remove('hidden')
         }
         modalBtn.onclick = function () {
-            togglePopup()
+            closeModal()
+            // togglePopup()
             // document.body.classList.remove('overlay')
             // modal.classList.add('hidden')
         }
+        const lorem = document.querySelector('.lorem')
+        lorem.addEventListener('click', (e) => {
+            if (e.target === lorem) {
+                document.body.classList.remove('overlay')
+                modal.classList.add('hidden')
+            }
+        })
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Escape') {
+                document.body.classList.remove('overlay')
+                modal.classList.add('hidden')
+            }
+        })
+        // modal timer
+        const Modaltimer = setTimeout(togglePopup, 5000);
+
+        function showModalByScroll() {
+            if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+                // togglePopup();   
+                openModal()
+                clearTimeout(Modaltimer);
+                window.removeEventListener('scroll', showModalByScroll)
+            }
+        }
+
+        window.addEventListener('scroll', showModalByScroll)
+
     </script>
 </body>
 
