@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const forms = document.querySelectorAll("form");
 
     const message = {
-        loading: "img/form/spinner.svg",
+        load: "Загрузка",
         loading: "img/form/spinner.svg",
         success: "Спасибо! Скоро мы с вами свяжемся",
         failure: "Что-то пошло не так...",
@@ -307,9 +307,9 @@ document.addEventListener("DOMContentLoaded", () => {
             request.open("POST", "server.php");
 
             request.setRequestHeader("Content-type", "application/json");
-            const formData = new FormData(form);
 
             const object = {};
+            const formData = new FormData(form);
             formData.forEach((value, key) => {
                 object[key] = value;
             });
