@@ -277,17 +277,17 @@ async function getCards(serverURL) {
 //     }
 // }
 
-async function init() {
-    // Дожидаемся загрузки карточек
-    let cards = await getCards("JSON/cards.json");
-    // console.log("cards:", cards);
+getCards("JSON/cards.json").then((data) => {
+    new MenuCard(menuContainer, data, CURS).render();
+});
 
-    // Убедитесь, что menuContainer и CURS определены
-    new MenuCard(menuContainer, cards, CURS).render();
-}
+// async function init() {
+//     let cards = await getCards("JSON/cards.json");
 
-// Запускаем инициализацию
-init();
+//     new MenuCard(menuContainer, cards, CURS).render();
+// }
+
+// init();
 
 // new MenuCard(menuContainer, cards, CURS).render();
 
