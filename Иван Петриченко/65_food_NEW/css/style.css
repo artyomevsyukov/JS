@@ -611,7 +611,7 @@ a {
 .hide {
     display: none;
 }
-fade {
+.fade {
     animation-name: fade;
     animation-duration: 1.5s;
 }

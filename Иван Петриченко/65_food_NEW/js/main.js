@@ -224,8 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 `Ошибка запроса по ${url} - ${res.status} ${res.message}`
             );
         }
-
-        return await res.json();
+        const cards = await res.json();
+        return cards;
     };
 
     // (async function () {
@@ -258,9 +258,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //         ).render()
     //     );
     // });
-
-    axios.get("http://localhost:3000/menu").then((data) => {
-        data.data.forEach(({ img, alt, title, descr, price }) =>
+    getResource("./db.json").then(({ menu }) => {
+        menu.forEach(({ img, alt, title, descr, price }) =>
             new MenuCard(
                 img,
                 alt,
@@ -272,6 +271,21 @@ document.addEventListener("DOMContentLoaded", () => {
             ).render()
         );
     });
+
+    // axios.get("../db.json").then((data) => {
+    //     // axios.get("http://localhost:3000/menu").then((data) => {
+    //     data.data.forEach(({ img, alt, title, descr, price }) =>
+    //         new MenuCard(
+    //             img,
+    //             alt,
+    //             title,
+    //             descr,
+    //             price,
+    //             ".menu .container",
+    //             "menu__item"
+    //         ).render()
+    //     );
+    // });
 
     // new MenuCard(
     //     "img/tabs/vegy.jpg",
@@ -392,4 +406,52 @@ document.addEventListener("DOMContentLoaded", () => {
             closeModal();
         }, 4000);
     }
+
+    // slider ==================================================================================================
+
+    const slides = document.querySelectorAll(".offer__slide"),
+        next = document.querySelector(".offer__slider-next"),
+        prev = document.querySelector(".offer__slider-prev");
+
+    let current = document.getElementById("current"),
+        total = document.getElementById("total");
+
+    let slideIndex = 1;
+
+    function showSlides(n) {
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        slides.forEach((slide) => (slide.style.display = "none"));
+        slides[slideIndex - 1].style.display = "block";
+        changeCurrent();
+        changeTotal();
+    }
+
+    function changeSlideNext(n) {
+        showSlides((slideIndex += n));
+    }
+    function changeSlidePrev(n) {
+        showSlides((slideIndex += n));
+    }
+
+    function changeCurrent() {
+        if (slideIndex < 10) {
+            current.textContent = "0" + slideIndex;
+        }
+    }
+    function changeTotal() {
+        if (slides.length < 10) {
+            total.textContent = "0" + slides.length;
+        }
+    }
+
+    next.addEventListener("click", () => changeSlideNext(1));
+    prev.addEventListener("click", () => changeSlidePrev(-1));
+
+    showSlides(slideIndex);
 });
