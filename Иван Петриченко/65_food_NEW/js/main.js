@@ -569,14 +569,19 @@ document.addEventListener("DOMContentLoaded", () => {
     slider.append(indicators);
 
     dots.forEach((dot, i) => {
-        dot.addEventListener("click", (event) => changeSlidePogination(event));
+        let index = i + 1;
+        dot.addEventListener("click", (event) =>
+            changeSlidePogination(event, index)
+        );
     });
 
-    function changeSlidePogination(e) {
+    function changeSlidePogination(e, index) {
+        console.log(index);
         const slideTo = e.target.getAttribute("data-slide-to");
-        slideIndex = slideTo;
+        slideIndex = index;
 
-        offset = width * (slideTo - 1);
+        // offset = width * (slideTo - 1);
+        offset = width * (index - 1);
         slidesField.style.transform = `translateX(-${offset}px)`;
 
         if (slides.length < 10) {
