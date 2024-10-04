@@ -576,8 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function changeSlidePogination(e, index) {
-        console.log(index);
-        const slideTo = e.target.getAttribute("data-slide-to");
+        // const slideTo = e.target.getAttribute("data-slide-to");
         slideIndex = index;
 
         // offset = width * (slideTo - 1);
@@ -592,5 +591,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
         dots.forEach((dot) => (dot.style.opacity = ".5"));
         dots[slideIndex - 1].style.opacity = 1;
+    }
+
+    // Calc =========================================================
+
+    const result = document.querySelector(".calculating__result span");
+    let sex, heigth, weight, age, ratio;
+
+    function calcTotal() {
+        if (!sex || !heigth || !weight || !age || !ratio) {
+            result.textContent = "ОШИБКА";
+            return;
+        }
+        if (sex == "famale") {
+            result.textContent =
+                (447.6 + 9.2 * weight + 3.1 * heigth - 4.3 * age) * ratio;
+        } else {
+            result.textContent =
+                (88.36 + 13.4 * weight + 4.8 * heigth - 5.7 * age) * ratio;
+        }
+    }
+
+    calcTotal();
+
+    function getStaticInformation(parentSelector, activeClass) {
+        const element = document.querySelectorAll(`${parentSelector} div`);
     }
 });
