@@ -64,4 +64,4 @@ function timer() {
     setClock(".timer", dedline);
 }
 
-module.exports = timer;
+export default timer;
