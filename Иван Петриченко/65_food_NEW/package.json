@@ -2,16 +2,19 @@
     "name": "65_food_new",
     "version": "1.0.0",
     "description": "",
-    "main": "js/main.js",
-    "type": "module",
+    "main": "js/script.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "webpack"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
         "axios": "^1.7.7",
-        "json-server": "^1.0.0-beta.3"
-    }
+        "json-server": "^1.0.0-beta.3",
+        "webpack": "^5.95.0",
+        "webpack-cli": "^5.1.4",
+        "path-browserify": "^1.0.1"
+    },
+    "dependencies": {}
 }

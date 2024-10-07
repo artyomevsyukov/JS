@@ -244,22 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //     );
     // })();
 
-    // getResource("http://localhost:3000/menu")
-    //  .then((data) => {
-    //     data.forEach(({ img, alt, title, descr, price }) =>
-    //         new MenuCard(
-    //             img,
-    //             alt,
-    //             title,
-    //             descr,
-    //             price,
-    //             ".menu .container",
-    //             "menu__item"
-    //         ).render()
-    //     );
-    // });
-    getResource("./db.json").then(({ menu }) => {
-        menu.forEach(({ img, alt, title, descr, price }) =>
+    getResource("http://localhost:3000/menu").then((data) => {
+        data.forEach(({ img, alt, title, descr, price }) =>
             new MenuCard(
                 img,
                 alt,
@@ -271,6 +257,20 @@ document.addEventListener("DOMContentLoaded", () => {
             ).render()
         );
     });
+
+    // getResource("./db.json").then(({ menu }) => {
+    //     menu.forEach(({ img, alt, title, descr, price }) =>
+    //         new MenuCard(
+    //             img,
+    //             alt,
+    //             title,
+    //             descr,
+    //             price,
+    //             ".menu .container",
+    //             "menu__item"
+    //         ).render()
+    //     );
+    // });
 
     // axios.get("../db.json").then((data) => {
     //     // axios.get("http://localhost:3000/menu").then((data) => {
