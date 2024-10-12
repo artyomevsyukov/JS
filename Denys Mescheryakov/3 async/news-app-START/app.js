@@ -61,17 +61,29 @@ const newsService = (function () {
     const apiURL = "https://newsapi.org/v2";
 
     return {
-        topHeadlines(country = "us", cb) {
+        topHeadlines(country = "us", category = "technology", cb) {
             http.get(
-                `${apiURL}/top-headlines?country=${country}&category=technology&apiKey=${apiKey}`,
+                `${apiURL}/top-headlines?country=${country}&category=${category}&apiKey=${apiKey}`,
                 cb
             );
         },
         everything(query, cb) {
-            http.get(`${apiURL}/everything?q=${query}&apiKey=${apiKey}`);
+            http.get(`${apiURL}/everything?q=${query}&apiKey=${apiKey}`, cb);
         },
     };
 })();
+
+// Elements
+
+const form = document.forms["newsControls"];
+const countrySelect = form["country"];
+const categorySelect = form["category"];
+const searchInput = form["search"];
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    loadNews();
+});
 
 //  init selects
 document.addEventListener("DOMContentLoaded", function () {
@@ -81,31 +93,65 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // load news function
 function loadNews() {
-    newsService.topHeadlines("us", onGetResponce);
+    showLoader();
+    const country = countrySelect.value;
+    const category = categorySelect.value;
+    const searchText = searchInput.value;
+
+    if (!searchText) {
+        newsService.topHeadlines(country, category, onGetResponce);
+    } else {
+        newsService.everything(searchText, onGetResponce);
+    }
 }
 
 // Обработка данных
 function onGetResponce(err, res) {
+    removePreloader();
+
+    if (err) {
+        showAlert(err, "error-msg");
+        return;
+    }
+
+    if (!res.articles.length) {
+        // show empty message
+        showEmptyMessage("Таких новостей нет");
+        return;
+    }
+
     renderNews(res.articles);
 }
 
 //function render news
 function renderNews(news) {
     const newsContainer = document.querySelector(".news-container .row");
+
+    if (newsContainer.children.length) {
+        clearContainer(newsContainer);
+    }
+
     let fragment = "";
-    news.forEach((newsItem) => {
-        if (newsItem.content !== "[Removed]") {
-            const el = newsTemplate(newsItem);
+
+    news.forEach((newsItem, i) => {
+        if (newsItem.content !== "[Removed]" && newsItem.content) {
+            const el = newsTemplate(newsItem, i);
+
             fragment += el;
         }
     });
+
     newsContainer.insertAdjacentHTML("beforeend", fragment);
 }
 
+function clearContainer(container) {
+    container.innerHTML = "";
+}
+
 //news item template function
-function newsTemplate({ urlToImage, title, url, description }) {
+function newsTemplate({ urlToImage, title, url, description }, index) {
     return `
-    <div class="col s12">
+    <div class="col s12" data-index="${index}">
             <div class="card">
                 <div class="card-image">
                     <img src="${urlToImage}">
@@ -120,4 +166,30 @@ function newsTemplate({ urlToImage, title, url, description }) {
             </div>
     </div>
     `;
+}
+
+// show error
+
+function showAlert(msg, type = "success") {
+    M.toast({ html: msg, class: type });
+}
+function showEmptyMessage(msg) {
+    console.log(msg);
+}
+
+function showLoader() {
+    document.body.insertAdjacentHTML(
+        "afterbegin",
+        `
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>`
+    );
+}
+
+function removePreloader() {
+    const loader = document.querySelector(".progress");
+    if (loader) {
+        loader.remove();
+    }
 }
