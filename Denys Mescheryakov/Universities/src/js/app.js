@@ -1,4 +1,5 @@
 import locations from "./store/locations";
+import "../css/style.css";
 
 locations.init("Aviation").then((res) => {
     console.log(res);
