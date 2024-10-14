@@ -10,7 +10,28 @@
 </head>
 
 <body>
-  <!-- <nav class="header purple darken-1">
+  <!-- <nav>
+    <div class="nav-wrapper">
+      <div class="container">
+
+        <a href="#" class="brand-logo">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <div class="input-field">
+              <select>
+                <option value="USD">$ US Dollar</option>
+                <option value="EUR">€ Euro</option>
+                <option value="RUB">₽ Рубли</option>
+              </select>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav> -->
+
+  <nav class="header purple darken-1">
     <div class="nav-wrapper">
       <div class="container d-flex align-items-center">
         <div class="logo d-flex align-items-center">
@@ -23,6 +44,7 @@
               <select id="currency">
                 <option value="USD">$ US Dollar</option>
                 <option value="EUR">€ Euro</option>
+
               </select>
             </div>
           </li>
@@ -30,6 +52,7 @@
       </div>
     </div>
   </nav>
+
   <div class="form-section">
     <div class="container">
       <div class="row d-flex">
@@ -55,13 +78,21 @@
                   <label for="datepicker-return">Return date</label>
                 </div>
               </div>
-              <div class="card-action d-flex">
+              <!-- <div class="card-action d-flex">
                 <button class="btn waves-effect waves-light purple darken-3" type="submit" name="action">
                   Search
                   <i class="material-icons right">send</i>
                 </button>
                 <button class="btn waves-effect waves-light pink darken-3 ml-auto" type="reset" name="action">
                   Reset
+                  <i class="material-icons right">cancel</i>
+                </button>
+              </div> -->
+              <div class="card-action d-flex">
+                <button class="btn waves-effect waves-light purple darken-3" type="submit" name="action">search
+                  <i class="material-icons right">send</i>
+                </button>
+                <button class="btn waves-effect waves-light pink darken-3 ml-auto" type="reset" name="action">Reset
                   <i class="material-icons right">cancel</i>
                 </button>
               </div>
@@ -71,7 +102,7 @@
       </div>
     </div>
   </div>
-  <div class="tickets-sections">
+  <!--  <div class="tickets-sections">
     <div class="container">
       <div class="row">
         <div class="tickets-empty-res-msg">
@@ -106,7 +137,6 @@
       </div>
     </div>
   </div> -->
-  <h1>Project #3</h1>
   <script type="module" src="./src/js/app.js"></script>
 
 </body>
