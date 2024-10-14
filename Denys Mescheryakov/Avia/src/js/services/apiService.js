@@ -1,5 +1,5 @@
-import axios from 'axios';
-import config from '../config/apiConfig';
+import axios from "axios";
+import config from "../config/apiConfig";
 
 /**
  * /countries - array of countries
@@ -7,30 +7,31 @@ import config from '../config/apiConfig';
  * /prices/cheap - array
  */
 class Api {
-  constructor(config) {
-    this.url = config.url;
-  }
-  async countries() {
-    try {
-      const response = await axios.get(`${this.url}/countries`);
-      return response.data;
-    } catch (err) {
-      console.log(err);
-      return Promise.reject(err);
+    constructor(config) {
+        this.url = config.url;
     }
-  }
-  async cities() {
-    try {
-      const response = await axios.get(`${this.url}/cities`);
-      return response.data;
-    } catch (err) {
-      console.log(err);
-      return Promise.reject(err);
+    async countries() {
+        try {
+            const response = await axios.get(`${this.url}/countries`);
+            return response.data;
+        } catch (err) {
+            console.log(err);
+            return Promise.reject(err);
+        }
     }
-  }
-  async prices(params) {}
+    async cities() {
+        try {
+            const response = await axios.get(`${this.url}/cities`);
+            return response.data;
+        } catch (err) {
+            console.log(err);
+            return Promise.reject(err);
+        }
+    }
+    async prices(params) {}
 }
 
 const api = new Api(config);
+console.log("API: ", api);
 
 export default api;

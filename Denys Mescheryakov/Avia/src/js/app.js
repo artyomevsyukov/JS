@@ -7,5 +7,5 @@ console.log("APP Start");
 // locations.init().then((res) => {
 //     console.log(res);
 //     console.log(locations);
-//     console.log(locations.getCitiesByCountryCode("PE"));
+//     console.log(locations.getCitiesByCountryCode("TR"));
 // });
