@@ -3,6 +3,7 @@ import "./plugins";
 import locations from "./store/locations";
 import citiesListKeys from "./DATA/citiesListKeys";
 import formUI from "./views/form";
+import currencyUI from "./views/currency";
 
 // locations.init().then((res) => {
 //     console.log(res);
@@ -20,7 +21,8 @@ import formUI from "./views/form";
 document.addEventListener("DOMContentLoaded", () => {
     initApp();
     const form = formUI.form;
-
+    const currency = currencyUI.currncyValue;
+    console.log(currency);
     // Events
 
     form.addEventListener("submit", (e) => {
@@ -30,14 +32,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Handlers
     async function initApp() {
+        // FIXME
         // await locations.init();
-        // console.log(locations);
         // formUI.setAutocompleteDate(locations.shortCitiesList);
+
         formUI.setAutocompleteDate(citiesListKeys);
     }
 
     async function onFormSubmit() {
         // собрать данные из инпутов
+        const currency = currencyUI.currncyValue;
+        console.log(currency);
+
         const formData = new FormData(form);
 
         const data = {
@@ -49,8 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
             ),
             departDate: formData.get("datepicker-depart"),
             returnDate: formData.get("datepicker-return"),
+            currency: currency,
         };
 
-        await locations.fetchTickets(data);
+        // await locations.fetchTickets(data);
     }
 });

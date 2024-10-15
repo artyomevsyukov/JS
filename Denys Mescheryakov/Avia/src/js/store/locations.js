@@ -29,6 +29,7 @@ class Locations {
     }
 
     getCityCodeByKey(key) {
+        // fixme
         return locarionsData.cities[key].code;
         // return this.cities[key].code;
     }
