@@ -1,17 +1,31 @@
 import "../css/style.css";
-import locations from "./store/locations";
 import "./plugins";
-
-console.log("APP Start");
+import locations from "./store/locations";
+import citiesListKeys from "./JSON/citiesListKeys";
+import formUI from "./views/form";
 
 // locations.init().then((res) => {
 //     console.log(res);
 //     console.log(locations);
-//     console.log(
-//         "getCitiesByCountryCode: ",
-//         locations.getCitiesByCountryCode("RU")
-//     );
+
 //     console.log("getCountryNameByCode: ", locations.getCountryNameByCode("RU"));
 //     console.log("this.countries: ", locations.countries);
 //     console.log("this.cities:", locations.cities);
+//     console.log(
+//         "this.shortCitiesList: ",
+//         locations.createShortCitiesList(locations.cities)
+//     );
 // });
+
+document.addEventListener("DOMContentLoaded", () => {
+    initApp();
+
+    // Events
+
+    // Handlers
+    async function initApp() {
+        // await locations.init();
+        // formUI.setAutocompleteDate(locations.shortCitiesList);
+        formUI.setAutocompleteDate(citiesListKeys);
+    }
+});
