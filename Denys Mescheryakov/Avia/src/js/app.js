@@ -7,5 +7,11 @@ console.log("APP Start");
 // locations.init().then((res) => {
 //     console.log(res);
 //     console.log(locations);
-//     console.log(locations.getCitiesByCountryCode("TR"));
+//     console.log(
+//         "getCitiesByCountryCode: ",
+//         locations.getCitiesByCountryCode("RU")
+//     );
+//     console.log("getCountryNameByCode: ", locations.getCountryNameByCode("RU"));
+//     console.log("this.countries: ", locations.countries);
+//     console.log("this.cities:", locations.cities);
 // });

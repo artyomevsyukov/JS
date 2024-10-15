@@ -14,7 +14,7 @@ class Locations {
 
         const [countries, cities] = response;
         this.countries = this.serializeCountries(countries);
-        this.cities = cities;
+        this.cities = this.serializeCities(cities);
         // console.log("response: ", response);
 
         return response;
@@ -27,19 +27,36 @@ class Locations {
             return acc;
         }, {});
     }
-    serializeCityes(sities) {
+
+    serializeCities(cities) {
         // {'City name, Country name  ' : {...}}
-        return sities.reduce((acc, city) => {
-            acc[city.name] = city;
+
+        return cities.reduce((acc, city) => {
+            // const countryName = this.countries[city.country_code].name;
+            const countryName = this.getCountryNameByCode(city.country_code);
+            const cityName = city.name || city.name_translations.en;
+            const key = `${cityName},${countryName}`;
+
+            acc[key] = city;
             return acc;
         }, {});
     }
 
+    getCountryNameByCode(code) {
+        return this.countries[code].name;
+    }
+
     getCitiesByCountryCode(code) {
-        return this.cities.filter((city) => city.country_code === code);
+        return Object.entries(this.cities).filter(
+            (city) => city.country_code === code
+        );
     }
 }
 
 const locations = new Locations(api);
 
 export default locations;
+
+// {'City, Cpuntry' : null }
+// [{},{}]
+//{'City': {...}}=>{cities.code}
