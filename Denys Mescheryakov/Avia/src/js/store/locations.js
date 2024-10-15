@@ -1,4 +1,5 @@
 import api from "../services/apiService";
+import locarionsData from "../DATA/locationsData";
 
 class Locations {
     constructor(api) {
@@ -19,12 +20,22 @@ class Locations {
         this.cities = this.serializeCities(cities);
         this.shortCitiesList = this.createShortCitiesList(this.cities);
 
-        const json = JSON.stringify(this.shortCitiesList);
-        localStorage.setItem("KEYS", json);
+        // const json = JSON.stringify(this.shortCitiesList);
+        // localStorage.setItem("KEYS", json);
 
-        this.citiesListKeys = JSON.parse(localStorage.getItem("KEYS"));
+        // this.citiesListKeys = JSON.parse(localStorage.getItem("KEYS"));
 
         return response;
+    }
+
+    getCityCodeByKey(key) {
+        return locarionsData.cities[key].code;
+        // return this.cities[key].code;
+    }
+
+    async fetchTickets(params) {
+        const response = await this.api.prices(params);
+        console.log(response);
     }
 
     // createShortCitiesList(cities) {
@@ -73,11 +84,11 @@ class Locations {
         return this.countries[code].name;
     }
 
-    getCitiesByCountryCode(code) {
-        return Object.entries(this.cities).filter(
-            (city) => city.country_code === code
-        );
-    }
+    // getCitiesByCountryCode(code) {
+    //     return Object.entries(this.cities).filter(
+    //         (city) => city.country_code === code
+    //     );
+    // }
 }
 
 const locations = new Locations(api);
