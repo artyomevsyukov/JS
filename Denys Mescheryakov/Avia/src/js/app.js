@@ -6,7 +6,8 @@ import formUI from "./views/form";
 import currencyUI from "./views/currency";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // initApp();
+    // FIXME
+    initApp();
     const form = formUI.form;
     const currency = currencyUI.currncyValue;
     // console.log(currency);

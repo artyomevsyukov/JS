@@ -8,7 +8,7 @@ class Locations {
         this.cities = null;
         this.shortCitiesList = {};
         this.airlines = {};
-        // this.lastSearch = {}
+        this.lastSearch = {};
     }
     async init() {
         const response = await Promise.all([
@@ -22,16 +22,28 @@ class Locations {
         this.cities = this.serializeCities(cities);
         this.shortCitiesList = this.createShortCities(this.cities);
         this.airlines = this.serializeAirline(airlines);
-        console.log(this.cities);
+        // console.log(this.cities);
 
         return response;
     }
     async fetchTickets(params) {
         const response = await this.api.prices(params);
         console.log("fetchTickets: ", response);
+        this.lastSearch = this.serializeTickets(response.data);
+        console.log("lastSearch: ", this.lastSearch);
     }
 
-    serializeTickets(tickets) {}
+    serializeTickets(tickets) {
+        return Object.values(tickets).map((ticket) => {
+            return {
+                ...ticket,
+                origin_name: this.getCityNameByCode(ticket.origin),
+                destination_name: this.getCityNameByCode(ticket.destination),
+                airline_logo: this.getAirlineLogoByCode(ticket.airline),
+                airline_name: this.getAirlineNameByCode(ticket.airline),
+            };
+        });
+    }
 
     getCityNameByCode(code) {
         return this.cities[code].name;
@@ -87,6 +99,7 @@ class Locations {
 
     serializeAirline(airlines) {
         return airlines.reduce((acc, airline) => {
+            // мутируем оригинальный объект airline
             airline.logo = `https://pics.avs.io/200/200/${airline.code}.png`;
             airline.name = airline.name || airline.name_translations.en;
             acc[airline.code] = airline;
@@ -107,7 +120,7 @@ class Locations {
             const country_name = this.getCountryNameByCode(city.country_code);
             const cityName = city.name || city.name_translations.en;
             const full_name = `${cityName}, ${country_name}`;
-
+            // без мутации оригинального объекта city
             acc[city.code] = { ...city, country_name, full_name };
             return acc;
         }, {});
