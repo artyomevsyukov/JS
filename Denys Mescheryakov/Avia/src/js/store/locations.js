@@ -31,6 +31,12 @@ class Locations {
         console.log("fetchTickets: ", response);
     }
 
+    serializeTickets(tickets) {}
+
+    getCityNameByCode(code) {
+        return this.cities[code].name;
+    }
+
     getCityCodeByKey(fullName) {
         const city = Object.values(this.cities).find(
             (item) => item.full_name == fullName
@@ -42,7 +48,7 @@ class Locations {
             console.log("Такого города в базе нет");
             return null;
         }
-
+        // Альтернатива
         // const city = this.cities;
         // for (const key in city) {
         //     if (this.cities[key].full_name === fullName) {
