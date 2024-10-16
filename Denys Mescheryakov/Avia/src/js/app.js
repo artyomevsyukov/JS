@@ -1,30 +1,17 @@
 import "../css/style.css";
 import "./plugins";
 import locations from "./store/locations";
-import citiesListKeys from "./DATA/citiesListKeys";
+// import citiesListKeys from "./DATA/citiesListKeys";
 import formUI from "./views/form";
 import currencyUI from "./views/currency";
-
-// locations.init().then((res) => {
-//     console.log(res);
-//     console.log(locations);
-
-//     console.log("getCountryNameByCode: ", locations.getCountryNameByCode("RU"));
-//     console.log("this.countries: ", locations.countries);
-//     console.log("this.cities:", locations.cities);
-//     console.log(
-//         "this.shortCitiesList: ",
-//         locations.createShortCitiesList(locations.cities)
-//     );
-// });
 
 document.addEventListener("DOMContentLoaded", () => {
     initApp();
     const form = formUI.form;
     const currency = currencyUI.currncyValue;
-    console.log(currency);
-    // Events
+    // console.log(currency);
 
+    // Events
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         onFormSubmit();
@@ -32,17 +19,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Handlers
     async function initApp() {
-        // FIXME
-        // await locations.init();
-        // formUI.setAutocompleteDate(locations.shortCitiesList);
+        await locations.init();
 
-        formUI.setAutocompleteDate(citiesListKeys);
+        console.log(
+            "=========================CONSOLE============================="
+        );
+        console.log(locations);
+        console.log("location.countries: ", locations.countries);
+        console.log("location.cities:", locations.cities);
+        console.log(
+            "location.shortCitiesList: ",
+            locations.createShortCities(locations.cities)
+        );
+        console.log("location.airlines: ", location.airlines);
+
+        console.log(
+            "=========================CONSOLE END============================="
+        );
+
+        formUI.setAutocompleteDate(locations.shortCitiesList);
     }
 
     async function onFormSubmit() {
         // собрать данные из инпутов
         const currency = currencyUI.currncyValue;
-        console.log(currency);
+        // console.log(currency);
 
         const formData = new FormData(form);
 
@@ -58,6 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
             currency: currency,
         };
 
-        // await locations.fetchTickets(data);
+        await locations.fetchTickets(data);
     }
 });
