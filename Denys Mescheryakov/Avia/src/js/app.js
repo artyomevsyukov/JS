@@ -1,16 +1,14 @@
 import "../css/style.css";
 import "./plugins";
 import locations from "./store/locations";
-// import citiesListKeys from "./DATA/citiesListKeys";
 import formUI from "./views/form";
 import currencyUI from "./views/currency";
+import ticketsUI from "./views/tickets";
 
 document.addEventListener("DOMContentLoaded", () => {
     // FIXME
     // initApp();
     const form = formUI.form;
-    const currency = currencyUI.currncyValue;
-    // console.log(currency);
 
     // Events
     form.addEventListener("submit", (e) => {
@@ -21,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Handlers
     async function initApp() {
         await locations.init();
+        formUI.setAutocompleteDate(locations.shortCitiesList);
 
         console.log(
             "=========================CONSOLE============================="
@@ -37,8 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(
             "=========================CONSOLE END============================="
         );
-
-        formUI.setAutocompleteDate(locations.shortCitiesList);
     }
 
     async function onFormSubmit() {
@@ -61,5 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         await locations.fetchTickets(data);
+        ticketsUI.renderTickets(locations.lastSearch);
     }
 });

@@ -1,6 +1,5 @@
 import api from "../services/apiService";
 import { formatDate } from "../helper/date";
-// import locarionsData from "../DATA/locationsData";
 
 class Locations {
     constructor(api, helpers) {
@@ -24,7 +23,6 @@ class Locations {
         this.cities = this.serializeCities(cities);
         this.shortCitiesList = this.createShortCities(this.cities);
         this.airlines = this.serializeAirline(airlines);
-        // console.log(this.cities);
 
         return response;
     }
@@ -64,7 +62,6 @@ class Locations {
             (item) => item.full_name == fullName
         );
         if (city) {
-            // console.log("city.code: ", city.code);
             return city.code;
         } else {
             console.log("Такого города в базе нет");
