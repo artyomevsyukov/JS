@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function onFormSubmit() {
         // собрать данные из инпутов
-        const currency = currencyUI.currncyValue;
-        // console.log(currency);
+        const currency = currencyUI;
+        console.log("currency onFormSubmit: ", currency);
 
         const formData = new FormData(form);
 
@@ -54,10 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ),
             departDate: formData.get("datepicker-depart"),
             returnDate: formData.get("datepicker-return"),
-            currency: currency,
+            currency: currency.currncyValue,
         };
 
         await locations.fetchTickets(data);
-        ticketsUI.renderTickets(locations.lastSearch);
+        ticketsUI.renderTickets(locations.lastSearch, currency.currencySymbol);
     }
 });

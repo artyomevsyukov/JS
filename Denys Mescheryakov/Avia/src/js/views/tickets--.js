@@ -1,17 +1,12 @@
-import currencyUI from "./currency";
+// import currencyUI from "./currency";
 
 class TicketUI {
     constructor() {
         this.container = document.querySelector(".tickets-sections .row");
-        this.currency = currencyUI.currencySymbol;
+        // this.currency = currencyUI.currencySimbol;
     }
 
-    /**
-     * Отображает билеты
-     * @param {Array} tickets - массив билетов
-     * @param {String} currency - символ валюты (по умолчанию используется this.currency)
-     */
-    renderTickets(tickets = [], currency = this.currency) {
+    renderTickets(tickets, currency) {
         this.clearContainer();
 
         if (!tickets.length) {
@@ -19,50 +14,38 @@ class TicketUI {
             return;
         }
 
-        const fragment = tickets
-            .map((ticket) => TicketUI.ticketTemplate(ticket, currency))
-            .join("");
+        let fragment = "";
+        tickets.forEach((ticket) => {
+            const template = TicketUI.ticketTemplate(ticket, currency);
+            fragment += template;
+        });
         this.container.insertAdjacentHTML("afterbegin", fragment);
     }
 
-    /**
-     * Очищает контейнер с билетами
-     */
     clearContainer() {
         this.container.innerHTML = "";
     }
 
-    /**
-     * Показывает сообщение о том, что билеты не найдены
-     */
     showEmptyMsg() {
         const template = TicketUI.emptyMsgTemplate();
         this.container.insertAdjacentHTML("afterbegin", template);
     }
 
-    /**
-     * Шаблон сообщения о пустом результате
-     * @returns {string} - HTML разметка
-     */
     static emptyMsgTemplate() {
         return `
         <div class="tickets-empty-res-msg">
-            По вашему запросу билетов не найдено.
+                По вашему запросу билетов не найдено.
         </div>`;
     }
 
-    /**
-     * Шаблон билета
-     * @param {Object} ticket - данные билета
-     * @param {String} currency - символ валюты
-     * @returns {string} - HTML разметка
-     */
     static ticketTemplate(ticket, currency) {
+        console.log("currency", currency);
+
         return `
         <div class="col s12 m6">
           <div class="card ticket-card">
             <div class="ticket-airline d-flex align-items-center">
-              <img src="${ticket.airline_logo}" class="ticket-airline-img" alt="Airline logo" />
+              <img src="${ticket.airline_logo}" class="ticket-airline-img" />
               <span class="ticket-airline-name">${ticket.airline_name}</span>
             </div>
             <div class="ticket-destination d-flex align-items-center">
@@ -84,9 +67,11 @@ class TicketUI {
               <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
             </div>
           </div>
-        </div>`;
+        </div>
+        `;
     }
 }
 
 const ticketsUI = new TicketUI();
+
 export default ticketsUI;
