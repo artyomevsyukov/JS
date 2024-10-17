@@ -1,5 +1,5 @@
-import "../css/style.css";
 import "./plugins";
+import "../css/style.css";
 import locations from "./store/locations";
 import formUI from "./views/form";
 import currencyUI from "./views/currency";
@@ -7,7 +7,7 @@ import ticketsUI from "./views/tickets";
 
 document.addEventListener("DOMContentLoaded", () => {
     // FIXME
-    // initApp();
+    initApp();
     const form = formUI.form;
 
     // Events

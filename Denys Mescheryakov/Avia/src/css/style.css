@@ -34,6 +34,7 @@ body {
 /* Header styles */
 .header .brand-logo {
     position: static;
+    padding-right: 30px;
 }
 
 .header .currency-select input.select-dropdown {
@@ -110,4 +111,12 @@ body {
     background: whitesmoke;
     font-weight: bold;
     font-size: 18px;
+}
+
+.add-favorite {
+    margin-bottom: 15px;
+}
+
+.card {
+    margin: 0.5rem 0 0.5rem 0;
 }
