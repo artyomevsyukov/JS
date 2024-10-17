@@ -6,7 +6,7 @@ import * as bootstrap from "bootstrap";
 //
 import UI from "./config/ui.config";
 import { validate } from "./helpers/validate";
-// import { showInputError, showInputValid } from "./views/form";
+import { showInputError, showInputValid } from "./views/form";
 
 const { form, inputEmail, inputPassword } = UI;
 
@@ -22,6 +22,10 @@ form.addEventListener("submit", (e) => {
 function onSubmit() {
     const isValidForm = inputs.every((el) => {
         const isVAlidInput = validate(el);
+
+        if (!isVAlidInput) {
+            showInputError(el);
+        }
 
         return isVAlidInput;
     });
