@@ -26,3 +26,18 @@ export function showInputError(el) {
 export function showInputValid(el) {
     el.classlist.add("valid-feedback");
 }
+
+/**
+ *
+ * Function removeInputError. Remove input error
+ * @param {HTMLInputElement} el
+ */
+export function removeInputError(el) {
+    const parent = el.parentElement;
+
+    const errors = parent.querySelectorAll(".invalid-feedback");
+    if (errors.length === 0) return;
+
+    el.classList.remove("is-invalid");
+    errors.forEach((err) => parent.removeChild(err));
+}

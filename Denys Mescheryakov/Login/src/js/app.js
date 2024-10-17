@@ -6,7 +6,7 @@ import * as bootstrap from "bootstrap";
 //
 import UI from "./config/ui.config";
 import { validate } from "./helpers/validate";
-import { showInputError, showInputValid } from "./views/form";
+import { showInputError, showInputValid, removeInputError } from "./views/form";
 
 const { form, inputEmail, inputPassword } = UI;
 
@@ -17,6 +17,10 @@ form.addEventListener("submit", (e) => {
     e.preventDefault();
     onSubmit();
 });
+
+inputs.forEach((el) =>
+    el.addEventListener("focus", () => removeInputError(el))
+);
 
 // Handlers
 function onSubmit() {
