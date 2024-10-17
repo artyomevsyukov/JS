@@ -5,8 +5,12 @@ import "../scss/style.scss";
 import * as bootstrap from "bootstrap";
 //
 import UI from "./config/ui.config";
+import { validate } from "./helpers/validate";
+// import { showInputError, showInputValid } from "./views/form";
 
 const { form, inputEmail, inputPassword } = UI;
+
+const inputs = [inputEmail, inputPassword];
 
 // Events
 form.addEventListener("submit", (e) => {
@@ -15,4 +19,12 @@ form.addEventListener("submit", (e) => {
 });
 
 // Handlers
-function onSubmit() {}
+function onSubmit() {
+    const isValidForm = inputs.every((el) => {
+        const isVAlidInput = validate(el);
+
+        return isVAlidInput;
+    });
+    // return isValidForm;
+    console.log(isValidForm);
+}
