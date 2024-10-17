@@ -1,0 +1,79 @@
+// login-form-wrap d-flex align-items-center
+
+.d-flex {
+    display: flex;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-items-center {
+    justify-items: center;
+}
+
+.justify-items-between {
+    justify-content: space-between;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
+
+.mr-auto {
+    margin-right: auto;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// page style
+.form-group {
+    margin-bottom: 12px;
+}
+.form-group label {
+    margin-bottom: 8px;
+}
+
+.login-page-wrapp {
+    height: 100vh;
+}
+
+.login-form-wrap {
+    width: 50%;
+}
+
+.login-form-wrap .form-card {
+    max-width: 500px;
+    width: 100%;
+    margin-right: 30px;
+}
+
+.login-form-wrap .form-card .card-title {
+    color: var(--gray);
+}
+
+.login-greeting-screen {
+    background: teal;
+    width: 50%;
+    padding: 20px;
+}
+
+.login-greeting-screen .login-greeting-screen-text {
+    max-width: 500px;
+}
+
+.login-greeting-screen .login-greeting-screen-text {
+    color: white;
+}
+
+.login-greeting-screen .login-greeting-screen-title {
+    margin-bottom: 30px;
+    text-transform: capitalize;
+}
+
+.login-greeting-screen .login-greeting-screen-description {
+    line-height: 1.4;
+}
