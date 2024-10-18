@@ -38,12 +38,19 @@ export async function login(email, password) {
                 expiresInMins: 30, // optional, defaults to 60
             }),
             // credentials: "include", // Include cookies (e.g., accessToken) in the request
-        })
-            .then((res) => res.json())
-            .then(console.log);
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || "Ошибка аутентификации");
+        }
+        console.log(response);
+
+        return response;
     } catch (error) {
-        console.log(err);
-        return Promise.reject(err);
+        console.log(error);
+
+        return Promise.reject(error);
     }
 }
 

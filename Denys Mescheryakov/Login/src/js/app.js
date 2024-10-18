@@ -26,6 +26,7 @@ inputs.forEach((el) =>
 
 // Handlers
 async function onSubmit() {
+    // console.log("onSubmit");
     let isValidForm = true;
 
     inputs.forEach((el) => {
@@ -42,12 +43,17 @@ async function onSubmit() {
     if (!isValidForm) return;
 
     try {
-        await login(inputEmail.value, inputPassword.value);
-        form.reset();
-        // show succes nitify
+        const response = await login(inputEmail.value, inputPassword.value);
+
+        if (response.ok) {
+            form.reset();
+            // show success notification
+        } else {
+            console.error("Ошибка аутентификации: ", response.statusText);
+        }
     } catch (error) {
-        console.log(err);
-        return Promise.reject(err);
+        console.error("Ошибка авторизации: ", error.message);
+        // return Promise.reject(error);
         // show error notify
     }
 }
