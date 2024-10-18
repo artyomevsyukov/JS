@@ -15,6 +15,7 @@ const inputs = [inputEmail, inputPassword];
 // Events
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    inputs.forEach((el) => removeInputError(el));
     onSubmit();
 });
 
@@ -24,7 +25,7 @@ inputs.forEach((el) =>
 
 // Handlers
 function onSubmit() {
-    const isValidForm = inputs.every((el) => {
+    const isValidForm = inputs.forEach((el) => {
         const isVAlidInput = validate(el);
 
         if (!isVAlidInput) {
