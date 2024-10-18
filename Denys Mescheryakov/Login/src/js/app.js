@@ -7,6 +7,7 @@ import * as bootstrap from "bootstrap";
 import UI from "./config/ui.config";
 import { validate } from "./helpers/validate";
 import { showInputError, showInputValid, removeInputError } from "./views/form";
+import { login } from "./services/auth.service";
 
 const { form, inputEmail, inputPassword } = UI;
 
@@ -24,16 +25,29 @@ inputs.forEach((el) =>
 );
 
 // Handlers
-function onSubmit() {
-    const isValidForm = inputs.forEach((el) => {
+async function onSubmit() {
+    let isValidForm = true;
+
+    inputs.forEach((el) => {
         const isVAlidInput = validate(el);
 
         if (!isVAlidInput) {
             showInputError(el);
+            isValidForm = false;
         }
 
         return isVAlidInput;
     });
-    // return isValidForm;
-    console.log(isValidForm);
+
+    if (!isValidForm) return;
+
+    try {
+        await login(inputEmail.value, inputPassword.value);
+        form.reset();
+        // show succes nitify
+    } catch (error) {
+        console.log(err);
+        return Promise.reject(err);
+        // show error notify
+    }
 }

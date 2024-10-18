@@ -1,5 +1,6 @@
 const regExpDic = {
-    email: /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/,
+    // email: /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/,
+    email: /^([a-zA-Z])/,
     password: /^[0-9a-zA-Z]{4,}$/,
 };
 
@@ -10,8 +11,6 @@ const regExpDic = {
  */
 
 export function validate(el) {
-    console.log(el.value);
-
     const regExpName = el.dataset.required;
 
     if (!regExpDic[regExpName]) return true;
