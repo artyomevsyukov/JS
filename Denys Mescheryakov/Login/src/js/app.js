@@ -8,6 +8,7 @@ import UI from "./config/ui.config";
 import { validate } from "./helpers/validate";
 import { showInputError, showInputValid, removeInputError } from "./views/form";
 import { login } from "./services/auth.service";
+import { notify } from "./views/notify";
 
 const { form, inputEmail, inputPassword } = UI;
 
@@ -46,6 +47,11 @@ async function onSubmit() {
         if (response.ok) {
             form.reset();
             // show success notification
+            notify({
+                msg: "Login success",
+                className: "alert-success",
+                timeout: 5000,
+            });
         } else {
             console.error("Ошибка аутентификации: ", response.statusText);
             console.log("Ошибка аутентификации: ", response.statusText);
@@ -53,5 +59,10 @@ async function onSubmit() {
     } catch (error) {
         console.error("Ошибка авторизации: ", error.message);
         // show error notify
+        notify({
+            msg: "Ошибка авторизации",
+            className: "alert-danger",
+            timeout: 5000,
+        });
     }
 }

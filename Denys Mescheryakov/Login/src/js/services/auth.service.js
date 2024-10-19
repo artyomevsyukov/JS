@@ -41,14 +41,15 @@ export async function login(email, password) {
         });
 
         console.log("response: ", response);
-        const data = await response.json();
-        if (!response.ok) {
-            throw new Error(data.message || "Ошибка аутентификации");
-        }
-        console.log("response.data: ", data);
 
-        return data;
-        // return response;
+        if (!response.ok) {
+            throw new Error(response.message || "Ошибка аутентификации");
+        }
+
+        // const data = await response.json();
+        // console.log("response.data: ", data);
+        // return data;
+        return response;
     } catch (error) {
         console.log(error);
 
