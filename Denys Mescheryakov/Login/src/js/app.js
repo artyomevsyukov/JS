@@ -36,8 +36,6 @@ async function onSubmit() {
             showInputError(el);
             isValidForm = false;
         }
-
-        return isVAlidInput;
     });
 
     if (!isValidForm) return;
@@ -50,10 +48,10 @@ async function onSubmit() {
             // show success notification
         } else {
             console.error("Ошибка аутентификации: ", response.statusText);
+            console.log("Ошибка аутентификации: ", response.statusText);
         }
     } catch (error) {
         console.error("Ошибка авторизации: ", error.message);
-        // return Promise.reject(error);
         // show error notify
     }
 }

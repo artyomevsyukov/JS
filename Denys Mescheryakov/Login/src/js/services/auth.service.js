@@ -40,13 +40,15 @@ export async function login(email, password) {
             // credentials: "include", // Include cookies (e.g., accessToken) in the request
         });
 
+        console.log("response: ", response);
         const data = await response.json();
         if (!response.ok) {
             throw new Error(data.message || "Ошибка аутентификации");
         }
-        console.log(response);
+        console.log("response.data: ", data);
 
-        return response;
+        return data;
+        // return response;
     } catch (error) {
         console.log(error);
 
