@@ -53,6 +53,7 @@ export async function login(email, password) {
     } catch (error) {
         console.log(error);
 
+        // throw error
         return Promise.reject(error);
     }
 }
