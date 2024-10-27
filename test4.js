@@ -42,25 +42,25 @@
 //     };
 // })();
 
-let users = [
-    { id: "john", name: "John Smith", age: 20 },
-    { id: "ann", name: "Ann Smith", age: 24 },
-    { id: "pete", name: "Pete Peterson", age: 31 },
-];
+// let users = [
+//     { id: "john", name: "John Smith", age: 20 },
+//     { id: "ann", name: "Ann Smith", age: 24 },
+//     { id: "pete", name: "Pete Peterson", age: 31 },
+// ];
 
-/**
- *
- * @param {Array} users
- */
-function groupById(users) {
-    return users.reduce((acc, user) => {
-        acc[user.id] = user;
-        return acc;
-    }, {});
-}
+// /**
+//  *
+//  * @param {Array} users
+//  */
+// function groupById(users) {
+//     return users.reduce((acc, user) => {
+//         acc[user.id] = user;
+//         return acc;
+//     }, {});
+// }
 
-let usersById = groupById(users);
-console.log(usersById);
+// let usersById = groupById(users);
+// console.log(usersById);
 
 /*
 после вызова у нас должно получиться:
@@ -72,4 +72,22 @@ usersById = {
 }
 */
 
-console.log(5 % 2);
+// console.log(5 % 2);
+
+// for (let i = 0; i <= 5; i++) {
+//     setTimeout(function () {
+//         console.log(i);
+//     }, i* 500);
+// }
+// console.log("2342");
+
+let i = 5;
+i = ++i + ++i;
+console.log(i);
+
+let j = 5;
+let n = 10;
+// n += j++ + ++j;
+n += j++;
+console.log(n);
+console.log(j);
