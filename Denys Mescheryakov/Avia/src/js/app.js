@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         console.log("location.airlines: ", location.airlines);
 
+        console.log("location.countries.RU:", locations.countries.RU);
+        console.log("location.cities.MOW:", locations.cities.MOW);
         console.log(
             "=========================CONSOLE END============================="
         );

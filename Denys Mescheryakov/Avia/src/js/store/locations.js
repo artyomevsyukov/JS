@@ -1,7 +1,7 @@
 import api from "../services/apiService";
 import { formatDate } from "../helper/date";
 
-class Locations {
+export class Locations {
     constructor(api, helpers) {
         this.api = api;
         this.countries = null;
@@ -77,10 +77,6 @@ class Locations {
         // return null;
     }
 
-    getCountryNameByCode(code) {
-        return this.countries[code].name;
-    }
-
     getAirlineNameByCode(code) {
         return this.airlines[code] ? this.airlines[code].name : "";
     }
@@ -115,6 +111,7 @@ class Locations {
     }
 
     serializeCountries(countries) {
+        if (!Array.isArray(countries) || !countries.length) return {};
         return countries.reduce((acc, country) => {
             acc[country.code] = country;
             return acc;
@@ -131,6 +128,9 @@ class Locations {
             acc[city.code] = { ...city, country_name, full_name };
             return acc;
         }, {});
+    }
+    getCountryNameByCode(code) {
+        return this.countries[code].name;
     }
 }
 
