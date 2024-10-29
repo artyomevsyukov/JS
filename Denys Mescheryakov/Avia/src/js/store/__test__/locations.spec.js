@@ -5,6 +5,30 @@ import api, { Api } from "../../services/apiService";
 // mock
 const countries = [{ code: "RU", name: "Россия" }];
 const cities = [{ country_code: "RU", name: "Москва", code: "MOW" }];
+const airline = [{ country_code: "RU", name: "Airlines", code: "Avia" }];
+
+jest.mock("../../services/apiService", () => {
+    const mockApi = {
+        countries: jest.fn(() =>
+            Promise.resolve([{ code: "RU", name: "Россия" }])
+        ),
+        cities: jest.fn(() =>
+            Promise.resolve([
+                { country_code: "RU", name: "Москва", code: "MOW" },
+            ])
+        ),
+        airlines: jest.fn(() =>
+            Promise.resolve([
+                { country_code: "RU", name: "Airlines", code: "Avia" },
+            ])
+        ),
+    };
+    return {
+        Api: jest.fn(() => mockApi),
+    };
+});
+
+const apiService = new Api();
 
 describe("Тест locations store", () => {
     beforeEach(() => {
@@ -57,5 +81,11 @@ describe("Тест locations store", () => {
         const res = locationInstance.getCityNameByCode("MOW");
 
         expect(res).toBe("Москва");
+    });
+
+    it("Проверка правильного вызова метода Init()", () => {
+        const instance = new Locations(apiService, { formatDate });
+
+        expect(instance.init()).resolves.toEqual([countries, cities, airline]);
     });
 });

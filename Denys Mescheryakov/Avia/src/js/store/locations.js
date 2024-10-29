@@ -22,7 +22,7 @@ export class Locations {
         this.countries = this.serializeCountries(countries);
         this.cities = this.serializeCities(cities);
         this.shortCitiesList = this.createShortCities(this.cities);
-        this.airlines = this.serializeAirline(airlines);
+        this.airlines = this.serializeAirlines(airlines);
 
         return response;
     }
@@ -100,12 +100,23 @@ export class Locations {
         }, {});
     }
 
-    serializeAirline(airlines) {
+    // serializeAirline(airlines) {
+    //     return airlines.reduce((acc, airline) => {
+    //         // мутируем оригинальный объект airline
+    //         airline.logo = `https://pics.avs.io/200/200/${airline.code}.png`;
+    //         airline.name = airline.name || airline.name_translations.en;
+    //         acc[airline.code] = airline;
+    //         return acc;
+    //     }, {});
+    // }
+    serializeAirlines(airlines) {
         return airlines.reduce((acc, airline) => {
-            // мутируем оригинальный объект airline
-            airline.logo = `https://pics.avs.io/200/200/${airline.code}.png`;
-            airline.name = airline.name || airline.name_translations.en;
-            acc[airline.code] = airline;
+            // убираем мутацию объекта + для теста
+            const airlineCopy = { ...airline };
+            airlineCopy.logo = `https://pics.avs.io/200/200/${airlineCopy.code}.png`;
+            airlineCopy.name =
+                airlineCopy.name || airlineCopy.name_translations.en;
+            acc[airlineCopy.code] = airlineCopy;
             return acc;
         }, {});
     }
