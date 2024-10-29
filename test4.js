@@ -81,13 +81,16 @@ usersById = {
 // }
 // console.log("2342");
 
-let i = 5;
-i = ++i + ++i;
-console.log(i);
+// let i = 5;
+// i = ++i + ++i;
+// console.log(i);
 
-let j = 5;
-let n = 10;
-// n += j++ + ++j;
-n += j++;
-console.log(n);
-console.log(j);
+// let j = 5;
+// let n = 10;
+// // n += j++ + ++j;
+// n += j++;
+// console.log(n);
+// console.log(j);
+
+let date = new Date();
+console.log(date.getTime());

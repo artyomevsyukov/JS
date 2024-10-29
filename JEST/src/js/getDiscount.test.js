@@ -1,7 +1,7 @@
 // getDiscount.test.js
 import getDiscount from "./getDiscount";
 
-describe("getDiscount", () => {
+describe("Проверка функции - getDiscount", () => {
     // Сценарий 1: Без купона
     it("should return 0 if no coupon is provided", () => {
         const result = getDiscount(100);
