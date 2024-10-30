@@ -7,7 +7,7 @@ import ticketsUI from "./views/tickets";
 
 document.addEventListener("DOMContentLoaded", () => {
     // FIXME
-    initApp();
+    // initApp();
     const form = formUI.form;
 
     // Events
