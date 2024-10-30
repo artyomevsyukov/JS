@@ -7,7 +7,7 @@ import ticketsUI from "./views/tickets";
 
 document.addEventListener("DOMContentLoaded", () => {
     // FIXME
-    // initApp();
+    initApp();
     const form = formUI.form;
 
     // Events
@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             returnDate: formData.get("datepicker-return"),
             currency: currency.currncyValue,
         };
+        console.log("data:", data);
 
         await locations.fetchTickets(data);
         ticketsUI.renderTickets(locations.lastSearch, currency.currencySymbol);

@@ -1,4 +1,4 @@
-class CurrencyUI {
+export class CurrencyUI {
     constructor() {
         this.currency = document.getElementById("currency");
         this.dictionary = {

@@ -12,6 +12,6 @@ export default {
         "^.+\\.(js|jsx)?$": "babel-jest",
         //         "^.+\\.jsx?$": "babel-jest",
     },
-    testEnvironment: "node",
+    testEnvironment: "jsdom",
     // verbose: false, подробный отчет о тестах
 };

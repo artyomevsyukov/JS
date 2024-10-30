@@ -5,7 +5,7 @@ import api, { Api } from "../../services/apiService";
 // mock
 const countries = [{ code: "RU", name: "Россия" }];
 const cities = [{ country_code: "RU", name: "Москва", code: "MOW" }];
-const airline = [{ country_code: "RU", name: "Airlines", code: "Avia" }];
+const airlines = [{ country_code: "RU", name: "Airlines", code: "Avia" }];
 
 jest.mock("../../services/apiService", () => {
     const mockApi = {
@@ -44,7 +44,10 @@ describe("Тест locations store", () => {
     it("Проверка полей конструктора locationInstance", () => {
         const instance = new Locations(api, { formatDate });
         expect(instance.countries).toBe(null);
+        expect(instance.cities).toBe(null);
         expect(instance.shortCitiesList).toEqual({});
+        expect(instance.airlines).toEqual({});
+        expect(instance.lastSearch).toEqual({});
         expect(instance.formatDate).toEqual(formatDate);
     });
 
@@ -56,13 +59,13 @@ describe("Тест locations store", () => {
         expect(res).toEqual(expectedData);
     });
 
-    it("Проверка корректной сериализации стран с некорректными данными", () => {
+    it("Проверка корректной сериализации стран serializeCountries(countries) с некорректными данными", () => {
         const res = locationInstance.serializeCountries(null);
         const expectedData = {};
         expect(res).toEqual(expectedData);
     });
 
-    it("Проверка корректной сериализации городов", () => {
+    it("Проверка корректной сериализации городов serializeCities(cities)", () => {
         const res = locationInstance.serializeCities(cities);
         const expectedData = {
             MOW: {
@@ -86,6 +89,6 @@ describe("Тест locations store", () => {
     it("Проверка правильного вызова метода Init()", () => {
         const instance = new Locations(apiService, { formatDate });
 
-        expect(instance.init()).resolves.toEqual([countries, cities, airline]);
+        expect(instance.init()).resolves.toEqual([countries, cities, airlines]);
     });
 });

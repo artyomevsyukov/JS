@@ -122,6 +122,7 @@ export class Locations {
     }
 
     serializeCountries(countries) {
+        //{code: {country}}
         if (!Array.isArray(countries) || !countries.length) return {};
         return countries.reduce((acc, country) => {
             acc[country.code] = country;
