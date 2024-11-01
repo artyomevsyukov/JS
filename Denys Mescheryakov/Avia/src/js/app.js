@@ -7,7 +7,7 @@ import ticketsUI from "./views/tickets";
 
 document.addEventListener("DOMContentLoaded", () => {
     // FIXME
-    initApp();
+    // initApp();
     const form = formUI.form;
 
     // Events
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             locations.createShortCities(locations.cities)
         );
         console.log("location.airlines: ", location.airlines);
+        console.log("location.airlines Serilize: ", location.airlines);
 
         console.log("location.countries.RU:", locations.countries.RU);
         console.log("location.cities.MOW:", locations.cities.MOW);

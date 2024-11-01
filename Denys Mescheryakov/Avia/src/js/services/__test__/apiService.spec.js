@@ -14,6 +14,11 @@ jest.mock("axios");
 //     currency: currency.currncyValue,
 // };
 
+// jest.mock("../apiService", () => ({
+//     params: jest.fn(),
+//     prices: jest.fn(),
+// }));
+
 const params = {
     origin: "LED",
     destination: "MOW",
@@ -35,6 +40,7 @@ const price = [
         transfers: 1,
     },
 ];
+
 const cities = [{ country_code: "RU", name: "Москва", code: "MOW" }];
 const countries = [{ code: "RU", name: "Россия" }];
 const airlines = [{ country_code: "RU", name: "Airlines", code: "Avia" }];

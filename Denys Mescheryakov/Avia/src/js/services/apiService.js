@@ -13,6 +13,12 @@ export class Api {
     async countries() {
         try {
             const response = await axios.get(`${this.url}/countries`);
+            console.log("countries: ", response.data);
+            console.log(
+                "FILTER countries- RU: ",
+                response.data.filter((country) => country.code === "RU")
+            );
+
             return response.data;
         } catch (err) {
             console.log(err);
@@ -22,6 +28,12 @@ export class Api {
     async cities() {
         try {
             const response = await axios.get(`${this.url}/cities`);
+            console.log("cities: ", response.data);
+            console.log(
+                "FILTER cities - Москва: ",
+                response.data.filter((city) => city.name === "Москва")
+            );
+
             return response.data;
         } catch (err) {
             console.log(err);
@@ -31,6 +43,12 @@ export class Api {
     async airlines() {
         try {
             const response = await axios.get(`${this.url}/airlines`);
+            console.log("airlines: ", response.data);
+            console.log(
+                "FILTER airlines - CODE-DP: ",
+                response.data.filter((airlines) => airlines.code === "DP")
+            );
+
             return response.data;
         } catch (err) {
             console.log(err);

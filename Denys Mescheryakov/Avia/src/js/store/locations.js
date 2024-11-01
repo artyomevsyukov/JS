@@ -21,8 +21,26 @@ export class Locations {
         const [countries, cities, airlines] = response;
         this.countries = this.serializeCountries(countries);
         this.cities = this.serializeCities(cities);
+        console.log(
+            "*** this.cities and createShortCities(this.cities)",
+            this.cities
+        );
+
         this.shortCitiesList = this.createShortCities(this.cities);
+        console.log(
+            "*** this.cities and createShortCities(this.cities)",
+            this.cities,
+            this.shortCitiesList
+        );
+
         this.airlines = this.serializeAirlines(airlines);
+        console.log("INIT: airLine-SERIALIZE: ", this.airlines);
+        console.log(
+            "INIT: airLine-SERIALIZE: ",
+            Object.values(this.airlines).filter(
+                (airline) => airline.code === "DP"
+            )
+        );
 
         return response;
     }
@@ -110,6 +128,7 @@ export class Locations {
     //     }, {});
     // }
     serializeAirlines(airlines) {
+        if (!Array.isArray(airlines) || !airlines.length) return {};
         return airlines.reduce((acc, airline) => {
             // убираем мутацию объекта + для теста
             const airlineCopy = { ...airline };
@@ -131,6 +150,7 @@ export class Locations {
     }
 
     serializeCities(cities) {
+        if (!Array.isArray(cities) || !cities.length) return {};
         return cities.reduce((acc, city) => {
             // const countryName = this.countries[city.country_code].name;
             const country_name = this.getCountryNameByCode(city.country_code);
