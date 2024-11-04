@@ -21,6 +21,7 @@ export class Locations {
         const [countries, cities, airlines] = response;
         this.countries = this.serializeCountries(countries);
         this.cities = this.serializeCities(cities);
+        this.airlines = this.serializeAirlines(airlines);
         console.log(
             "*** this.cities and createShortCities(this.cities)",
             this.cities
@@ -33,7 +34,6 @@ export class Locations {
             this.shortCitiesList
         );
 
-        this.airlines = this.serializeAirlines(airlines);
         console.log("INIT: airLine-SERIALIZE: ", this.airlines);
         console.log(
             "INIT: airLine-SERIALIZE: ",
@@ -44,6 +44,7 @@ export class Locations {
 
         return response;
     }
+
     async fetchTickets(params) {
         const response = await this.api.prices(params);
         console.log("fetchTickets: ", response);
