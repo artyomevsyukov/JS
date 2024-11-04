@@ -11,3 +11,7 @@ const say = (function () {
 })();
 
 say.sayPrivat();
+say.sayPrivat = function () {
+    return "Upps...";
+};
+console.log(say.sayPrivat());
