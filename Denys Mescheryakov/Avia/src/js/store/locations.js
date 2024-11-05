@@ -48,7 +48,13 @@ export class Locations {
     async fetchTickets(params) {
         const response = await this.api.prices(params);
         console.log("fetchTickets: ", response);
+        console.log("fetchTickets-data: ", response.data);
         this.lastSearch = this.serializeTickets(response.data);
+        console.log(
+            "this.serializeTickets(response.data)",
+            this.serializeTickets(response.data)
+        );
+
         console.log("lastSearch: ", this.lastSearch);
     }
 
