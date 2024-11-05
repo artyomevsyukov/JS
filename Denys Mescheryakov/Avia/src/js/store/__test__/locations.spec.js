@@ -32,6 +32,27 @@ jest.mock("../../services/apiService", () => {
                 { country_code: "RU", name: "Победа", code: "DP" },
             ])
         ),
+        prices: jest.fn(() =>
+            Promise.resolve({
+                data: [
+                    {
+                        origin: "LED",
+                        destination: "MOW",
+                        airline: "UT",
+                        departure_at: "05 Nov 2024 21:30",
+                        return_at: "28 Nov 2024 19:10",
+                        expires_at: "2024-11-05T12:08:55Z",
+                        price: 5644,
+                        flight_number: 382,
+                        transfers: 0,
+                        origin_name: "Санкт-Петербург",
+                        destination_name: "Москва",
+                        airline_logo: "https://pics.avs.io/200/200/UT.png",
+                        airline_name: "Utair",
+                    },
+                ],
+            })
+        ),
     };
     return {
         Api: jest.fn(() => mockApi),
@@ -42,6 +63,7 @@ const apiService = new Api();
 
 describe("Тест locations store", () => {
     beforeEach(() => {
+        locationInstance.api = apiService;
         locationInstance.countries =
             locationInstance.serializeCountries(countries);
         locationInstance.cities = locationInstance.serializeCities(cities);
@@ -50,25 +72,34 @@ describe("Тест locations store", () => {
     });
 
     // fetchTickets
-    // it("Проверка метода fetchTickets(params)", () => {
-    //     const data = locationInstance.fetchTickets(params);
+    // test("должен вызвать метод prices класса Api и сохранить результат в lastSearch", async () => {
+    //     // Вызов метода fetchTickets
+    //     await locationInstance.fetchTickets(params);
 
-    //     expect(data).toEqual({
-    //         origin: "LED",
-    //         destination: "MOW",
-    //         airline: "UT",
-    //         departure_at: "05 Nov 2024 21:30",
-    //         return_at: "28 Nov 2024 19:10",
-    //         expires_at: "2024-11-05T12:08:55Z",
-    //         price: 5644,
-    //         flight_number: 382,
-    //         transfers: 0,
-    //         origin_name: "Санкт-Петербург",
-    //         destination_name: "Москва",
-    //         airline_logo: "https://pics.avs.io/200/200/UT.png",
-    //         airline_name: "Utair",
-    //     });
+    //     // Проверка, что метод prices был вызван с нужными параметрами
+    //     expect(apiService.prices).toHaveBeenCalledWith(params);
+
+    //     // Проверка, что lastSearch содержит корректные данные
+    //     expect(locationInstance.lastSearch).toEqual([
+    //         {
+    //             origin: "LED",
+    //             destination: "MOW",
+    //             airline: "UT",
+    //             departure_at: "05 Nov 2024 21:30",
+    //             return_at: "28 Nov 2024 19:10",
+    //             expires_at: "2024-11-05T12:08:55Z",
+    //             price: 5644,
+    //             flight_number: 382,
+    //             transfers: 0,
+    //             origin_name: "Санкт-Петербург",
+    //             destination_name: "Москва",
+    //             airline_logo: "https://pics.avs.io/200/200/UT.png",
+    //             airline_name: "Utair",
+    //         },
+    //     ]);
     // });
+
+    // ==================================
 
     it("Проверка что locationInstance инстанс Location class", () => {
         expect(locationInstance).toBeInstanceOf(Locations);
