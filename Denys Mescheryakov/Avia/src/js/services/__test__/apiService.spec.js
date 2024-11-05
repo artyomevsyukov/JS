@@ -65,13 +65,13 @@ describe("Тест Api Service", () => {
         expect(axios.get).toHaveBeenCalledWith(`${config.url}/cities`);
     });
 
-    // it("Проверка метода cities() на получение ошибок", async () => {
-    //     const errMsg = "Api Error";
-    //     axios.get.mockImplementationOnce(() =>
-    //         Promise.reject(new Error(errMsg))
-    //     );
-    //     await expect(api.cities()).rejects.toThrow(errMsg);
-    // });
+    it("Проверка метода cities() на получение ошибок", async () => {
+        const errMsg = "Api Error";
+        axios.get.mockImplementationOnce(() =>
+            Promise.reject(new Error(errMsg))
+        );
+        await expect(api.cities()).rejects.toThrow(errMsg);
+    });
 
     // countries
     it("Проверка запроса получения стран countries()", async () => {
@@ -83,13 +83,13 @@ describe("Тест Api Service", () => {
         expect(axios.get).toHaveBeenCalledWith(`${config.url}/countries`);
     });
 
-    // it("Проверка метода countries() на получение ошибок", async () => {
-    //     const errMsg = "Api Error";
-    //     axios.get.mockImplementationOnce(() =>
-    //         Promise.reject(new Error(errMsg))
-    //     );
-    //     await expect(api.countries()).rejects.toThrow(errMsg);
-    // });
+    it("Проверка метода countries() на получение ошибок", async () => {
+        const errMsg = "Api Error";
+        axios.get.mockImplementationOnce(() =>
+            Promise.reject(new Error(errMsg))
+        );
+        await expect(api.countries()).rejects.toThrow(errMsg);
+    });
 
     // airlines
     it("Проверка запроса получения авиакомпаний airlines()", async () => {
@@ -101,13 +101,13 @@ describe("Тест Api Service", () => {
         expect(axios.get).toHaveBeenCalledWith(`${config.url}/airlines`);
     });
 
-    // it("Проверка метода airlines() на получение ошибок", async () => {
-    //     const errMsg = "Api Error";
-    //     axios.get.mockImplementationOnce(() =>
-    //         Promise.reject(new Error(errMsg))
-    //     );
-    //     await expect(api.airlines()).rejects.toThrow(errMsg);
-    // });
+    it("Проверка метода airlines() на получение ошибок", async () => {
+        const errMsg = "Api Error";
+        axios.get.mockImplementationOnce(() =>
+            Promise.reject(new Error(errMsg))
+        );
+        await expect(api.airlines()).rejects.toThrow(errMsg);
+    });
 
     //prices
     // Проверить что параметры были переданы

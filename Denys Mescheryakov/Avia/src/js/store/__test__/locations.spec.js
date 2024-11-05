@@ -1,11 +1,21 @@
 import locationInstance, { Locations } from "../locations";
 import { formatDate } from "../../helper/date";
 import api, { Api } from "../../services/apiService";
+import axios from "axios";
 
 // mock
 const countries = [{ code: "RU", name: "Россия" }];
 const cities = [{ country_code: "RU", name: "Москва", code: "MOW" }];
 const airlines = [{ country_code: "RU", name: "Победа", code: "DP" }];
+
+// data from fetchTickets(params)
+const params = {
+    origin: "LED",
+    destination: "MOW",
+    departDate: "2024-11-25",
+    returnDate: "2024-12-15",
+    currency: "RUB",
+};
 
 jest.mock("../../services/apiService", () => {
     const mockApi = {
@@ -39,6 +49,27 @@ describe("Тест locations store", () => {
             locationInstance.serializeAirlines(airlines);
     });
 
+    // fetchTickets
+    it("Проверка метода fetchTickets(params)", () => {
+        const data = locationInstance.fetchTickets(params);
+
+        expect(data).toEqual({
+            origin: "LED",
+            destination: "MOW",
+            airline: "UT",
+            departure_at: "05 Nov 2024 21:30",
+            return_at: "28 Nov 2024 19:10",
+            expires_at: "2024-11-05T12:08:55Z",
+            price: 5644,
+            flight_number: 382,
+            transfers: 0,
+            origin_name: "Санкт-Петербург",
+            destination_name: "Москва",
+            airline_logo: "https://pics.avs.io/200/200/UT.png",
+            airline_name: "Utair",
+        });
+    });
+
     it("Проверка что locationInstance инстанс Location class", () => {
         expect(locationInstance).toBeInstanceOf(Locations);
     });
@@ -52,8 +83,6 @@ describe("Тест locations store", () => {
         expect(instance.lastSearch).toEqual({});
         expect(instance.formatDate).toEqual(formatDate);
     });
-
-    // Проверка данных
 
     // Countries
     it("Проверка корректной сериализации стран serializeCountries(countries)", () => {
@@ -109,6 +138,7 @@ describe("Тест locations store", () => {
         };
         expect(res).toEqual(expectedData);
     });
+
     it("Проверка корректной сериализации авиакомпаний serializeAirlines(airlines) с некорректными данными", () => {
         const res = locationInstance.serializeAirlines(null);
         const expectedData = {};
@@ -146,11 +176,11 @@ describe("Тест locations store", () => {
         );
         expect(city.code).toBe("MOW");
     });
+
     // createShortCities
     it("Проверка метода createShortCities(cities)", () => {
         const shortCities = Object.entries(locationInstance.cities).reduce(
             (acc, [, city]) => {
-                // console.log(key);
                 acc[city.full_name] = null;
                 return acc;
             },
@@ -159,20 +189,6 @@ describe("Тест locations store", () => {
 
         expect(shortCities).toEqual({ "Москва, Россия": null });
     });
-
-    // fetchTickets
-    // it("Проверка метода fetchTickets(params)", () => {
-    //     const shortCities = Object.entries(locationInstance.cities).reduce(
-    //         (acc, [, city]) => {
-    //             // console.log(key);
-    //             acc[city.full_name] = null;
-    //             return acc;
-    //         },
-    //         {}
-    //     );
-
-    //     expect(shortCities).toEqual({ "Москва, Россия": null });
-    // });
 
     // serializeTickets
     // it("Проверка метода serializeTickets(tickets)", () => {

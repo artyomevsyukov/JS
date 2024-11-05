@@ -1,6 +1,6 @@
 import currencyUI from "./currency";
 
-class TicketUI {
+export class TicketUI {
     constructor() {
         this.container = document.querySelector(".tickets-sections .row");
         this.currency = currencyUI.currencySymbol;
