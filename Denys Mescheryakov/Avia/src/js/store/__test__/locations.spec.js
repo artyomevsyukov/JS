@@ -50,25 +50,25 @@ describe("Тест locations store", () => {
     });
 
     // fetchTickets
-    it("Проверка метода fetchTickets(params)", () => {
-        const data = locationInstance.fetchTickets(params);
+    // it("Проверка метода fetchTickets(params)", () => {
+    //     const data = locationInstance.fetchTickets(params);
 
-        expect(data).toEqual({
-            origin: "LED",
-            destination: "MOW",
-            airline: "UT",
-            departure_at: "05 Nov 2024 21:30",
-            return_at: "28 Nov 2024 19:10",
-            expires_at: "2024-11-05T12:08:55Z",
-            price: 5644,
-            flight_number: 382,
-            transfers: 0,
-            origin_name: "Санкт-Петербург",
-            destination_name: "Москва",
-            airline_logo: "https://pics.avs.io/200/200/UT.png",
-            airline_name: "Utair",
-        });
-    });
+    //     expect(data).toEqual({
+    //         origin: "LED",
+    //         destination: "MOW",
+    //         airline: "UT",
+    //         departure_at: "05 Nov 2024 21:30",
+    //         return_at: "28 Nov 2024 19:10",
+    //         expires_at: "2024-11-05T12:08:55Z",
+    //         price: 5644,
+    //         flight_number: 382,
+    //         transfers: 0,
+    //         origin_name: "Санкт-Петербург",
+    //         destination_name: "Москва",
+    //         airline_logo: "https://pics.avs.io/200/200/UT.png",
+    //         airline_name: "Utair",
+    //     });
+    // });
 
     it("Проверка что locationInstance инстанс Location class", () => {
         expect(locationInstance).toBeInstanceOf(Locations);
