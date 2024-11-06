@@ -1,14 +1,34 @@
+//Проверить существует уже в избранном? Или убирать кнопку и помечать что в избранонм
+//при рендере добавлять какой-то уникальный номер
+// Добавлять индедкс
+// получать в избранное объект из LlastSearch
+// рендерить уже объект
+
 export class Favorites {
     constructor() {
-        this.favorites = document.getElementById("dropdown1");
-        // this.add = document.
+        this.dropdownFavorites = document.getElementById("dropdown1");
+        this.container = document.querySelector(".tickets-sections .row");
+        this.addBtns = document.querySelectorAll(".add-favorite");
+        this.favorites = [];
     }
-    addFavorite() {}
-    deleteFavorite() {}
-    render() {}
-    clearContainer() {}
+    addToFavorites(ticketCard) {
+        this.favorites.push(ticketCard);
+        console.log("Дообовление в избранное this.favorites", this.favorites);
+
+        // renderFavorites(this.favorites);
+    }
+    deleteFromFavorites() {
+        renderFavorites(this.favorites);
+    }
+    renderFavorites(favorites = []) {
+        clearContainer();
+    }
+
+    clearContainer() {
+        this.container.innerHTML = "";
+    }
 }
 
-const favoriteUI = new Favorites();
+const favoritesUI = new Favorites();
 
-export default favoriteUI;
+export default favoritesUI;

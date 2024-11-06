@@ -1,9 +1,11 @@
 import currencyUI from "./currency";
+import favoritesUI from "./favorites";
 
 export class TicketUI {
     constructor() {
         this.container = document.querySelector(".tickets-sections .row");
         this.currency = currencyUI.currencySymbol;
+        this.favorites = [];
     }
 
     /**
@@ -23,6 +25,18 @@ export class TicketUI {
             .map((ticket) => TicketUI.ticketTemplate(ticket, currency))
             .join("");
         this.container.insertAdjacentHTML("afterbegin", fragment);
+
+        this.container.addEventListener("click", (e) => {
+            const { target } = e;
+
+            if (target.classList.contains("add-favorite")) {
+                const ticketCard = target.closest(".ticket-card");
+
+                if (ticketCard) {
+                    favoritesUI.addToFavorites(ticketCard);
+                }
+            }
+        });
     }
 
     /**
