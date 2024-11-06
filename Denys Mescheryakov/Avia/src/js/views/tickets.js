@@ -59,7 +59,7 @@ export class TicketUI {
      */
     static ticketTemplate(ticket, currency) {
         return `
-        <div class="col s12 m6">
+        <div class="col s12 m10 l6 xl6 mx-auto">
           <div class="card ticket-card">
             <div class="ticket-airline d-flex align-items-center">
               <img src="${ticket.airline_logo}" class="ticket-airline-img" alt="Airline logo" />
@@ -83,12 +83,12 @@ export class TicketUI {
               <span class="ticket-transfers">Пересадок: ${ticket.transfers}</span>
               <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
             </div>
+            <button class="waves-effect waves-light btn-small green darken-1 add-favorite ml-auto">
+            Add to favorites
+            </button>
           </div>
-           <a class="waves-effect waves-light btn-small 
-           green darken-1 add-favorite ml-auto">
-          Add to favorites
-        </a>
-        </div>`;
+        </div>
+        `;
     }
 }
 

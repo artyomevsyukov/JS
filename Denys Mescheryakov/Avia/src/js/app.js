@@ -21,24 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
         await locations.init();
         formUI.setAutocompleteDate(locations.shortCitiesList);
 
-        console.log(
-            "=========================CONSOLE============================="
-        );
-        console.log(locations);
-        console.log("location.countries: ", locations.countries);
-        console.log("location.cities:", locations.cities);
-        console.log(
-            "location.shortCitiesList: ",
-            locations.createShortCities(locations.cities)
-        );
-        console.log("location.airlines: ", location.airlines);
-        console.log("location.airlines Serilize: ", location.airlines);
+        // console.log(
+        //     "=========================CONSOLE============================="
+        // );
+        // console.log(locations);
+        // console.log("location.countries: ", locations.countries);
+        // console.log("location.cities:", locations.cities);
+        // console.log(
+        //     "location.shortCitiesList: ",
+        //     locations.createShortCities(locations.cities)
+        // );
+        // console.log("location.airlines: ", location.airlines);
+        // console.log("location.airlines Serilize: ", location.airlines);
 
-        console.log("location.countries.RU:", locations.countries.RU);
-        console.log("location.cities.MOW:", locations.cities.MOW);
-        console.log(
-            "=========================CONSOLE END============================="
-        );
+        // console.log("location.countries.RU:", locations.countries.RU);
+        // console.log("location.cities.MOW:", locations.cities.MOW);
+        // console.log(
+        //     "=========================CONSOLE END============================="
+        // );
     }
 
     async function onFormSubmit() {

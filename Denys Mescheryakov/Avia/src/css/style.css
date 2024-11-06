@@ -2,12 +2,24 @@ body {
     background-color: #1e1623;
 }
 
+.card {
+    margin: 0.5rem 0 0.5rem 0;
+}
+
 .d-flex {
     display: flex;
 }
 
+.flex-column {
+    flex-direction: column;
+}
+
 .align-items-center {
     align-items: center;
+}
+
+.align-items-start {
+    align-items: flex-start;
 }
 
 .justify-items-center {
@@ -34,7 +46,10 @@ body {
 /* Header styles */
 .header .brand-logo {
     position: static;
-    padding-right: 30px;
+}
+
+.header .favorites {
+    margin-left: 20px;
 }
 
 .header .currency-select input.select-dropdown {
@@ -57,6 +72,50 @@ body {
 
 .header .brand-logo {
     font-size: 1.5rem;
+}
+
+.favorites .dropdown-content {
+    width: 400px !important;
+    color: #000;
+}
+
+.favorites .favorite-item-airline-img {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+.favorites .favorite-item-info {
+    flex-grow: 1;
+    padding: 10px;
+    line-height: 1;
+    height: auto;
+}
+
+.favorites .favorite-item-info .material-icons {
+    line-height: 1;
+    height: auto;
+}
+
+.favorites .favorite-item-destination {
+    border-bottom: 1px dashed gray;
+    margin-bottom: 5px;
+}
+
+.favorites .ticket-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.favorites .ticket-additional-info {
+    font-size: 12px;
+}
+
+.favorites .ticket-time-departure {
+    font-size: 14px;
+}
+
+.favorites .delete-favorite {
+    margin-top: 10px;
 }
 
 .ticket-card {
@@ -105,6 +164,10 @@ body {
     font-weight: bold;
 }
 
+.ticket-card .add-favorite {
+    margin-top: 10px;
+}
+
 .tickets-empty-res-msg {
     padding: 10px 15px;
     text-align: center;
@@ -113,10 +176,37 @@ body {
     font-size: 18px;
 }
 
-.add-favorite {
-    margin-bottom: 15px;
+@media (width <= 1024px) {
+    .container {
+        width: 80%;
+    }
+    nav .brand-logo {
+        margin-left: 10px;
+        left: none;
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    .row .col {
+        float: none;
+    }
+    .row .col.m6 {
+        width: 75%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
+    .hide-on-med-and-down {
+        display: block !important;
+    }
 }
-
-.card {
-    margin: 0.5rem 0 0.5rem 0;
+@media (width <= 768px) {
+    .container {
+        width: 90%;
+    }
+    .row .col.m6 {
+        width: 85%;
+        margin-left: auto;
+        left: auto;
+        right: auto;
+    }
 }
