@@ -2,6 +2,10 @@ body {
     background-color: #1e1623;
 }
 
+.tost-fail {
+    background-color: rgb(173, 20, 87);
+}
+
 .show {
     display: block;
 }
@@ -11,6 +15,9 @@ body {
 
 .card {
     margin: 0.5rem 0 0.5rem 0;
+}
+.card .locationControls .card-content .card-title {
+    margin-bottom: 30px;
 }
 
 .d-flex {
@@ -51,6 +58,10 @@ body {
 }
 
 /* Header styles */
+.header {
+    margin-bottom: 30px;
+}
+
 .header .brand-logo {
     position: static;
 }

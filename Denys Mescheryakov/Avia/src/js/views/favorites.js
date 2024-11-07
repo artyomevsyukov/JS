@@ -1,6 +1,4 @@
-//Проверить существует уже в избранном? Или убирать кнопку и помечать что в избранонм
-
-// рендерить уже объект
+import currencyUI from "./currency";
 
 export class Favorites {
     constructor() {
@@ -8,29 +6,42 @@ export class Favorites {
         this.container = document.querySelector(".tickets-sections .row");
         this.favorites = [];
         this.favoritesBtn = document.querySelector(".dropdown-trigger");
+        // this.favoritItem = document.querySelector('.favorite-item .delete-favorite')
     }
+
     addToFavorites(ticketCard) {
         this.favorites.push(ticketCard);
         this.renderFavorites(this.favorites);
     }
+
     removeFromFavorites(ticketCard) {
         this.favorites = this.favorites.filter(
             (ticket) => ticket.key !== ticketCard.key
         );
-
         this.renderFavorites(this.favorites);
+    }
+    init() {
+        this.favoritesBtn.addEventListener("click", () => {
+            if (!this.favorites.length) {
+                this.showAlert("Нет билетов в избранном");
+                return;
+            }
+        });
     }
 
     renderFavorites(favorites = []) {
         this.clearContainer();
-        if (!favorites.length) {
-            this.showEmptyMsg();
-            return;
-        }
+        this.favoritesBtn.addEventListener("click", () => {
+            if (!favorites.length) {
+                this.showAlert("Нет билетов в избранном");
+                return;
+            }
+        });
 
         const fragment = favorites
-            .map((ticket) => Favorites.FavoritesTemplate(ticket))
+            .map((ticket) => Favorites.FavoritesTemplate(ticket, this.currency))
             .join("");
+
         this.dropdownFavoritesContainer.insertAdjacentHTML(
             "afterbegin",
             fragment
@@ -38,11 +49,11 @@ export class Favorites {
     }
 
     /**
-     * Показывает сообщение о том, что билеты не найдены
+     * Показывает сообщение о том, что нет билетов в избранном функцией toast materialize
      */
-    showEmptyMsg() {
-        const template = Favorites.emptyMsgTemplate();
-        this.container.insertAdjacentHTML("afterbegin", template);
+
+    showAlert(msg) {
+        M.toast({ html: msg, displayLength: 1000, classes: "tost-fail" });
     }
 
     /**
@@ -56,28 +67,41 @@ export class Favorites {
     </div>`;
     }
 
-    static FavoritesTemplate(ticket) {
+    static FavoritesTemplate(ticket, currency) {
+        currency = currencyUI.currencySymbol;
         return `
     <div class="favorite-item  d-flex align-items-start">
-              <img src="http://pics.avs.io/200/200/PS.png" class="favorite-item-airline-img" />
+              <img src="${
+                  ticket.airline_logo
+              }" class="favorite-item-airline-img" />
               <div class="favorite-item-info d-flex flex-column">
                 <div class="favorite-item-destination d-flex align-items-center">
                   <div class="d-flex align-items-center mr-auto">
-                    <span class="favorite-item-city">Харьков </span>
+                    <span class="favorite-item-city">${
+                        ticket.origin_name
+                    } </span>
                     <i class="medium material-icons">flight_takeoff</i>
                   </div>
                   <div class="d-flex align-items-center">
                     <i class="medium material-icons">flight_land</i>
-                    <span class="favorite-item-city">Львов</span>
+                    <span class="favorite-item-city">${
+                        ticket.destination_name
+                    }</span>
                   </div>
                 </div>
                 <div class="ticket-time-price d-flex align-items-center">
-                  <span class="ticket-time-departure">14 Sep 2019 02:30</span>
-                  <span class="ticket-price ml-auto">$315</span>
+                  <span class="ticket-time-departure">${
+                      ticket.departure_at
+                  }</span>
+                  <span class="ticket-price ml-auto">${currency}${4622}</span>
                 </div>
                 <div class="ticket-additional-info">
-                  <span class="ticket-transfers">Пересадок: 1</span>
-                  <span class="ticket-flight-number">Номер рейса: 26</span>
+                  <span class="ticket-transfers">Пересадок: ${
+                      ticket.transfers
+                  }</span>
+                  <span class="ticket-flight-number">Номер рейса: ${
+                      ticket.flight_number
+                  }</span>
                 </div>
                 <a class="waves-effect waves-light btn-small pink darken-3 delete-favorite ml-auto">Delete</a>
               </div>
