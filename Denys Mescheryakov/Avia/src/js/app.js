@@ -5,12 +5,11 @@ import formUI from "./views/form";
 import currencyUI from "./views/currency";
 import ticketsUI from "./views/tickets";
 import { dataTickets } from "./DATA/DataTickets";
-import favoritesUI from "./views/favorites";
+// import favoritesUI from "./views/favorites";
 
 document.addEventListener("DOMContentLoaded", () => {
     // FIXME
     // initApp();
-    favoritesUI.init();
     const form = formUI.form;
 
     // Events

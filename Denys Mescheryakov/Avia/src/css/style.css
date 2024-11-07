@@ -2,7 +2,7 @@ body {
     background-color: #1e1623;
 }
 
-.tost-fail {
+.toast-fail {
     background-color: rgb(173, 20, 87);
 }
 
@@ -132,7 +132,7 @@ body {
     font-size: 14px;
 }
 
-.favorites .delete-favorite {
+.favorites .delete-favorite-dropdown {
     margin-top: 10px;
 }
 
