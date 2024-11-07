@@ -1,11 +1,11 @@
 import currencyUI from "./currency";
 import favoritesUI from "./favorites";
+import locations from "../store/locations";
 
 export class TicketUI {
     constructor() {
         this.container = document.querySelector(".tickets-sections .row");
         this.currency = currencyUI.currencySymbol;
-        this.favorites = [];
     }
 
     /**
@@ -15,6 +15,7 @@ export class TicketUI {
      */
     renderTickets(tickets = [], currency = this.currency) {
         this.clearContainer();
+        let key = null;
 
         if (!tickets.length) {
             this.showEmptyMsg();
@@ -26,6 +27,7 @@ export class TicketUI {
             .join("");
         this.container.insertAdjacentHTML("afterbegin", fragment);
 
+        // Events
         this.container.addEventListener("click", (e) => {
             const { target } = e;
 
@@ -33,10 +35,45 @@ export class TicketUI {
                 const ticketCard = target.closest(".ticket-card");
 
                 if (ticketCard) {
-                    favoritesUI.addToFavorites(ticketCard);
+                    key = ticketCard.dataset.key;
+
+                    favoritesUI.addToFavorites(
+                        locations.lastSearch.find(
+                            (ticket) => ticket.key === key
+                        )
+                    );
+                    this.toggleButtons(ticketCard, true);
+                }
+            }
+
+            if (target.classList.contains("delete-favorite")) {
+                const ticketCard = target.closest(".ticket-card");
+
+                if (ticketCard) {
+                    key = ticketCard.dataset.key;
+
+                    favoritesUI.removeFromFavorites(
+                        locations.lastSearch.find(
+                            (ticket) => ticket.key === key
+                        )
+                    );
+                    this.toggleButtons(ticketCard, false);
                 }
             }
         });
+    }
+
+    toggleButtons(card, isFavorite) {
+        const addBtn = card.querySelector(".add-favorite");
+        const deleteBtn = card.querySelector(".delete-favorite");
+
+        if (isFavorite) {
+            addBtn.classList.add("hide");
+            deleteBtn.classList.remove("hide");
+        } else {
+            addBtn.classList.remove("hide");
+            deleteBtn.classList.add("hide");
+        }
     }
 
     /**
@@ -74,7 +111,7 @@ export class TicketUI {
     static ticketTemplate(ticket, currency) {
         return `
         <div class="col s12 m10 l6 xl6 mx-auto">
-          <div class="card ticket-card">
+          <div class="card ticket-card" data-key="${ticket.key}">
             <div class="ticket-airline d-flex align-items-center">
               <img src="${ticket.airline_logo}" class="ticket-airline-img" alt="Airline logo" />
               <span class="ticket-airline-name">${ticket.airline_name}</span>
@@ -97,10 +134,14 @@ export class TicketUI {
               <span class="ticket-transfers">Пересадок: ${ticket.transfers}</span>
               <span class="ticket-flight-number">Номер рейса: ${ticket.flight_number}</span>
             </div>
-            <button class="waves-effect waves-light btn-small green darken-1 add-favorite ml-auto">
+            <div class="change-favorites">
+            <button class="waves-effect waves-light btn-small green darken-1 add-favorite ml-auto show">
             Add to favorites
             </button>
-          </div>
+            <button class="waves-effect waves-light btn-small red darken-1 delete-favorite ml-auto hide">
+            Delete from favorites
+            </button>
+          </div></div>
         </div>
         `;
     }

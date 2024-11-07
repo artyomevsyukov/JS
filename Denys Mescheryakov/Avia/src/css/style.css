@@ -2,6 +2,13 @@ body {
     background-color: #1e1623;
 }
 
+.show {
+    display: block;
+}
+.hide {
+    display: none;
+}
+
 .card {
     margin: 0.5rem 0 0.5rem 0;
 }
@@ -164,7 +171,16 @@ body {
     font-weight: bold;
 }
 
+.ticket-card .change-favorites {
+    height: 43px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .ticket-card .add-favorite {
+    margin-top: 10px;
+}
+.ticket-card .delete-favorite {
     margin-top: 10px;
 }
 

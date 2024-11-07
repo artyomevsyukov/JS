@@ -22,46 +22,28 @@ export class Locations {
         this.countries = this.serializeCountries(countries);
         this.cities = this.serializeCities(cities);
         this.airlines = this.serializeAirlines(airlines);
-        console.log(
-            "*** this.cities and createShortCities(this.cities)",
-            this.cities
-        );
-
         this.shortCitiesList = this.createShortCities(this.cities);
-        console.log(
-            "*** this.cities and createShortCities(this.cities)",
-            this.cities,
-            this.shortCitiesList
-        );
-
-        console.log("INIT: airLine-SERIALIZE: ", this.airlines);
-        console.log(
-            "INIT: airLine-SERIALIZE: ",
-            Object.values(this.airlines).filter(
-                (airline) => airline.code === "DP"
-            )
-        );
 
         return response;
     }
 
     async fetchTickets(params) {
         const response = await this.api.prices(params);
-        console.log("fetchTickets: ", response);
-        console.log("fetchTickets-data: ", response.data);
         this.lastSearch = this.serializeTickets(response.data);
-        console.log(
-            "this.serializeTickets(response.data)",
-            this.serializeTickets(response.data)
-        );
-
         console.log("lastSearch: ", this.lastSearch);
+    }
+
+    createTicketKey(ticketsFlightNumber) {
+        const key =
+            ticketsFlightNumber + "-" + (Math.random() * 100000).toFixed(0);
+        return key;
     }
 
     serializeTickets(tickets) {
         return Object.values(tickets).map((ticket) => {
             return {
                 ...ticket,
+                key: this.createTicketKey(ticket.flight_number),
                 origin_name: this.getCityNameByCode(ticket.origin),
                 destination_name: this.getCityNameByCode(ticket.destination),
                 airline_logo: this.getAirlineLogoByCode(ticket.airline),

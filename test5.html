@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="cont" class="col s12 m10 l6 xl6 mx-auto">
+        <div class="card ticket-card" data-key="204-76598">
+            <div class="ticket-airline d-flex align-items-center">
+                <img src="https://pics.avs.io/200/200/N4.png" class="ticket-airline-img" alt="Airline logo">
+                <span class="ticket-airline-name">Nordwind Airlines</span>
+            </div>
+            <div class="ticket-destination d-flex align-items-center">
+                <div class="d-flex align-items-center mr-auto">
+                    <span class="ticket-city">Санкт-Петербург</span>
+                    <i class="medium material-icons">flight_takeoff</i>
+                </div>
+                <div class="d-flex align-items-center">
+                    <i class="medium material-icons">flight_land</i>
+                    <span class="ticket-city">Москва</span>
+                </div>
+            </div>
+            <div class="ticket-time-price d-flex align-items-center">
+                <span class="ticket-time-departure">07 Nov 2024 18:10</span>
+                <span class="ticket-price ml-auto">₽4622</span>
+            </div>
+            <div class="ticket-additional-info">
+                <span class="ticket-transfers">Пересадок: 0</span>
+                <span class="ticket-flight-number">Номер рейса: 204</span>
+            </div>
+            <button class="waves-effect waves-light btn-small green darken-1 add-favorite ml-auto">
+                Add to favorites
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const arr = []
+        const key = "204-61030";
+
+        const tickets = [
+            {
+                origin: "LED",
+                destination: "MOW",
+                airline: "N4",
+                departure_at: "07 Nov 2024 18:10",
+                return_at: "28 Nov 2024 17:25",
+                expires_at: "2024-11-07T08:17:10Z",
+                price: 4622,
+                flight_number: 204,
+                transfers: 0,
+                key: "204-50182",
+                origin_name: "Санкт-Петербург",
+                destination_name: "Москва",
+                airline_logo: "https://pics.avs.io/200/200/N4.png",
+                airline_name: "Nordwind Airlines",
+            },
+            {
+                origin: "LED",
+                destination: "MOW",
+                airline: "N4",
+                departure_at: "08 Nov 2024 21:10",
+                return_at: "28 Nov 2024 19:10",
+                expires_at: "2024-11-07T08:17:10Z",
+                price: 4761,
+                flight_number: 204,
+                transfers: 0,
+                key: "204-61030",
+                origin_name: "Санкт-Петербург",
+                destination_name: "Москва",
+                airline_logo: "https://pics.avs.io/200/200/N4.png",
+                airline_name: "Nordwind Airlines",
+            },
+            {
+                origin: "LED",
+                destination: "MOW",
+                airline: "UT",
+                departure_at: "09 Nov 2024 21:30",
+                return_at: "11 Nov 2024 19:35",
+                expires_at: "2024-11-07T08:17:10Z",
+                price: 4651,
+                flight_number: 382,
+                transfers: 0,
+                key: "382-43983",
+                origin_name: "Санкт-Петербург",
+                destination_name: "Москва",
+                airline_logo: "https://pics.avs.io/200/200/UT.png",
+                airline_name: "Utair",
+            },
+        ];
+
+        const container = document.getElementById('cont')
+        container.addEventListener("click", (e) => {
+            const { target } = e;
+
+            if (target.classList.contains("add-favorite")) {
+                const ticketCard = target.closest(".ticket-card");
+                console.log('ticketCard:', ticketCard);
+
+                if (ticketCard) {
+                    const key = ticketCard.dataset.key;
+                    console.log("key: ", key);
+
+
+                    arr.push(tickets.find((ticket) => ticket.key === key))
+                    console.log("arr:", arr)
+                }
+            }
+        });
+
+
+        console.log("find: ", tickets.find((ticket) => ticket.key === key));
+
+
+    </script>
+</body>
+
+</html>

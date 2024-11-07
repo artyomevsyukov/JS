@@ -4,16 +4,20 @@ import locations from "./store/locations";
 import formUI from "./views/form";
 import currencyUI from "./views/currency";
 import ticketsUI from "./views/tickets";
+import { dataTickets } from "./DATA/DataTickets";
 
 document.addEventListener("DOMContentLoaded", () => {
     // FIXME
-    initApp();
+    // initApp();
     const form = formUI.form;
 
     // Events
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        onFormSubmit();
+        // FIXME
+        // onFormSubmit();
+        locations.lastSearch = dataTickets;
+        ticketsUI.renderTickets(dataTickets, currencyUI.currencySymbol);
     });
 
     // Handlers
@@ -44,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     async function onFormSubmit() {
         // собрать данные из инпутов
         const currency = currencyUI;
-        console.log("currency onFormSubmit: ", currency);
+        // console.log("currency onFormSubmit: ", currency);
 
         const formData = new FormData(form);
 
