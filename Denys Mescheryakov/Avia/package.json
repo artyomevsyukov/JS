@@ -10,7 +10,8 @@
         "test": "jest",
         "test:watch": "jest --watchAll",
         "test:coverage": "jest --coverage --colors",
-        "cy:open": "cypress open"
+        "cy:open": "cypress open",
+        "cypress:open": "cypress open"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.26.0",
