@@ -19,6 +19,13 @@
     <canvas class="canvas" id="canvas"></canvas>
 
     <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // canvas.width = 400;
+        // canvas.height = 400;
+
+
         class Ball {
             constructor(width, height) {
                 this.width = width;
@@ -33,7 +40,8 @@
 
                 this.canvas = document.getElementById("canvas");
                 this.ctx = this.canvas.getContext("2d");
-
+                this.colors = ["Red", "Orange", "Yellow", "Green", "Blue", "Purple"];
+                this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
                 this.setCanvasSize();
 
             }
@@ -60,10 +68,20 @@
                     this.ctx.stroke();
                 }
             }
+            random() {
+                return Math.floor(Math.random() * this.colors.length)
+            }
 
             draw() {
-                this.circle(this.x, this.y, 5, true);
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
+                ctx.fillStyle = this.color
+                ctx.fill();
             }
+
+            // draw() {
+            //     this.circle(this.x, this.y, 5, true);
+            // }
 
             move() {
                 this.x += this.xSpeed;
@@ -86,16 +104,22 @@
             balls.push(new Ball(400, 400))
         }
 
-        const ball = new Ball(400, 400)
+        console.log(balls)
+
+        // const ball = new Ball(400, 400)
 
         setInterval(() => {
-            balls.forEach(el => {
-                el.ctx.clearRect(0, 0, el.width, el.height);
-                el.draw()
-                el.move()
-                el.checkCollision()
-                el.ctx.strokeRect(0, 0, el.width, el.height);
-            })
+            // Очищаем холст один раз для всех мячей
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            balls.forEach(ball => {
+                ball.draw();
+                ball.move();
+                ball.checkCollision();
+            });
+
+            // Рисуем рамку холста
+            ctx.strokeRect(0, 0, canvas.width, canvas.height);
             // ball.ctx.clearRect(0, 0, ball.width, ball.height);
 
             // ball.draw()
