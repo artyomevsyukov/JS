@@ -8,30 +8,47 @@
     <style>
         body {
             height: 90vh;
-            background-color: rgb(75, 65, 65);
+            background-color: rgb(107, 98, 98);
             display: grid;
             place-items: center;
-        }
-
-        .canvas {
-            /* border: 1px solid red; */
         }
     </style>
 </head>
 
 <body>
-    <canvas class="canvas" id="canvas" width="200" height="200"></canvas>
+    <canvas class="canvas" id="canvas"></canvas>
 
     <script>
         class Ball {
-            constructor() {
-                this.x = 100;
-                this.y = 100;
-                this.xSpeed = -4;
-                this.ySpeed = 6;
+            constructor(width, height) {
+                this.width = width;
+                this.height = height;
+                this.x = this.width;
+                this.y = this.height;
+                // this.x = 100;
+                // this.y = 100;
+                this.xSpeed = this.randomSpeed();
+                this.ySpeed = this.randomSpeed();
+                // this.balls = []
 
                 this.canvas = document.getElementById("canvas");
                 this.ctx = this.canvas.getContext("2d");
+
+                this.setCanvasSize();
+
+            }
+
+
+
+            randomSpeed() {
+                return Math.random() * 10 - 5
+            }
+
+            setCanvasSize() {
+                this.canvas.width = this.width;
+                this.canvas.height = this.height;
+                this.canvas.style.width = this.width + 'px';
+                this.canvas.style.height = this.height + 'px';
             }
 
             circle(x, y, radius, fillCircle) {
@@ -51,27 +68,41 @@
             move() {
                 this.x += this.xSpeed;
                 this.y += this.ySpeed;
+
             }
 
             checkCollision() {
-                if (this.x < 0 || this.x > 200) {
+                if (this.x < 0 || this.x > this.width) {
                     this.xSpeed = -this.xSpeed;
                 }
-                if (this.y < 0 || this.y > 200) {
+                if (this.y < 0 || this.y > this.height) {
                     this.ySpeed = -this.ySpeed;
                 }
             }
         }
 
-        const ball = new Ball()
+        const balls = []
+        for (let i = 0; i < 10; i++) {
+            balls.push(new Ball(400, 400))
+        }
+
+        const ball = new Ball(400, 400)
 
         setInterval(() => {
-            ball.ctx.clearRect(0, 0, 200, 200);
-            ball.draw()
-            ball.move()
-            ball.checkCollision()
+            balls.forEach(el => {
+                el.ctx.clearRect(0, 0, el.width, el.height);
+                el.draw()
+                el.move()
+                el.checkCollision()
+                el.ctx.strokeRect(0, 0, el.width, el.height);
+            })
+            // ball.ctx.clearRect(0, 0, ball.width, ball.height);
 
-            ball.ctx.strokeRect(0, 0, 200, 200);
+            // ball.draw()
+            // ball.move()
+            // ball.checkCollision()
+
+            // ball.ctx.strokeRect(0, 0, ball.width, ball.height);
 
         }, 15)
 

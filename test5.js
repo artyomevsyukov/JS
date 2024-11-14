@@ -111,7 +111,13 @@
 
 // console.log(tickets.find((ticket) => ticket.key === key));
 
-const numbers = [1, 2, 3, 4];
-const doubled = numbers.map((num) => num * 2);
-console.log(doubled); // [2, 4, 6, 8]
-console.log(numbers); // [1, 2, 3, 4] (исходный массив не изменен)
+// const numbers = [1, 2, 3, 4];
+// const doubled = numbers.map((num) => num * 2);
+// console.log(doubled); // [2, 4, 6, 8]
+// console.log(numbers); // [1, 2, 3, 4] (исходный массив не изменен)
+
+const arr = [2, 4, 7, 123, 3, 564, 2];
+
+const max = arr.sort((a, b) => b - a);
+console.log(max[0]);
+console.log(Math.max(...arr));
