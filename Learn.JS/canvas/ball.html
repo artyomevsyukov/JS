@@ -8,31 +8,76 @@
     <style>
         body {
             height: 90vh;
-
             background-color: rgb(75, 65, 65);
             display: grid;
             place-items: center;
         }
 
-
-
-
         .canvas {
-            border: 1px solid red;
-
+            /* border: 1px solid red; */
         }
     </style>
 </head>
 
 <body>
-
     <canvas class="canvas" id="canvas" width="200" height="200"></canvas>
 
-    </div>x
-
     <script>
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d")
+        class Ball {
+            constructor() {
+                this.x = 100;
+                this.y = 100;
+                this.xSpeed = -4;
+                this.ySpeed = 6;
+
+                this.canvas = document.getElementById("canvas");
+                this.ctx = this.canvas.getContext("2d");
+            }
+
+            circle(x, y, radius, fillCircle) {
+                this.ctx.beginPath();
+                this.ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+                if (fillCircle) {
+                    this.ctx.fill();
+                } else {
+                    this.ctx.stroke();
+                }
+            }
+
+            draw() {
+                this.circle(this.x, this.y, 5, true);
+            }
+
+            move() {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+            }
+
+            checkCollision() {
+                if (this.x < 0 || this.x > 200) {
+                    this.xSpeed = -this.xSpeed;
+                }
+                if (this.y < 0 || this.y > 200) {
+                    this.ySpeed = -this.ySpeed;
+                }
+            }
+        }
+
+        const ball = new Ball()
+
+        setInterval(() => {
+            ball.ctx.clearRect(0, 0, 200, 200);
+            ball.draw()
+            ball.move()
+            ball.checkCollision()
+
+            ball.ctx.strokeRect(0, 0, 200, 200);
+
+        }, 15)
+
+
+
+
     </script>
 
 </body>
