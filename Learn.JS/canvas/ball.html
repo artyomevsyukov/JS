@@ -60,7 +60,7 @@
                 return collorsArr[Math.floor(Math.random() * collorsArr.length)]
             }
 
-            chengColor(collorsArr) {
+            changeColor(collorsArr) {
                 this.color = collorsArr[Math.floor(Math.random() * collorsArr.length)]
             }
 
@@ -95,11 +95,11 @@
             checkCollision() {
                 if (this.x < 0 || this.x > this.width) {
                     this.xSpeed = -this.xSpeed;
-                    this.chengColor(this.colors)
+                    this.changeColor(this.colors)
                 }
                 if (this.y < 0 || this.y > this.height) {
                     this.ySpeed = -this.ySpeed;
-                    this.chengColor(this.colors)
+                    this.changeColor(this.colors)
                 }
             }
 
@@ -118,7 +118,7 @@
                     otherBall.ySpeed = -otherBall.ySpeed;
 
                     // Меняем цвет
-                    this.chengColor(this.colors);
+                    this.changeColor(this.colors);
                     otherBall.chengColor(otherBall.colors);
                 }
             }
