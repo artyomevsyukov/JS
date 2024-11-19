@@ -1,21 +1,25 @@
 import "../scss/main.scss";
+import { Config } from "./config";
 import { Canvas } from "./canvas";
-// import instanseCanvas from "./canvas";
 import { Snake } from "./snake";
 import { Apple } from "./apple";
+import { Block } from "./block";
 
 class App {
     constructor(canvas) {
-        // this.canvas = new Canvas();
+        Config.init(canvas, canvas.blockSize);
+
         this.canvas = canvas;
+
         this.init();
     }
     init() {
-        let head = new Snake(11, 11, this.canvas.blockSize, this.canvas);
-        let apple = new Apple(10, 10, this.canvas.blockSize, this.canvas);
+        const snake = new Snake();
+        let head = new Block(11, 11);
+        let apple = new Apple(10, 10);
 
         head.drawSquare("Blue");
-        apple.drawCircle("LightGreen");
+        apple.drawCircle("Green");
 
         console.log("equal: ", head.equal(apple));
 
@@ -25,7 +29,7 @@ class App {
             // this.canvas.render();
             // snake.move();
             // this.canvas.increaseScore();
-            // snake.draw();
+            snake.draw();
 
             // apple.draw();
             this.canvas.drawBorder();

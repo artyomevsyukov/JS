@@ -1,7 +1,13 @@
-import { Canvas } from "./canvas";
+// import { Canvas } from "./canvas";
+import { Config } from "./config";
 
 export class Block {
-    constructor(col, row, blockSize, canvas) {
+    constructor(
+        col,
+        row,
+        blockSize = Config.blockSize,
+        canvas = Config.canvas
+    ) {
         this.col = col;
         this.row = row;
         this.blockSize = blockSize;
