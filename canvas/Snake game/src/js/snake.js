@@ -1,6 +1,5 @@
 import { Config } from "./config";
 import { Block } from "./block";
-import { Apple } from "./apple";
 
 export class Snake extends Block {
     segments = [new Block(7, 5), new Block(6, 5), new Block(5, 5)];
@@ -64,7 +63,6 @@ export class Snake extends Block {
 
         this.head = this.newHead;
 
-        // fix
         if (this.newHead.equal(apple)) {
             Config.canvas.score++;
             apple.move();
