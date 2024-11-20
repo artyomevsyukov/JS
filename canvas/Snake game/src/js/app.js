@@ -3,37 +3,35 @@ import { Config } from "./config";
 import { Canvas } from "./canvas";
 import { Snake } from "./snake";
 import { Apple } from "./apple";
-import { Block } from "./block";
 
 class App {
     constructor(canvas) {
         Config.init(canvas, canvas.blockSize);
 
-        this.canvas = canvas;
-
         this.init();
     }
     init() {
         const snake = new Snake();
-        let head = new Block(11, 11);
-        let apple = new Apple(10, 10);
-
-        head.drawSquare("Blue");
-        apple.drawCircle("Green");
-
-        console.log("equal: ", head.equal(apple));
+        let apple = new Apple(12, 5);
 
         const intervalId = setInterval(() => {
-            // this.canvas.clear();
-            this.canvas.drawScore();
-            // this.canvas.render();
-            // snake.move();
-            // this.canvas.increaseScore();
+            Config.canvas.clear();
+            Config.canvas.drawScore();
+            // Config.canvas.render();
+            snake.move(intervalId, apple);
             snake.draw();
-
             // apple.draw();
-            this.canvas.drawBorder();
-        }, 1000);
+            Config.canvas.drawBorder();
+
+            apple.drawCircle("Green");
+        }, 100);
+
+        document.body.addEventListener("keydown", (event) => {
+            const newDirection = Config.directions[event.code];
+            if (newDirection) {
+                snake.setDirection(newDirection);
+            }
+        });
     }
 }
 

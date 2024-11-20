@@ -55,19 +55,6 @@ export class Canvas {
             this.blockSize
         );
     }
-
-    gameOver(intervalId) {
-        clearInterval(intervalId);
-        this.ctx.font = "60px Courier";
-        this.ctx.fillStyle = "Black";
-        this.ctx.textAlign = "center";
-        this.ctx.textBaseline = "middle";
-        this.ctx.fillText(
-            "Конец игры",
-            this.canvas.width / 2,
-            this.canvas.height / 2
-        );
-    }
 }
 
 // const canvas = new Canvas();
