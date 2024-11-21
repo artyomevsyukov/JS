@@ -13,11 +13,12 @@ export class Snake extends Block {
     }
 
     draw() {
+        const color = ["Purple", "Gold"];
         for (let i = 0; i < this.segments.length; i++) {
             // i === 0
             //     ? this.segments[i].drawSquare("Red")
             //     : this.segments[i].drawSquare("Green");
-            this.segments[i].drawSquare(i === 0 ? "Red" : "Green");
+            this.segments[i].drawSquare(i === 0 ? "Red" : color[i % 2]);
         }
     }
 
@@ -65,6 +66,9 @@ export class Snake extends Block {
 
         if (this.newHead.equal(apple)) {
             Config.canvas.score++;
+            if (Config.speed > 30) {
+                Config.speed -= 5;
+            }
             apple.move();
         } else {
             this.segments.pop();
@@ -87,7 +91,12 @@ export class Snake extends Block {
     }
 
     gameOver(intervalId) {
-        clearInterval(intervalId);
+        clearTimeout(intervalId);
+
+        if (Config.appInstance) {
+            Config.appInstance.stop(); // Останавливаем игру через App
+        }
+
         Config.canvas.ctx.font = "60px Courier";
         Config.canvas.ctx.fillStyle = "Black";
         Config.canvas.ctx.textAlign = "center";

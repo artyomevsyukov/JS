@@ -1,3 +1,5 @@
+import { Config } from "./config";
+
 export class Canvas {
     constructor(width = 400, height = 400) {
         this.canvas = document.getElementById("canvas");
@@ -11,6 +13,7 @@ export class Canvas {
         this.heightInBlocks = this.canvas.height / this.blockSize;
 
         this.score = 0;
+        this.speed = Config.speed;
     }
 
     increaseScore() {
@@ -23,6 +26,7 @@ export class Canvas {
 
     render() {
         this.drawScore();
+        this.drawSpeed();
         this.drawBorder();
     }
 
@@ -53,6 +57,18 @@ export class Canvas {
             "Счет: " + this.score,
             this.blockSize,
             this.blockSize
+        );
+    }
+
+    drawSpeed() {
+        this.ctx.font = "20px Courier";
+        this.ctx.fillStyle = "Black";
+        this.ctx.textAlign = "left";
+        this.ctx.textBaseline = "top";
+        this.ctx.fillText(
+            "Скорость: " + (-1 * Config.speed + 100),
+            this.blockSize,
+            this.blockSize + 20
         );
     }
 }

@@ -5,8 +5,10 @@ export class Apple extends Block {
     constructor(col, row) {
         super(col, row);
 
-        this.col = Math.floor(Math.random() * Config.canvas.widthInBlocks);
-        this.row = Math.floor(Math.random() * Config.canvas.heightInBlocks);
+        this.col =
+            Math.floor(Math.random() * (Config.canvas.widthInBlocks - 2)) + 1;
+        this.row =
+            Math.floor(Math.random() * (Config.canvas.heightInBlocks - 2)) + 1;
         this.position = new Block(this.col, this.row);
     }
 
