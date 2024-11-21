@@ -69,7 +69,7 @@ export class Snake extends Block {
             if (Config.speed > 30) {
                 Config.speed -= 5;
             }
-            apple.move();
+            apple.move(this.segments);
         } else {
             this.segments.pop();
         }
