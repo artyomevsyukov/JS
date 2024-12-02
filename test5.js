@@ -116,8 +116,63 @@
 // console.log(doubled); // [2, 4, 6, 8]
 // console.log(numbers); // [1, 2, 3, 4] (исходный массив не изменен)
 
-const arr = [2, 4, 7, 123, 3, 564, 2];
+// const arr = [2, 4, 7, 123, 3, 564, 2];
 
-const max = arr.sort((a, b) => b - a);
-console.log(max[0]);
-console.log(Math.max(...arr));
+// const max = arr.sort((a, b) => b - a);
+// console.log(max[0]);
+// console.log(Math.max(...arr));
+
+
+console.log('12313')
+
+// for (var i = 0; i <= 10; i++) {
+    
+//     function go(x) {
+//         setTimeout(()=>{console.log(x);
+//         setTimeout(go,1000),1000)
+//         go(i)
+//     }
+        
+//     }
+// }
+// let i = 1
+// let timer = setTimeout(function go(){
+//         console.log(i)
+//         i++
+//         if(i<=10) {
+//             setTimeout(go, 500)
+//         }
+//         clearTimeout(timer)
+//     },500)
+
+
+// for (let i = 0; i <=10; i++) {
+//  setTimeout(()=>console.log(i)
+//  ,i*300)   
+// }
+
+
+// for(var i=0; i<=10; i++) {
+//     function go(x) {
+//         setTimeout(()=>{
+//             console.log(x)
+//         },x* 300)
+//     }
+//     go(i)
+// }
+
+// for(let i=0; i<=10; i++) {
+//     setTimeout(()=>{
+//         console.log(i)
+//     },i* 300)
+// }
+
+// let i = 0
+// let timer = setTimeout(function go(){
+//     if(i<=10) {
+//         console.log(i)
+//         i++
+//         setTimeout(go, 300)
+//     }
+//     clearTimeout(timer)
+// },300)
