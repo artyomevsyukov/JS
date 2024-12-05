@@ -1,0 +1,6 @@
+{
+  "prettier.bracketSameLine": true,
+  "prettier.useEditorConfig": true,
+  "prettier.printWidth": 120,
+  "prettier.requireConfig": false
+}
